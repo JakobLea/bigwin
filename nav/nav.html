@@ -1,18 +1,58 @@
-<div class="topnav" id="myTopnav">
-  <a type="button"> <img src="/Logo/BigWin2.png" class="logo" height ="50" width="100" href="/home.html"/></a>
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="dropdown">
-    <button class="dropbtn">Spill
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div> 
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-  <!-- <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a> -->
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document test</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-branding"> <img style="border:0px solid black;"
+                src="/Logo/BigWin2.png" width=100px, height=50px></a>
+
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="Index.html" class="nav-link">Hjem</a>
+            </li>
+            <li class="nav-item">
+                <a href="Tjenester.html" class="nav-link">Tjenester</a>
+            </li>
+            <li class="nav-item">
+                <a href="Omoss.html" class="nav-link">Om oss</a>
+            </li>
+            <li class="nav-item">
+                <a href="Kontakt.html" class="nav-link">Kontakt</a>
+            </li>
+        </ul>
+        <div class="login-container">
+            <li class="nav-item">
+                <a href="Login.html" class="nav-link">Login</a>
+            </li>
+        </div>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", ()  => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+})
+
+document.querySelectorAll("nav-link").forEach(n => n.
+    addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    })) 
+    </script>
+</body>
+
+</html>
