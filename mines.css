@@ -110,3 +110,9 @@ select{
   button:hover{
     cursor: pointer;
   }
+
+  .coin-display {
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+}

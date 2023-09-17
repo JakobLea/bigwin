@@ -43,13 +43,15 @@
             <span class="bar"></span>
         </div>
     </nav>
-
+    <div class="coin-container">
+        <div><label for="coinCount">Coins:</label></div>
+        <div id="coinCount">10</div>
+    </div>
     <div class="flex-container">
-
+     
         <div class="selectbox">
             <div><label id="mineCountLabel" for="mineCount">Mines</label></div>
-            
-            <div><button id="startButton">Start Game</button></div>
+            <div><button id="startButton" onclick="startGame()">Start Game</button></div>
         </div>
 
         <div class="container" id="container"></div>
@@ -60,6 +62,8 @@
         const numMines = 1; // Adjust as needed
         let mines = [];
         let points = 0;
+        let coins = 10; // Initial number of coins
+        let gameStarted = false; // Flag to track if the game has started
 
         function initializeGame() {
             for (let i = 0; i < gridSize; i++) {
@@ -84,7 +88,35 @@
             }
         }
 
+        function startGame() {
+            if (!gameStarted && coins > 0) {
+                coins--; // Deduct one coin to start the game
+                document.getElementById("coinCount").textContent = coins;
+                gameStarted = true; // Set the game as started
+                enableCells(); // Enable the cells for gameplay
+            } else if (gameStarted) {
+                alert("You've already started the game!");
+            } else {
+                alert("You don't have enough coins to start. Please buy more coins.");
+            }
+        }
+
+        function enableCells() {
+            const cells = document.querySelectorAll(".cell");
+            cells.forEach(cell => {
+                cell.classList.add("enabled");
+            });
+            document.getElementById("startButton").disabled = true; // Disable the button during gameplay
+        }
+
+ 
+
         function revealCell(event) {
+            if (!gameStarted) {
+                alert("Please start the game first!");
+                return;
+            }
+            
             const row = parseInt(event.target.dataset.row);
             const col = parseInt(event.target.dataset.col);
 
@@ -120,11 +152,15 @@
         }
 
         function resetGame() {
+            gameStarted = false; // Reset the game flag
+            document.getElementById("startButton").disabled = false; // Enable the "Start Game" button
             document.getElementById("container").innerHTML = "";
             mines = [];
             points = 0;
             initializeGame();
         }
+
+      
 
         initializeGame();
     </script>
