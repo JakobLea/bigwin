@@ -48,21 +48,7 @@
 
         <div class="selectbox">
             <div><label id="mineCountLabel" for="mineCount">Mines</label></div>
-            <div> <p>Mines</p>
-                <select id="mineCount">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3" selected>3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select></div>
+            
             <div><button id="startButton">Start Game</button></div>
         </div>
 
@@ -70,15 +56,12 @@
         <div></div>
     </div>
     <script>
-        let gridSize = 5; // Updated to 5 rows and columns
-        let numMines = 5; // Default number of mines
+        const gridSize = 5; // Updated to 5 rows and columns
+        const numMines = 1; // Adjust as needed
         let mines = [];
         let points = 0;
 
         function initializeGame() {
-            gridSize = 5; // Reset the grid size
-            document.getElementById("container").innerHTML = ""; // Clear the container
-
             for (let i = 0; i < gridSize; i++) {
                 for (let j = 0; j < gridSize; j++) {
                     const cell = document.createElement("div");
@@ -88,12 +71,6 @@
                     cell.addEventListener("click", revealCell);
                     document.getElementById("container").appendChild(cell);
                 }
-            }
-
-            // Validate the number of mines to ensure it's reasonable
-            if (numMines >= gridSize * gridSize / 2) {
-                alert("Too many mines! Please choose a lower number of mines.");
-                return;
             }
 
             // Place mines randomly
@@ -106,11 +83,6 @@
                 mines.push({ row, col });
             }
         }
-
-        document.getElementById("startButton").addEventListener("click", () => {
-            numMines = parseInt(document.getElementById("mineCount").value);
-            initializeGame();
-        });
 
         function revealCell(event) {
             const row = parseInt(event.target.dataset.row);
