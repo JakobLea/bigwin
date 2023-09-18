@@ -9,7 +9,6 @@
 .item4 { grid-area: spill3; }
 .item5 { grid-area: spill4; }
 .item6 { grid-area: spill5; }
-.item7 { grid-area: spill6; }
 
 .grid-container {
     justify-content: center;
