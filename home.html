@@ -10,23 +10,6 @@
     <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="nav.css">
-
-    <style>
-        .flex-container {
-            display: flex;
-            justify-content: center;
-            background-color: DodgerBlue;
-        }
-
-        .flex-container>div {
-            background-color: #f1f1f1;
-            width: 150px;
-            margin: 0px;
-            text-align: center;
-            line-height: 75px;
-            font-size: 30px;
-        }
-    </style>
 </head>
 
 
@@ -71,7 +54,7 @@
 
     <div class="velkommen">
         <h1>
-            Velkomen tilbake, "Navn"
+            Velkommen tilbake, "Navn"
         </h1>
         <h2>
             Trykk her får å legge til penger
@@ -79,20 +62,19 @@
         <a class="penger" href="Penger.html">Penger</a>
     </div>
 
-    <div class="grid-container">
-        <div class="item1">Dette er de mest populere spillene</div>
-        <div class="item2"><img src="Stake bilder/Crash.png" width=139px, height=187x></div>
-        <div class="item3"><img src="Stake bilder/Dice.png" width=139px, height=187px></div>
-        <div class="item4"><img src="Stake bilder/Mines.png" width=139px, height=187px></div>
-        <div class="item5"><img src="Stake bilder/Hilo.png" width=139px, height=187px></div>
-        <div class="item6"><img src="Stake bilder/Plinko.png" width=139px, height=187px></div>
+ 
+
+    <div class="overskrift-container">
+        <div>Dette er de mest populære spillene</div>
     </div>
 
     <div class="flex-container">
-        <div><img src="Stake bilder/Crash.png" width=139px, height=187x></div>
-                <div><img src="Stake bilder/Dice.png" width=139px, height=187px></div>
-                <div><img src="Stake bilder/Mines.png" width=139px, height=187px></div>
-        </div>
+        <div><img onclick="location.href = 'crash.html';" src="Stake bilder/Crash.png" width=139px, height=187x></div>
+        <div><img onclick="location.href = 'dice.html';" src="Stake bilder/Dice.png" width=139px, height=187px></div>
+        <div><img onclick="location.href = 'mines.html';" src="Stake bilder/Mines.png" width=139px, height=187px></div>
+        <div><img onclick="location.href = 'hilo.html';" src="Stake bilder/Hilo.png" width=139px, height=187px></div>
+        <div><img onclick="location.href = 'plinko.html';" src="Stake bilder/Plinko.png" width=139px, height=187px></div>
+    </div>
 
 </body>
 
