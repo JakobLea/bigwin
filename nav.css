@@ -20,7 +20,13 @@
 }
 
 .login-container {
+  display: flex;
+  align-items: center;
   margin-left: auto;
+}
+
+#coinCount {
+  margin-right: 50px; /* Juster denne verdien etter behov for ønsket mellomrom mellom coinCount og Login-linken */
 }
 
 .nav-branding {

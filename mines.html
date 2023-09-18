@@ -46,13 +46,15 @@
 
     <div w3-include-html="nav.html"></div>
 
+    <!--
     <div class="coin-container">
         <div><label for="coinCount">Coins:</label></div>
         <div id="coinCount">10</div>
     </div>
-    
+-->
+
     <div class="flex-container">
-     
+
         <div class="selectbox">
             <div><label id="mineCountLabel" for="mineCount">Mines</label></div>
             <div><button id="startButton" onclick="startGame()">Start Game</button></div>
@@ -113,14 +115,14 @@
             document.getElementById("startButton").disabled = true; // Disable the button during gameplay
         }
 
- 
+
 
         function revealCell(event) {
             if (!gameStarted) {
                 alert("Please start the game first!");
                 return;
             }
-            
+
             const row = parseInt(event.target.dataset.row);
             const col = parseInt(event.target.dataset.col);
 
@@ -164,16 +166,16 @@
             initializeGame();
         }
 
-      
+
 
         initializeGame();
     </script>
     <script>
 
         includeHTML();
-    
+
     </script>
-    
+
 
 
 </body>
