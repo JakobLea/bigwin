@@ -57,7 +57,10 @@
 
         <div class="selectbox">
             <div><label id="mineCountLabel" for="mineCount">Mines</label></div>
-            <div><button id="startButton" onclick="startGame()">Start Game</button></div>
+            <div>
+                <input type="number" id="coinsToSpend" placeholder="Enter coins">
+                <button id="startButton" onclick="startGame()">Start Game</button>
+            </div>
         </div>
 
         <div class="container" id="container"></div>
@@ -70,6 +73,13 @@
         let points = 0;
         let coins = 10; // Initial number of coins
         let gameStarted = false; // Flag to track if the game has started
+
+        // Function to remove the "cash-out-disabled" class from the button
+        function enableCashOutButton() {
+            const startButton = document.getElementById("startButton");
+            startButton.classList.remove("cash-out-disabled");
+            startButton.disabled = false; // Re-enable the button
+        }
 
         function initializeGame() {
             for (let i = 0; i < gridSize; i++) {
@@ -95,15 +105,22 @@
         }
 
         function startGame() {
-            if (!gameStarted && coins > 0) {
-                coins--; // Deduct one coin to start the game
-                document.getElementById("coinCount").textContent = coins;
-                gameStarted = true; // Set the game as started
-                enableCells(); // Enable the cells for gameplay
-            } else if (gameStarted) {
-                alert("You've already started the game!");
-            } else {
-                alert("You don't have enough coins to start. Please buy more coins.");
+            if (!gameStarted) {
+                const coinsToSpend = parseInt(document.getElementById("coinsToSpend").value);
+                if (coinsToSpend <= coins && coinsToSpend > 0) {
+                    coins -= coinsToSpend; // Deduct the specified number of coins to start the game
+                    document.getElementById("coinCount").textContent = coins;
+                    gameStarted = true; // Set the game as started
+                    enableCells(); // Enable the cells for gameplay
+                    document.getElementById("coinsToSpend").disabled = true; // Disable the input
+                    document.getElementById("startButton").textContent = "Cash Out"; // Change button text
+                    document.getElementById("startButton").classList.add("cash-out-disabled"); // Add the disabled class
+                    cellsClicked = false; // Reset cellsClicked flag for the new game
+                } else {
+                    alert("Invalid number of coins or not enough coins to start.");
+                }
+            } else if (gameStarted && cellsClicked) {
+                cashOut();
             }
         }
 
@@ -112,7 +129,6 @@
             cells.forEach(cell => {
                 cell.classList.add("enabled");
             });
-            document.getElementById("startButton").disabled = true; // Disable the button during gameplay
         }
 
 
@@ -155,11 +171,32 @@
                     resetGame();
                 }
             }
+
+            // Check for game completion and allow cashing out if necessary
+            if (points === gridSize * gridSize - numMines) {
+                cashOut();
+            }
+
+            cellsClicked = true;
+
+            enableCashOutButton();
         }
+
+        function cashOut() {
+            if (gameStarted && cellsClicked) {
+                alert("You've cashed out!");
+                resetGame();
+            } 
+        }
+
+
 
         function resetGame() {
             gameStarted = false; // Reset the game flag
+            document.getElementById("startButton").classList.remove("cash-out-disabled"); // Remove disabled class
             document.getElementById("startButton").disabled = false; // Enable the "Start Game" button
+            document.getElementById("startButton").textContent = "Start Game"; // Reset button text
+            document.getElementById("coinsToSpend").disabled = false; // Enable the input
             document.getElementById("container").innerHTML = "";
             mines = [];
             points = 0;
