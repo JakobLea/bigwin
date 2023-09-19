@@ -68,7 +68,7 @@
     </div>
     <script>
         const gridSize = 5; // Updated to 5 rows and columns
-        const numMines = 4; // Adjust as needed
+        const numMines = 5; // Adjust as needed
         let mines = [];
         let points = 0;
         let coins = 10; // Initial number of coins
@@ -165,6 +165,10 @@
                 mineImage.classList.add("revealed");
                 event.target.appendChild(mineImage);
                 revealAllCells(); // Reveal all cells and end the game
+
+                // Change the text of the button to "Reset" after a mine is hit
+                document.getElementById("startButton").textContent = "Reset";
+
                 return; // Stop the game
             } else {
                 event.target.classList.add("revealed");
@@ -247,18 +251,28 @@
 
         function cashOut() {
             if (gameStarted && cellsClicked) {
-                const coinsToReceive = parseFloat(
-                    (document.getElementById("coinsToSpend").value * multiplier).toFixed(2)
-                );
-                coins += coinsToReceive; // Award coins based on the multiplier
-                document.getElementById("coinCount").textContent = formatCoinCount(coins);
-                alert(`You've cashed out ${formatCoinCount(coinsToReceive)} coins!`);
-                resetGame();
+                if (!minesHit()) {
+                    const coinsToReceive = document.getElementById("coinsToSpend").value * multiplier;
+                    coins += coinsToReceive; // Award coins based on the multiplier
+                    document.getElementById("coinCount").textContent = formatCoinCount(coins);
+                    alert(`You've cashed out ${formatCoinCount(coinsToReceive)} coins!`);
+                }
+                resetGame(); // Reset the game in any case
             } else {
                 alert("You must click at least one cell before cashing out.");
             }
         }
 
+        // Function to check if any mines were hit
+        function minesHit() {
+            const cells = document.querySelectorAll(".cell");
+            for (let cell of cells) {
+                if (cell.classList.contains("mine")) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
 
         function resetGame() {
