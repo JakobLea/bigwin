@@ -3,52 +3,6 @@
   margin-top: 15%;
 }
 
-.item1 {
-  grid-area: text;
-}
-
-.item2 {
-  grid-area: spill1;
-}
-
-.item3 {
-  grid-area: spill2;
-}
-
-.item4 {
-  grid-area: spill3;
-}
-
-.item5 {
-  grid-area: spill4;
-}
-
-.item6 {
-  grid-area: spill5;
-}
-
-.grid-container {
-  justify-content: center;
-  margin-top: 50px;
-  width: 80%;
-  align-content: center;
-  display: grid;
-  grid-template-areas:
-    'text text text text text'
-    'spill1 spill2 spill3 spill4 spill5'
-    'spill1 spill2 spill3 spill4 spill5';
-  gap: 10px;
-  /* background-color: #2196F3; */
-  padding: 10px;
-}
-
-.grid-container>div {
-  /* background-color: rgba(255, 255, 255, 0.8); */
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-}
-
 .flex-container>div>img {
   border-radius: 10px;
   transition: transform 0.2s ease-in-out;
