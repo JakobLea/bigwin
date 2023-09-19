@@ -68,11 +68,12 @@
     </div>
     <script>
         const gridSize = 5; // Updated to 5 rows and columns
-        const numMines = 1; // Adjust as needed
+        const numMines = 3; // Adjust as needed
         let mines = [];
         let points = 0;
         let coins = 10; // Initial number of coins
         let gameStarted = false; // Flag to track if the game has started
+        let cellsClicked = false; // Flag to track whether a cell has been clicked
 
         // Function to remove the "cash-out-disabled" class from the button
         function enableCashOutButton() {
@@ -154,8 +155,8 @@
                 mineImage.alt = "Mine";
                 mineImage.classList.add("revealed");
                 event.target.appendChild(mineImage);
-                alert("Game Over! You hit a mine. Your score: " + points);
-                resetGame();
+                revealAllCells(); // Reveal all cells and end the game
+                return; // Stop the game
             } else {
                 event.target.classList.add("revealed");
                 event.target.style.backgroundColor = "#000000"; // Change background color
@@ -182,11 +183,60 @@
             enableCashOutButton();
         }
 
+        function revealAllCells() {
+        const cells = document.querySelectorAll(".cell");
+        for (let cell of cells) {
+            const row = parseInt(cell.dataset.row);
+            const col = parseInt(cell.dataset.col);
+            
+            if (!cell.classList.contains("revealed")) {
+                cell.classList.add("revealed");
+                if (mines.some(mine => mine.row === row && mine.col === col)) {
+                    cell.classList.add("mine");
+                    const mineImage = document.createElement("img");
+                    mineImage.src = "Logo/Bomb2.png";
+                    mineImage.alt = "Mine";
+                    mineImage.classList.add("revealed");
+                    cell.appendChild(mineImage);
+                } else {
+                    cell.style.backgroundColor = "#000000"; // Change background color
+                    const safeImage = document.createElement("img");
+                    safeImage.src = "Logo/Chip_grønn.png";
+                    safeImage.alt = "Safe";
+                    safeImage.classList.add("revealed");
+                    cell.appendChild(safeImage);
+                }
+            }
+        }
+    }
+
+        function revealAllMines() {
+            const cells = document.querySelectorAll(".cell");
+            for (let cell of cells) {
+                const row = parseInt(cell.dataset.row);
+                const col = parseInt(cell.dataset.col);
+                if (mines.some(mine => mine.row === row && mine.col === col)) {
+                    cell.classList.add("mine");
+                    const mineImage = document.createElement("img");
+                    mineImage.src = "Logo/Bomb2.png";
+                    mineImage.alt = "Mine";
+                    mineImage.classList.add("revealed");
+                    cell.appendChild(mineImage);
+                }
+                cell.removeEventListener("click", revealCell); // Remove click event listeners
+            }
+            cells.forEach(cell => {
+            cell.classList.add("revealed");
+        });
+        }
+
         function cashOut() {
             if (gameStarted && cellsClicked) {
                 alert("You've cashed out!");
                 resetGame();
-            } 
+            } else {
+                alert("You must click at least one cell before cashing out.");
+            }
         }
 
 

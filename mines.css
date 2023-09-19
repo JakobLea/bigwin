@@ -130,6 +130,7 @@ button:hover {
 
 #coinsToSpend{
   background-color: #000000;
+  color: #ffffff;
 }
 
 
@@ -140,4 +141,8 @@ button:hover {
 
 #coinsToSpend:disabled {
   cursor: not-allowed;
+}
+
+.cell.revealed {
+  pointer-events: none; /* Disable pointer events */
 }
