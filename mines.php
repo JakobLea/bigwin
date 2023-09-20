@@ -44,7 +44,7 @@
 
 <body style="background-color:#333333">
 
-    <div w3-include-html="nav.html"></div>
+    <div w3-include-html="nav.php"></div>
 
     <!--
     <div class="coin-container">

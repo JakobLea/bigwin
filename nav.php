@@ -10,12 +10,12 @@
 
 <body>
     <nav class="navbar">
-        <a href="home.html" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png"
+        <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png"
                 width=100px, height=50px></a>
 
         <ul class="nav-menu">
             <li class="nav-item">
-                <a href="mines.html" class="nav-link">Mines</a>
+                <a href="mines.php" class="nav-link">Mines</a>
             </li>
             <li class="nav-item">
                 <a href="Tjenester.html" class="nav-link">Tjenester</a>

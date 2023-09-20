@@ -53,7 +53,7 @@
 
 <body style="background-color:#333333">
 
-    <div w3-include-html="nav.html"></div>
+    <div w3-include-html="nav.php"></div>
 
     <div class="velkommen">
         <h1>
@@ -74,7 +74,7 @@
     <div class="flex-container">
         <div><img onclick="location.href = 'crash.html';" src="Stake bilder/Crash.png" width=139px, height=187x></div>
         <div><img onclick="location.href = 'dice.html';" src="Stake bilder/Dice.png" width=139px, height=187px></div>
-        <div><img onclick="location.href = 'mines.html';" src="Stake bilder/Mines.png" width=139px, height=187px></div>
+        <div><img onclick="location.href = 'mines.php';" src="Stake bilder/Mines.png" width=139px, height=187px></div>
         <div><img onclick="location.href = 'hilo.html';" src="Stake bilder/Hilo.png" width=139px, height=187px></div>
         <div><img onclick="location.href = 'plinko.html';" src="Stake bilder/Plinko.png" width=139px, height=187px></div>
     </div>
