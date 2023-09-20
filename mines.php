@@ -60,6 +60,7 @@
             <div>
                 <input type="number" id="coinsToSpend" placeholder="Enter coins">
                 <button id="startButton" onclick="startGame()">Start Game</button>
+                <div><button id="resetButton" style="display:none;">Reset</button></div>
             </div>
         </div>
 
@@ -140,7 +141,8 @@
             });
         }
 
-
+        // Event listener for the reset button
+        document.getElementById("resetButton").addEventListener("click", resetGame);
 
         function revealCell(event) {
             if (!gameStarted) {
@@ -165,7 +167,8 @@
                 mineImage.classList.add("revealed");
                 event.target.appendChild(mineImage);
                 revealAllCells(); // Reveal all cells and end the game
-
+                hideCashOutButton(); // Hide the cash-out button
+                showResetButton(); // Show the reset button
                 // Change the text of the button to "Reset" after a mine is hit
                 document.getElementById("startButton").textContent = "Reset";
 
@@ -285,7 +288,33 @@
             mines = [];
             points = 0;
             multiplier = 1; // Reset the multiplier
+            hideResetButton(); // Hide the reset button
+            showCashOutButton(); // Show the cash-out button
             initializeGame();
+        }
+
+        // Function to hide the cash-out button
+        function hideCashOutButton() {
+            const cashOutButton = document.getElementById("startButton");
+            cashOutButton.style.display = "none";
+        }
+
+        // Function to show the cash-out button
+        function showCashOutButton() {
+            const cashOutButton = document.getElementById("startButton");
+            cashOutButton.style.display = "block";
+        }
+
+        // Function to show the reset button
+        function showResetButton() {
+            const resetButton = document.getElementById("resetButton");
+            resetButton.style.display = "block";
+        }
+
+        // Function to hide the reset button
+        function hideResetButton() {
+            const resetButton = document.getElementById("resetButton");
+            resetButton.style.display = "none";
         }
 
 
