@@ -120,6 +120,7 @@ button {
 
 button:hover {
   cursor: pointer;
+  background-color: #7976ff;
 }
 
 .coin-display {
@@ -131,6 +132,15 @@ button:hover {
 #coinsToSpend{
   background-color: #000000;
   color: #ffffff;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  border: #3f3f3f solid 2px;
+}
+
+#coinsToSpend:hover{
+  border: #8c8c8c solid 2px;
 }
 
 
