@@ -30,7 +30,7 @@ var firebaseConfig = {
       return
       // Don't continue running the code
     }
-    if (validate_field(full_name) == false || validate_field(favourite_song) == false || validate_field(milk_before_cereal) == false) {
+    if (validate_field(full_name) == false) {
       alert('One or More Extra Fields is Outta Line!!')
       return
     }
