@@ -13,4 +13,4 @@ jobs:
         username: bigwin
         password: Gambling123.
         port: 22
-        script: whoami
+        script: cd www/bigwin && git pull
