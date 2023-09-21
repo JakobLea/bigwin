@@ -21,7 +21,7 @@ var firebaseConfig = {
     email = document.getElementById('email').value
     password = document.getElementById('password').value
     full_name = document.getElementById('full_name').value
-    coins = document.getElementById('0').value
+    // coins = 0
     // favourite_song = document.getElementById('favourite_song').value
     // milk_before_cereal = document.getElementById('milk_before_cereal').value
   
@@ -47,6 +47,7 @@ var firebaseConfig = {
   
       // Create User data
       var user_data = {
+        coins : 0,
         email : email,
         full_name : full_name,
         // favourite_song : favourite_song,
