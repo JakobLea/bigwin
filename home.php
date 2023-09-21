@@ -57,7 +57,7 @@
 
     <div class="velkommen">
         <h1>
-            Velkommen tilbake, "Navn"
+            Velkommen tilbake, "Navnt"
         </h1>
         <h2>
             Trykk her får å legge til penger
