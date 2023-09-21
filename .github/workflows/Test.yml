@@ -1,30 +1,16 @@
-# The following workflow provides an opinionated template you can customize for your own needs.
-#
-# If you are not an Octopus user, the "Push to Octopus", "Generate Octopus Deploy build information",
-# and "Create Octopus Release" steps can be safely deleted.
-#
-# To configure Octopus, set the OCTOPUS_API_TOKEN secret to the Octopus API key, and
-# set the OCTOPUS_SERVER_URL secret to the Octopus URL.
-#
-# Double check the "project" and "deploy_to" properties in the "Create Octopus Release" step
-# match your Octopus projects and environments.
-#
-# Get a trial Octopus instance from https://octopus.com/start
-
-name: Generic Build
-'on':
-  workflow_dispatch: {}
-  push: {}
+name: remote ssh command
+on: [push]
 jobs:
+
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.0
       with:
-        fetch-depth: '0'
-    - name: Update
-      run: |-
-        ssh bigwin@login.domeneshop.no:22/home/6/b/bigwin/www
-        cd www/bigwin/
-        git pull
-      shell: bash
+        host: login.domeneshop.no
+        username: bigwin
+        password: Gambling123.
+        port: 22
+        script: whoami
