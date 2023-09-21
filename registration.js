@@ -21,6 +21,7 @@ var firebaseConfig = {
     email = document.getElementById('email').value
     password = document.getElementById('password').value
     full_name = document.getElementById('full_name').value
+    coins = document.getElementById('0').value
     // favourite_song = document.getElementById('favourite_song').value
     // milk_before_cereal = document.getElementById('milk_before_cereal').value
   
@@ -51,6 +52,7 @@ var firebaseConfig = {
         // favourite_song : favourite_song,
         // milk_before_cereal : milk_before_cereal,
         last_login : Date.now()
+        
       }
   
       // Push to Firebase Database
