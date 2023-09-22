@@ -17,8 +17,12 @@
             <div id="form_container">
                 <div id="form_header_container">
                     <h2 id="form_header"> Login + Firebase Database </h2>
-                </div>
+                </div> 
 
+
+
+
+                d
                 <div id="form_content_container">
                     <div id="form_content_inner_container">
                         <input type="text" id="full_name" placeholder="Brukernavn">
