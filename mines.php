@@ -67,6 +67,14 @@
         <div class="container" id="container"></div>
         <div></div>
     </div>
+
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>Not enough coins to start the game.</p>
+            <button id="Deposit" onclick="location.href = 'plinko.html';">Deposit</button>
+        </div>
+    </div>
     <script>
         const gridSize = 5; // Updated to 5 rows and columns
         const numMines = 5; // Adjust as needed
@@ -120,7 +128,16 @@
                 if (isNaN(coinsToSpend) || coinsToSpend < 0 || coinsToSpend.toString().split(".")[1]?.length > 2) {
                     alert("Invalid number of coins or more than two decimal places.");
                 } else if (coinsToSpend > coins) {
-                    alert("Not enough coins to start.");
+                    // Show the modal
+                    const modal = document.getElementById("myModal");
+                    modal.style.display = "block";
+
+                    // Close the modal when clicking outside of it
+                    window.onclick = function (event) {
+                        if (event.target === modal) {
+                            modal.style.display = "none";
+                        }
+                    };
                 } else {
                     coins -= coinsToSpend; // Deduct the specified number of coins to start the game
                     document.getElementById("coinCount").textContent = formatCoinCount(coins);
@@ -150,7 +167,6 @@
 
         function revealCell(event) {
             if (!gameStarted) {
-                alert("Please start the game first!");
                 return;
             }
 
