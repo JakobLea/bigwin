@@ -15,8 +15,6 @@
     </style>
 </head>
 
-
-
 <script>
 
     function includeHTML() {
