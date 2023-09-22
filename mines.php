@@ -59,20 +59,29 @@
             <div><label id="mineCountLabel" for="mineCount">Mines</label></div>
             <div>
                 <input type="number" id="coinsToSpend" placeholder="Enter coins">
+                <p class="error-message" id="errorMessage"></p>
                 <button id="startButton" onclick="startGame()">Start Game</button>
                 <div><button id="resetButton" style="display:none;">Reset</button></div>
             </div>
+            <div id="multiplier" style="display: none;">Multiplier: 1x</div>
         </div>
 
         <div class="container" id="container"></div>
         <div></div>
     </div>
 
+    <div id="popup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h2>Cash Out Summary</h2>
+            <p>Multiplier: <span id="popup-multiplier"></span></p>
+            <p>Coins Cashed Out: <span id="popup-coins"></span></p>
+        </div>
+    </div>
 
     <div id="myModal" class="modal">
         <div class="modal-content">
             <p>Not enough coins to start the game.</p>
-            <button id="Deposit" onclick="location.href = 'plinko.html';">Deposit</button>
+            <button id="Deposit" onclick="location.href = 'Penger.php';">Deposit</button>
         </div>
     </div>
     <script>
@@ -85,6 +94,7 @@
         let cellsClicked = false; // Flag to track whether a cell has been clicked
         let cashOutClicked = false; // Flag to track if the cash-out button has been clicked
         let multiplier = 1; // Initial multiplier
+        let multiplierVisible = false; // Track if the multiplier is visible
 
         // Function to remove the "cash-out-disabled" class from the button
         function enableCashOutButton() {
@@ -124,10 +134,20 @@
 
         function startGame() {
             if (!gameStarted) {
+                const coinsToSpendInput = document.getElementById("coinsToSpend");
+                const errorMessage = document.getElementById("errorMessage");
+
                 const coinsToSpend = parseFloat(document.getElementById("coinsToSpend").value);
-                if (isNaN(coinsToSpend) || coinsToSpend < 0 || coinsToSpend.toString().split(".")[1]?.length > 2) {
-                    alert("Invalid number of coins or more than two decimal places.");
+
+                if (isNaN(coinsToSpend) || coinsToSpend <= 0 || coinsToSpend.toString().split(".")[1]?.length > 2) {
+                    errorMessage.style.display = "block";
+                    coinsToSpendInput.classList.add("error");
+                    coinsToSpendInput.style.border = "2px solid red";
+                    errorMessage.textContent = "Invalid Number.";
                 } else if (coinsToSpend > coins) {
+                    // Hide the error message and remove the 'error' class from the input
+                    errorMessage.style.display = "none";
+                    coinsToSpendInput.style.border = "2px solid red";
                     // Show the modal
                     const modal = document.getElementById("myModal");
                     modal.style.display = "block";
@@ -139,9 +159,18 @@
                         }
                     };
                 } else {
+                    errorMessage.style.display = "none";
+                    coinsToSpendInput.style.border = "";
                     coins -= coinsToSpend; // Deduct the specified number of coins to start the game
                     document.getElementById("coinCount").textContent = formatCoinCount(coins);
                     gameStarted = true; // Set the game as started
+                    // Show the multiplier if it's not visible
+                    // Reset the multiplier
+                    multiplier = 1;
+                    if (!multiplierVisible) {
+                        document.getElementById("multiplier").style.display = "block";
+                        multiplierVisible = true;
+                    }
                     enableCells(); // Enable the cells for gameplay
                     document.getElementById("coinsToSpend").disabled = true; // Disable the input
                     document.getElementById("startButton").textContent = "Cash Out"; // Change button text
@@ -203,19 +232,33 @@
                 event.target.appendChild(safeImage);
                 points++;
 
-                // Increase the multiplier by 0.3 for every correct cell clicked
-                multiplier += 0.18;
 
                 if (points === gridSize * gridSize - numMines) {
                     cashOutClicked = true; // Set cashOutClicked flag if all cells are correct
                     cashOut();
                 }
+                updateMultiplier();
+
             }
 
 
             cellsClicked = true;
-
             enableCashOutButton();
+        }
+
+        function updateMultiplier() {
+            if (gameStarted) {
+                multiplier += 0.18; // Increase the multiplier by 0.18 for each correct cell
+            }
+
+            const multiplierField = document.getElementById("multiplier");
+            multiplierField.textContent = `Multiplier: ${multiplier.toFixed(2)}x`;
+
+            if (!multiplierVisible && gameStarted) {
+                // Show the multiplier if it's not visible and the game has started
+                multiplierField.style.display = "block";
+                multiplierVisible = true;
+            }
         }
 
         function revealAllCells() {
@@ -272,18 +315,30 @@
             });
         }
 
+ 
+
         function cashOut() {
             if (gameStarted && cellsClicked) {
                 if (!minesHit()) {
                     const coinsToReceive = document.getElementById("coinsToSpend").value * multiplier;
                     coins += coinsToReceive; // Award coins based on the multiplier
                     document.getElementById("coinCount").textContent = formatCoinCount(coins);
-                    alert(`You've cashed out ${formatCoinCount(coinsToReceive)} coins!`);
+                    // Display the popup with multiplier and coins cashed out
+                    document.getElementById("popup-multiplier").textContent = multiplier.toFixed(2) + "x";
+                    document.getElementById("popup-coins").textContent = formatCoinCount(coinsToReceive);
+                    document.getElementById("popup").style.display = "block";
                 }
-                resetGame(); // Reset the game in any case
+                revealAllCells(); // Reveal all cells and end the game
+                hideCashOutButton(); // Hide the cash-out button
+                showResetButton(); // Show the reset button
             } else {
                 alert("You must click at least one cell before cashing out.");
             }
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
         }
 
         // Function to check if any mines were hit
@@ -298,20 +353,30 @@
         }
 
 
+
         function resetGame() {
             gameStarted = false; // Reset the game flag
             document.getElementById("startButton").classList.remove("cash-out-disabled"); // Remove disabled class
             document.getElementById("startButton").disabled = false; // Enable the "Start Game" button
             document.getElementById("startButton").textContent = "Start Game"; // Reset button text
             document.getElementById("coinsToSpend").disabled = false; // Enable the input
+            document.getElementById("multiplier").style.display = "none"; // Hide the multiplier
+            multiplierVisible = false; // Reset multiplierVisible flag
             document.getElementById("container").innerHTML = "";
             mines = [];
             points = 0;
-            multiplier = 1; // Reset the multiplier
+            multiplier = 1; // Reset the multiplier to 1
+            updateMultiplier();
             hideResetButton(); // Hide the reset button
             showCashOutButton(); // Show the cash-out button
             initializeGame();
+            closePopup();
         }
+
+
+
+
+
 
         // Function to hide the cash-out button
         function hideCashOutButton() {
