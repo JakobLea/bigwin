@@ -36,7 +36,7 @@ onValue(coinsdb, (snapshot) => {
   var coin = snapshot.val();
   updateStarCount(postElement, data);
 
-console.log(coin)
+console.log("hei" + coin)
 });
   
 
