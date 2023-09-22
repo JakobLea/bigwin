@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
 </head>
 <body>
 <script type="module">
@@ -29,17 +31,27 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-        CreateRequest request = new CreateRequest()
-    .setEmail("user@example.com")
-    .setEmailVerified(false)
-    .setPassword("secretPassword")
-    .setPhoneNumber("+11234567890")
-    .setDisplayName("John Doe")
-    .setPhotoUrl("http://www.example.com/12345678/photo.png")
-    .setDisabled(false);
 
-UserRecord userRecord = FirebaseAuth.getInstance().createUser(request);
-System.out.println("Successfully created new user: " + userRecord.getUid());
+  // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+    ui.start('#firebaseui-auth-container', {
+  signInOptions: [
+    firebase.auth.EmailAuthProvider.PROVIDER_ID
+  ],
+  // Other config options...
+});
+
+ui.start('#firebaseui-auth-container', {
+  signInOptions: [
+    {
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      requireDisplayName: false
+    }
+  ]
+});
+
+
     </script>
 
 </body>
