@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="/bigwin/nav.css" />
 </head>
 
-<script>
-    import { initializeApp } from "firebase/app";
-    import { getDatabase } from "firebase/database";
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-    // const database = getDatabase();
-
-    var firebaseConfig = {
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
     apiKey: "AIzaSyB3PWjhLgvX8yvbA3OcJP3qoS3-tp8d_BU",
     authDomain: "bigwin-a63cb.firebaseapp.com",
     databaseURL: "https://bigwin-a63cb-default-rtdb.europe-west1.firebasedatabase.app",
@@ -24,24 +26,17 @@
     appId: "1:524008852003:web:e9cdcf404ae8e1fc16bf96",
     measurementId: "G-6FVGVMWTFW"
   };
+
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  // Initialize variables
-  const auth = firebase.auth()
-  const database = firebase.database()
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  import {getDatabase, ref, get, set, child, update, remove} 
+  from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
   const db = getDatabase();
-const coinsdb = ref(db, 'users/' + user.uid + '/coins');
-onValue(coinsdb, (snapshot) => {
-  var coin = snapshot.val();
-  updateStarCount(postElement, data);
 
-console.log("hei" + coin)
-});
-  
-
-
-  document.getElementById("coins").innerHTML = "coin";
+  var namebox = document.getElementById("nameBox")
 </script>
 
 <body>
