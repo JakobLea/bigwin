@@ -117,7 +117,11 @@
         function startGame() {
             if (!gameStarted) {
                 const coinsToSpend = parseFloat(document.getElementById("coinsToSpend").value);
-                if (coinsToSpend <= coins && coinsToSpend > 0) {
+                if (isNaN(coinsToSpend) || coinsToSpend < 0 || coinsToSpend.toString().split(".")[1]?.length > 2) {
+                    alert("Invalid number of coins or more than two decimal places.");
+                } else if (coinsToSpend > coins) {
+                    alert("Not enough coins to start.");
+                } else {
                     coins -= coinsToSpend; // Deduct the specified number of coins to start the game
                     document.getElementById("coinCount").textContent = formatCoinCount(coins);
                     gameStarted = true; // Set the game as started
@@ -126,13 +130,13 @@
                     document.getElementById("startButton").textContent = "Cash Out"; // Change button text
                     document.getElementById("startButton").classList.add("cash-out-disabled"); // Add the disabled class
                     cellsClicked = false; // Reset cellsClicked flag for the new game
-                } else {
-                    alert("Invalid number of coins or not enough coins to start.");
                 }
             } else if (gameStarted && cellsClicked) {
                 cashOut();
             }
         }
+
+
 
         function enableCells() {
             const cells = document.querySelectorAll(".cell");
