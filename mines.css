@@ -22,6 +22,8 @@
   /* Added position relative */
   transition: transform 0.05s ease-in-out;
   /* Added transition for smooth hover effect */
+  /* Your existing cell styles */
+  transition: transform 0.2s ease;
 }
 
 .cell:hover {
@@ -33,7 +35,9 @@
 .cell:active {
   background-color: #272626;
   transform: translateY(0px);
+  transform: scale(0.95);
 }
+
 
 
 .mine {
@@ -43,6 +47,7 @@
 
 .revealed {
   pointer-events: none;
+  box-shadow: 0px 0px #865656;
   /* Disable clicking on revealed cells */
 }
 
@@ -51,14 +56,29 @@
   /* Reduced the width of the image slightly to fit better */
   height: 80%;
   object-fit: contain;
-  position: absolute;
   /* Added position absolute */
   top: 50%;
   /* Center the image vertically */
   left: 50%;
-  /* Center the image horizontally */
-  transform: translate(-50%, -50%);
   /* Center the image perfectly */
+  animation: fadeInZoomCell 0.2s ease-in-out;
+  /* Add fade-in zoom animation */
+  transform: scale(1);
+}
+
+
+@keyframes fadeInZoomCell {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+    /* Initial scale for zoom effect */
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    /* Final scale for zoom effect */
+  }
 }
 
 #mineCountLabel {
@@ -126,7 +146,7 @@ button {
   margin-top: 15px;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
   background-color: #7673fd;
 }
@@ -143,7 +163,7 @@ button:active {
   margin-top: 10px;
 }
 
-#coinsToSpend{
+#coinsToSpend {
   background-color: #000000;
   color: #ffffff;
   width: 100%;
@@ -152,7 +172,7 @@ button:active {
   border: #3f3f3f solid 2px;
 }
 
-#coinsToSpend:hover{
+#coinsToSpend:hover {
   border: #8c8c8c solid 2px;
 }
 
@@ -168,16 +188,19 @@ button:active {
 }
 
 .cell.revealed {
-  pointer-events: none; /* Disable pointer events */
+  pointer-events: none;
+  /* Disable pointer events */
 }
 
-  /* Add a CSS rule to gray out unrevealed cells */
-  .cell.unrevealed {
-    opacity: 0.3; /* Set opacity to gray out cells */
+/* Add a CSS rule to gray out unrevealed cells */
+.cell.unrevealed {
+  opacity: 0.3;
+  /* Set opacity to gray out cells */
 }
 
 .mine.clicked {
-  pointer-events: none; /* Disable hover effect */
+  pointer-events: none;
+  /* Disable hover effect */
 }
 
 
@@ -192,13 +215,15 @@ button:active {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease-in-out; /* Add fade-in animation */
+  animation: fadeIn 0.3s ease-in-out;
+  /* Add fade-in animation */
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -211,23 +236,28 @@ button:active {
   border-radius: 10px;
   width: 32%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  animation: fadeInZoom 0.2s ease-in-out; /* Add fade-in zoom animation */
-  transform: scale(1); /* Initial scale for zoom effect */
+  animation: fadeInZoom 0.2s ease-in-out;
+  /* Add fade-in zoom animation */
+  transform: scale(1);
+  /* Initial scale for zoom effect */
 }
 
 @keyframes fadeInZoom {
   from {
     opacity: 0;
-    transform: scale(0.8); /* Initial scale for zoom effect */
+    transform: scale(0.8);
+    /* Initial scale for zoom effect */
   }
+
   to {
     opacity: 1;
-    transform: scale(1); /* Final scale for zoom effect */
+    transform: scale(1);
+    /* Final scale for zoom effect */
   }
 }
 
 
-#Deposit{
+#Deposit {
   margin-top: 20px;
   background-color: #00C74D;
   border-radius: 10px;
@@ -259,13 +289,15 @@ button:active {
   padding: 10.5px 14px;
   width: 160px;
   height: 110px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  margin: -25% auto;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 1;
   text-align: center;
+  animation: fadeInZoom 0.2s ease-in-out;
+  /* Add fade-in zoom animation */
+  transform: scale(1);
+  /* Initial scale for zoom effect */
 }
 
 .popup-close {
@@ -287,19 +319,19 @@ button:active {
 }
 
 
-#popup-multiplier{
+#popup-multiplier {
   color: #6967ff;
   font-size: 28px;
 }
 
 
-#popup-coins{
+#popup-coins {
   color: #6967ff;
   font-size: 18px;
 }
 
 
-hr{
+hr {
   width: 35.5px;
   margin-left: 37%;
   background-color: #444444;
@@ -308,6 +340,6 @@ hr{
 }
 
 
-#chip{
+#chip {
   margin-left: 3px;
 }

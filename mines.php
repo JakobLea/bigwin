@@ -72,7 +72,8 @@
 
     <div id="popup" class="popup" style="display: none;">
         <div class="popup-content">
-            <p><span id="popup-multiplier"></span></p> <hr>
+            <p><span id="popup-multiplier"></span></p>
+            <hr>
             <p><span id="popup-coins"></span><img id="chip" src="Logo/Chip_grønn.png" width=12px, height=12px></p>
         </div>
     </div>
@@ -83,9 +84,14 @@
             <button id="Deposit" onclick="location.href = 'Penger.php';">Deposit</button>
         </div>
     </div>
+
+    <audio id="coinSound" src="Sound/Coin Sound.mp3"></audio>
+    <audio id="explosionSound" src="explosion.wav"></audio>
     <script>
         const gridSize = 5; // Updated to 5 rows and columns
         const numMines = 5; // Adjust as needed
+        const coinSound = document.getElementById("coinSound");
+        const explosionSound = document.getElementById("explosionSound");
         let mines = [];
         let points = 0;
         let coins = 10; // Initial number of coins
@@ -225,6 +231,8 @@
                 revealAllCells(); // Reveal all cells and end the game
                 hideCashOutButton(); // Hide the cash-out button
                 showResetButton(); // Show the reset button
+                // Play the explosion sound when a mine is hit
+                explosionSound.play();
                 // Change the text of the button to "Reset" after a mine is hit
                 document.getElementById("startButton").textContent = "Reset";
 
@@ -241,6 +249,9 @@
 
 
                 mineFreeCellsClicked++;
+
+                // Play the coin sound when a safe cell is revealed
+                coinSound.play();
 
                 if (points === gridSize * gridSize - numMines) {
                     cashOutClicked = true; // Set cashOutClicked flag if all cells are correct
