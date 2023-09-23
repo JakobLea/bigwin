@@ -72,9 +72,8 @@
 
     <div id="popup" class="popup" style="display: none;">
         <div class="popup-content">
-            <h2>Cash Out Summary</h2>
-            <p>Multiplier: <span id="popup-multiplier"></span></p>
-            <p>Coins Cashed Out: <span id="popup-coins"></span></p>
+            <p><span id="popup-multiplier"></span></p> <hr>
+            <p><span id="popup-coins"></span><img id="chip" src="Logo/Chip_grønn.png" width=12px, height=12px></p>
         </div>
     </div>
 
@@ -95,6 +94,7 @@
         let cashOutClicked = false; // Flag to track if the cash-out button has been clicked
         let multiplier = 1; // Initial multiplier
         let multiplierVisible = false; // Track if the multiplier is visible
+        let mineFreeCellsClicked = 0; // Track mine-free cells clicked in the current round
 
         // Function to remove the "cash-out-disabled" class from the button
         function enableCashOutButton() {
@@ -194,6 +194,10 @@
         // Event listener for the reset button
         document.getElementById("resetButton").addEventListener("click", resetGame);
 
+
+
+
+
         function revealCell(event) {
             if (!gameStarted) {
                 return;
@@ -206,6 +210,9 @@
                 // Cell is already revealed, do nothing
                 return;
             }
+
+            const coinsToSpendInput = document.getElementById("coinsToSpend");
+            const coinsToSpend = parseFloat(coinsToSpendInput.value);
 
             if (mines.some(mine => mine.row === row && mine.col === col)) {
                 event.target.classList.add("mine");
@@ -233,22 +240,64 @@
                 points++;
 
 
+                mineFreeCellsClicked++;
+
                 if (points === gridSize * gridSize - numMines) {
                     cashOutClicked = true; // Set cashOutClicked flag if all cells are correct
                     cashOut();
                 }
-                updateMultiplier();
-
             }
 
 
             cellsClicked = true;
             enableCashOutButton();
+            updateMultiplier();
         }
 
         function updateMultiplier() {
             if (gameStarted) {
-                multiplier += 0.18; // Increase the multiplier by 0.18 for each correct cell
+                // Update multiplier based on mine-free cells clicked
+                if (mineFreeCellsClicked < 2) {
+                    multiplier += 0.24;
+                } else if (mineFreeCellsClicked < 3) {
+                    multiplier += 0.32;
+                } else if (mineFreeCellsClicked < 4) {
+                    multiplier += 0.44;
+                } else if (mineFreeCellsClicked < 5) {
+                    multiplier += 0.58;
+                } else if (mineFreeCellsClicked < 6) {
+                    multiplier += 0.81;
+                } else if (mineFreeCellsClicked < 7) {
+                    multiplier += 1.13;
+                } else if (mineFreeCellsClicked < 8) {
+                    multiplier += 1.62;
+                } else if (mineFreeCellsClicked < 9) {
+                    multiplier += 2.36;
+                } else if (mineFreeCellsClicked < 10) {
+                    multiplier += 3.54;
+                } else if (mineFreeCellsClicked < 11) {
+                    multiplier += 5.48;
+                } else if (mineFreeCellsClicked < 12) {
+                    multiplier += 8.75;
+                } else if (mineFreeCellsClicked < 13) {
+                    multiplier += 14.6;
+                } else if (mineFreeCellsClicked < 14) {
+                    multiplier += 25.54;
+                } else if (mineFreeCellsClicked < 15) {
+                    multiplier += 47.44;
+                } else if (mineFreeCellsClicked < 16) {
+                    multiplier += 94.87;
+                } else if (mineFreeCellsClicked < 17) {
+                    multiplier += 208.73;
+                } else if (mineFreeCellsClicked < 18) {
+                    multiplier += 521.81;
+                } else if (mineFreeCellsClicked < 19) {
+                    multiplier += 1564.74;
+                } else if (mineFreeCellsClicked < 20) {
+                    multiplier += 6262;
+                } else {
+                    multiplier += 43832;
+                }
             }
 
             const multiplierField = document.getElementById("multiplier");
@@ -315,7 +364,7 @@
             });
         }
 
- 
+
 
         function cashOut() {
             if (gameStarted && cellsClicked) {
@@ -371,6 +420,7 @@
             showCashOutButton(); // Show the cash-out button
             initializeGame();
             closePopup();
+            mineFreeCellsClicked = 0;
         }
 
 

@@ -253,9 +253,12 @@ button:active {
 
 /* Add these styles to your CSS file */
 .popup-content {
-  background-color: #2b1c1c;
+  background-color: #333333;
   border-radius: 10px;
-  padding: 20px;
+  border: solid 3px #6967ff;
+  padding: 10.5px 14px;
+  width: 160px;
+  height: 110px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -284,4 +287,27 @@ button:active {
 }
 
 
+#popup-multiplier{
+  color: #6967ff;
+  font-size: 28px;
+}
 
+
+#popup-coins{
+  color: #6967ff;
+  font-size: 18px;
+}
+
+
+hr{
+  width: 35.5px;
+  margin-left: 37%;
+  background-color: #444444;
+  height: 3px;
+  border: 0px solid;
+}
+
+
+#chip{
+  margin-left: 3px;
+}
