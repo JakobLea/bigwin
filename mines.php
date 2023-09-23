@@ -86,7 +86,8 @@
     </div>
 
     <audio id="coinSound" src="Sound/Coin Sound.mp3"></audio>
-    <audio id="explosionSound" src="explosion.wav"></audio>
+    <audio id="explosionSound" src="Sound/Explosion.mp3"></audio>
+    <audio id="cashoutSound" src="Sound/Coin Sound.mp3"></audio>
     <script>
         const gridSize = 5; // Updated to 5 rows and columns
         const numMines = 5; // Adjust as needed
@@ -113,6 +114,8 @@
         function formatCoinCount(coins) {
             return parseFloat(coins.toFixed(2));
         }
+
+
 
 
         function initializeGame() {
@@ -232,6 +235,7 @@
                 hideCashOutButton(); // Hide the cash-out button
                 showResetButton(); // Show the reset button
                 // Play the explosion sound when a mine is hit
+                explosionSound.currentTime = 0; // Reset the playback position
                 explosionSound.play();
                 // Change the text of the button to "Reset" after a mine is hit
                 document.getElementById("startButton").textContent = "Reset";
@@ -251,6 +255,7 @@
                 mineFreeCellsClicked++;
 
                 // Play the coin sound when a safe cell is revealed
+                coinSound.currentTime = 0; // Reset the playback position
                 coinSound.play();
 
                 if (points === gridSize * gridSize - numMines) {
@@ -383,6 +388,9 @@
                     const coinsToReceive = document.getElementById("coinsToSpend").value * multiplier;
                     coins += coinsToReceive; // Award coins based on the multiplier
                     document.getElementById("coinCount").textContent = formatCoinCount(coins);
+                    // Play the cashout sound
+                    const cashoutSound = document.getElementById("cashoutSound");
+                    cashoutSound.play();
                     // Display the popup with multiplier and coins cashed out
                     document.getElementById("popup-multiplier").textContent = multiplier.toFixed(2) + "x";
                     document.getElementById("popup-coins").textContent = formatCoinCount(coinsToReceive);
