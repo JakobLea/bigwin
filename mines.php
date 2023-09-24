@@ -151,7 +151,6 @@
 
         mineCountDropdown.addEventListener("change", function () {
             selectedMineCount = parseInt(mineCountDropdown.value);
-            updateMultiplier(); // Update the multiplier based on the selected mine count
         });
 
         let mines = [];
