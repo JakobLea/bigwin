@@ -96,7 +96,7 @@ select {
   font-size: 18;
 }
 
-select:hover{
+select:hover {
   cursor: pointer;
 }
 
@@ -118,7 +118,7 @@ select:hover{
   font-size: 30px;
 }
 
-#boxforinp{
+#boxforinp {
   background-color: #161616;
   justify-content: space-between;
   display: flex;
@@ -129,7 +129,7 @@ select:hover{
   height: 44.2px;
 }
 
-#boxforinp > div {
+#boxforinp>div {
   background-color: #ff060600;
   width: 100px;
   margin: 10px;
@@ -141,7 +141,7 @@ select:hover{
   border: solid 2px rgb(77, 77, 77);
 }
 
-.Bet{
+.Bet {
   font-size: 15px;
   margin-bottom: -17px;
   margin-left: 1px;
@@ -197,7 +197,7 @@ button:active {
   margin-top: 10px;
 }
 
-#addRemainingCoinsButton{
+#addRemainingCoinsButton {
   font-size: 14px;
   box-shadow: 1px 1px 1px #1b1b1b;
   margin-top: 0px;
@@ -208,7 +208,7 @@ button:active {
   width: 30%;
 }
 
-#addRemainingCoinsButton:hover{
+#addRemainingCoinsButton:hover {
   background-color: #8c8c8c;
   border: #8c8c8c solid 2px;
 }
@@ -229,8 +229,10 @@ button:active {
 
 
 input:focus {
-  outline: none; /* Remove the focus outline (optional) */
-  border: none; /* Remove the border */
+  outline: none;
+  /* Remove the focus outline (optional) */
+  border: none;
+  /* Remove the border */
 }
 
 #startButton.cash-out-disabled {

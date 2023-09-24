@@ -131,10 +131,29 @@
     <script>
         const gridSize = 5; // Updated to 5 rows and columns
         const numMines = 5; // Adjust as needed
-        const mineCountDropdown = document.getElementById("mineCount"); 
+        const mineCountDropdown = document.getElementById("mineCount");
         const coinSound = document.getElementById("coinSound");
         const explosionSound = document.getElementById("explosionSound");
-        let selectedMineCount = parseInt(mineCountDropdown.value)
+        const multiplierSystems = {
+            1: [1, 1.01, 1.08, 1.12, 1.18, 1.24, 1.30, 1.37, 1.46, 1.55, 1.65, 1.77, 1.90, 2.06, 2.25, 2.47, 3.09, 3.54, 4.12, 4.95, 6.19, 8.25, 12.38, 24.75],
+            2: [1],
+            3: [1],
+            4: [1],
+            5: [1, 1.24, 1.56, 2.00, 2.58, 3.39, 4.52, 6.14, 8.50, 12.04, 17.52, 26.27, 40.87, 66.41, 113.85, 208.72, 417.45, 939.26, 2504.00, 8766.00, 52598.99], // For 5 mines
+            6: [1],
+            7: [1],
+            8: [1],
+            9: [1],
+            10:[0.18, 0.18, 0.24, 0.24, 0.30, 0.30, 0.36, 0.36, 0.42, 0.42], // For 10 mines
+            // Add more systems for different mine counts if needed
+        };
+        let selectedMineCount = parseInt(mineCountDropdown.value);
+
+        mineCountDropdown.addEventListener("change", function () {
+            selectedMineCount = parseInt(mineCountDropdown.value);
+            updateMultiplier(); // Update the multiplier based on the selected mine count
+        });
+
         let mines = [];
         let points = 0;
         let coins = 10; // Initial number of coins
@@ -144,6 +163,7 @@
         let multiplier = 1; // Initial multiplier
         let multiplierVisible = false; // Track if the multiplier is visible
         let mineFreeCellsClicked = 0; // Track mine-free cells clicked in the current round
+
 
 
 
@@ -326,61 +346,21 @@
             updateMultiplier();
         }
 
+        
         function updateMultiplier() {
-            if (gameStarted) {
-                // Update multiplier based on mine-free cells clicked
-                if (mineFreeCellsClicked < 2) {
-                    multiplier += 0.24;
-                } else if (mineFreeCellsClicked < 3) {
-                    multiplier += 0.32;
-                } else if (mineFreeCellsClicked < 4) {
-                    multiplier += 0.44;
-                } else if (mineFreeCellsClicked < 5) {
-                    multiplier += 0.58;
-                } else if (mineFreeCellsClicked < 6) {
-                    multiplier += 0.81;
-                } else if (mineFreeCellsClicked < 7) {
-                    multiplier += 1.13;
-                } else if (mineFreeCellsClicked < 8) {
-                    multiplier += 1.62;
-                } else if (mineFreeCellsClicked < 9) {
-                    multiplier += 2.36;
-                } else if (mineFreeCellsClicked < 10) {
-                    multiplier += 3.54;
-                } else if (mineFreeCellsClicked < 11) {
-                    multiplier += 5.48;
-                } else if (mineFreeCellsClicked < 12) {
-                    multiplier += 8.75;
-                } else if (mineFreeCellsClicked < 13) {
-                    multiplier += 14.6;
-                } else if (mineFreeCellsClicked < 14) {
-                    multiplier += 25.54;
-                } else if (mineFreeCellsClicked < 15) {
-                    multiplier += 47.44;
-                } else if (mineFreeCellsClicked < 16) {
-                    multiplier += 94.87;
-                } else if (mineFreeCellsClicked < 17) {
-                    multiplier += 208.73;
-                } else if (mineFreeCellsClicked < 18) {
-                    multiplier += 521.81;
-                } else if (mineFreeCellsClicked < 19) {
-                    multiplier += 1564.74;
-                } else if (mineFreeCellsClicked < 20) {
-                    multiplier += 6262;
-                } else {
-                    multiplier += 43832;
-                }
+            if (multiplierSystems[selectedMineCount]) {
+                multiplier = multiplierSystems[selectedMineCount][points];
             }
-
             const multiplierField = document.getElementById("multiplier");
             multiplierField.textContent = `Multiplier: ${multiplier.toFixed(2)}x`;
 
-            if (!multiplierVisible && gameStarted) {
-                // Show the multiplier if it's not visible and the game has started
+            if (!multiplierVisible) {
+                // Show the multiplier if it's not visible
                 multiplierField.style.display = "block";
                 multiplierVisible = true;
             }
         }
+
 
         function revealAllCells() {
             const cells = document.querySelectorAll(".cell");
