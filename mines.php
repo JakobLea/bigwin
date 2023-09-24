@@ -56,7 +56,7 @@
     <div class="flex-container">
 
         <div class="selectbox">
-            <div><label id="mineCountLabel" for="mineCount">Mines hei</label></div>
+            <div><label id="mineCountLabel" for="mineCount">Mines</label></div>
             <div>
                 <input type="number" id="coinsToSpend" placeholder="Enter coins">
                 <p class="error-message" id="errorMessage"></p>
