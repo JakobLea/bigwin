@@ -67,9 +67,37 @@
                 <input type="number" id="coinsToSpend" placeholder="Enter coins">
                 <button id="addRemainingCoinsButton">MAX</button>
             </div>
-       
-            <div>
 
+            <div><label for="mineCount">Number of Mines:</label></div>
+            <div> <select id="mineCount">
+                    <option value="1">1 Mine</option>
+                    <option value="2">2 Mines</option>
+                    <option value="3">3 Mines</option>
+                    <option value="4">4 Mines</option>
+                    <option value="5">5 Mines</option>
+                    <option value="6">6 Mines</option>
+                    <option value="7">7 Mines</option>
+                    <option value="8">8 Mines</option>
+                    <option value="9">9 Mines</option>
+                    <option value="10">10 Mines</option>
+                    <option value="11">11 Mines</option>
+                    <option value="12">12 Mines</option>
+                    <option value="13">13 Mines</option>
+                    <option value="14">14 Mines</option>
+                    <option value="15">15 Mines</option>
+                    <option value="16">16 Mines</option>
+                    <option value="17">17 Mines</option>
+                    <option value="18">18 Mines</option>
+                    <option value="19">19 Mines</option>
+                    <option value="20">20 Mines</option>
+                    <option value="21">21 Mines</option>
+                    <option value="22">22 Mines</option>
+                    <option value="23">23 Mines</option>
+                    <option value="24">24 Mines</option>
+                </select></div>
+
+
+            <div>
                 <button id="startButton" onclick="startGame()">Start Game</button>
                 <button id="resetButton" style="display:none;">Reset</button>
             </div>
@@ -103,8 +131,10 @@
     <script>
         const gridSize = 5; // Updated to 5 rows and columns
         const numMines = 5; // Adjust as needed
+        const mineCountDropdown = document.getElementById("mineCount"); 
         const coinSound = document.getElementById("coinSound");
         const explosionSound = document.getElementById("explosionSound");
+        let selectedMineCount = parseInt(mineCountDropdown.value)
         let mines = [];
         let points = 0;
         let coins = 10; // Initial number of coins
@@ -114,6 +144,12 @@
         let multiplier = 1; // Initial multiplier
         let multiplierVisible = false; // Track if the multiplier is visible
         let mineFreeCellsClicked = 0; // Track mine-free cells clicked in the current round
+
+
+
+        mineCountDropdown.addEventListener("change", function () {
+            selectedMineCount = parseInt(mineCountDropdown.value);
+        });
 
         // Function to remove the "cash-out-disabled" class from the button
         function enableCashOutButton() {
@@ -129,6 +165,20 @@
 
 
 
+        function placeMines(count) {
+            // Clear existing mines
+            mines = [];
+
+            for (let i = 0; i < count; i++) {
+                let row, col;
+                do {
+                    row = Math.floor(Math.random() * gridSize);
+                    col = Math.floor(Math.random() * gridSize);
+                } while (mines.some(mine => mine.row === row && mine.col === col));
+                mines.push({ row, col });
+            }
+        }
+
 
         function initializeGame() {
             for (let i = 0; i < gridSize; i++) {
@@ -140,16 +190,6 @@
                     cell.addEventListener("click", revealCell);
                     document.getElementById("container").appendChild(cell);
                 }
-            }
-
-            // Place mines randomly
-            for (let i = 0; i < numMines; i++) {
-                let row, col;
-                do {
-                    row = Math.floor(Math.random() * gridSize);
-                    col = Math.floor(Math.random() * gridSize);
-                } while (mines.some(mine => mine.row === row && mine.col === col));
-                mines.push({ row, col });
             }
         }
 
@@ -199,6 +239,8 @@
                     document.getElementById("startButton").textContent = "Cash Out"; // Change button text
                     document.getElementById("startButton").classList.add("cash-out-disabled"); // Add the disabled class
                     cellsClicked = false; // Reset cellsClicked flag for the new game
+                    const mineCount = parseInt(document.getElementById("mineCount").value);
+                    placeMines(mineCount); // Place mines based on user selection
                 }
             } else if (gameStarted && cellsClicked) {
                 cashOut();
@@ -272,7 +314,7 @@
                 coinSound.currentTime = 0; // Reset the playback position
                 coinSound.play();
 
-                if (points === gridSize * gridSize - numMines) {
+                if (points === gridSize * gridSize - selectedMineCount) {
                     cashOutClicked = true; // Set cashOutClicked flag if all cells are correct
                     cashOut();
                 }
