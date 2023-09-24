@@ -352,12 +352,6 @@
             }
             const multiplierField = document.getElementById("multiplier");
             multiplierField.textContent = `Multiplier: ${multiplier.toFixed(2)}x`;
-
-            if (!multiplierVisible) {
-                // Show the multiplier if it's not visible
-                multiplierField.style.display = "block";
-                multiplierVisible = true;
-            }
         }
 
 
