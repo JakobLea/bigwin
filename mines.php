@@ -59,9 +59,13 @@
             <div><label id="mineCountLabel" for="mineCount">Mines</label></div>
             <div>
                 <input type="number" id="coinsToSpend" placeholder="Enter coins">
+                <button id="addRemainingCoinsButton">MAX</button>
+            </div>
+            <p class="error-message" id="errorMessage"></p>
+            <div>
                 <p class="error-message" id="errorMessage"></p>
                 <button id="startButton" onclick="startGame()">Start Game</button>
-                <div><button id="resetButton" style="display:none;">Reset</button></div>
+                <button id="resetButton" style="display:none;">Reset</button>
             </div>
             <div id="multiplier" style="display: none;">Multiplier: 1x</div>
         </div>
@@ -175,7 +179,7 @@
                     errorMessage.style.display = "none";
                     coinsToSpendInput.style.border = "";
                     coins -= coinsToSpend; // Deduct the specified number of coins to start the game
-                    document.getElementById("coinCount").textContent = formatCoinCount(coins);
+                    document.getElementById("coinCount").textContent = formatCoinCount(Math.floor(coins * 100) / 100);
                     gameStarted = true; // Set the game as started
                     // Show the multiplier if it's not visible
                     // Reset the multiplier
@@ -391,7 +395,7 @@
                 if (!minesHit()) {
                     const coinsToReceive = document.getElementById("coinsToSpend").value * multiplier;
                     coins += coinsToReceive; // Award coins based on the multiplier
-                    document.getElementById("coinCount").textContent = formatCoinCount(coins);
+                    document.getElementById("coinCount").textContent = formatCoinCount(Math.floor(coins * 100) / 100);
                     // Play the cashout sound
                     const cashoutSound = document.getElementById("cashoutSound");
                     cashoutSound.play();
@@ -449,7 +453,14 @@
         }
 
 
+        // Event listener for the "Add All Coins" button
+        document.getElementById("addRemainingCoinsButton").addEventListener("click", addAllCoins);
 
+        function addAllCoins() {
+            const availableCoins = Math.floor(coins * 100) / 100; // Round down to two decimal places
+            document.getElementById("coinsToSpend").value = availableCoins.toFixed(2); // Display the available coins in the input field
+            coinsToSpendInput.value = coins.toFixed(2);
+        }
 
 
 
