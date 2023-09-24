@@ -110,10 +110,37 @@ select {
   background-color: #f1f1f100;
   width: 276px;
   margin: 10px;
-  line-height: 30px;
+  line-height: 20px;
   font-size: 30px;
 }
 
+#boxforinp{
+  background-color: #161616;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 7px;
+  border: #292929 solid 2px;
+}
+
+#boxforinp > div {
+  background-color: #ff060600;
+  width: 100px;
+  margin: 10px;
+  font-size: 30px;
+}
+
+
+#boxforinp:focus-within {
+  border: solid 2px rgb(77, 77, 77);
+}
+
+.Bet{
+  font-size: 15px;
+  margin-bottom: -17px;
+  margin-left: 1px;
+}
 
 .flex-container {
   padding-top: 90px;
@@ -145,7 +172,7 @@ button {
   font-weight: bold;
   font-size: 16px;
   box-shadow: 0px 4px #333359;
-  margin-top: 15px;
+  margin-top: 1px;
 }
 
 button:hover {
@@ -166,34 +193,40 @@ button:active {
 }
 
 #addRemainingCoinsButton{
+  font-size: 14px;
   box-shadow: 1px 1px 1px #1b1b1b;
   margin-top: 0px;
-  border-radius: 0 4px 4px 0;
+  border-radius: 8px;
   border: 2px solid #3f3f3f;
   background-color: #3f3f3f;
   height: 40px;
   width: 30%;
 }
 
+#addRemainingCoinsButton:hover{
+  background-color: #8c8c8c;
+  border: #8c8c8c solid 2px;
+}
+
+#addRemainingCoinsButton:active {
+  transform: translateY(0px);
+}
 
 #coinsToSpend {
-  background-color: #000000;
+  background-color: #161616;
   color: #ffffff;
   width: 100%;
   height: 40px;
   border-radius: 4px 0 0 4px;
-  border: #3f3f3f solid 2px;
-  box-shadow: 1px 1px 1px #1b1b1b;
+  border: none;
+  box-shadow: 1px 1px 1px #1b1b1b00;
 }
 
-label{
-  position: relative;
-}
 
-#coinsToSpend:hover {
-  border: #8c8c8c solid 2px;
+input:focus {
+  outline: none; /* Remove the focus outline (optional) */
+  border: none; /* Remove the border */
 }
-
 
 #startButton.cash-out-disabled {
   background-color: gray;
@@ -292,10 +325,10 @@ label{
 
 .error-message {
   color: red;
-  font-size: 12px;
-  margin-left: 13px;
-  margin-top: -35px;
-  margin-bottom: -40px;
+  font-size: 13px;
+  margin-left: 5px;
+  margin-top: 0px;
+  margin-bottom: -30px;
   display: none;
 }
 

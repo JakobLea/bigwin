@@ -58,12 +58,18 @@
         <div class="selectbox">
             <div><label id="mineCountLabel" for="mineCount">Mines</label></div>
             <div>
+                <p class="error-message" id="errorMessage"></p>
+            </div>
+            <!-- <div>
+                <p class="Bet">Bet amount</p>
+            </div> -->
+            <div id="boxforinp">
                 <input type="number" id="coinsToSpend" placeholder="Enter coins">
                 <button id="addRemainingCoinsButton">MAX</button>
             </div>
-            <p class="error-message" id="errorMessage"></p>
+       
             <div>
-                <p class="error-message" id="errorMessage"></p>
+
                 <button id="startButton" onclick="startGame()">Start Game</button>
                 <button id="resetButton" style="display:none;">Reset</button>
             </div>
@@ -151,7 +157,7 @@
             if (!gameStarted) {
                 const startGameSound = document.getElementById("startGameSound");
                 startGameSound.play();
-                const coinsToSpendInput = document.getElementById("coinsToSpend");
+                const coinsToSpendInput = document.getElementById("boxforinp");
                 const errorMessage = document.getElementById("errorMessage");
 
                 const coinsToSpend = parseFloat(document.getElementById("coinsToSpend").value);
