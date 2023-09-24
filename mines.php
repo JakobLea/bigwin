@@ -87,7 +87,9 @@
 
     <audio id="coinSound" src="Sound/Coin Sound.mp3"></audio>
     <audio id="explosionSound" src="Sound/Explosion.mp3"></audio>
-    <audio id="cashoutSound" src="Sound/Coin Sound.mp3"></audio>
+    <audio id="cashoutSound" src="Sound/Cashout.wav"></audio>
+    <audio id="startGameSound" src="Sound/Click.mp3"></audio>
+    <audio id="resetSound" src="Sound/Reset.mp3"></audio>
     <script>
         const gridSize = 5; // Updated to 5 rows and columns
         const numMines = 5; // Adjust as needed
@@ -143,6 +145,8 @@
 
         function startGame() {
             if (!gameStarted) {
+                const startGameSound = document.getElementById("startGameSound");
+                startGameSound.play();
                 const coinsToSpendInput = document.getElementById("coinsToSpend");
                 const errorMessage = document.getElementById("errorMessage");
 
@@ -440,6 +444,8 @@
             initializeGame();
             closePopup();
             mineFreeCellsClicked = 0;
+            const resetSound = document.getElementById("resetSound");
+            resetSound.play();
         }
 
 
