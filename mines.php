@@ -138,7 +138,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         </div>
     </div>
 
-    <audio id="coinSound" src="Sound/Coin Sound.mp3"></audio>
+    <audio id="coinSound" src="Sound/Coin Sound3.mp3"></audio>
     <audio id="explosionSound" src="Sound/Explosion.mp3"></audio>
     <audio id="cashoutSound" src="Sound/Cashout.wav"></audio>
     <audio id="startGameSound" src="Sound/Click.mp3"></audio>
