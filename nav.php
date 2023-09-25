@@ -42,7 +42,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <div class="login-container">
                 <li class="nav-item">
                     <div id="coinCount">
-                        <p id="coins">
+                        <p id="coins">10
 
                     </div>
                 </li>
