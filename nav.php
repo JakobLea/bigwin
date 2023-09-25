@@ -36,7 +36,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         </ul>
         <div class="login-container">
             <li class="nav-item">
-                <div id="coinCount"><p id="coins"><p id="ikke"><h3 id="coin"><?php echo $_SESSION["coins"]; ?> </h3></p></div>
+                <div id="coinCount"><p id="coins"><h3 id="coin"><?php echo $_SESSION["coins"]; ?> </h3></div>
             </li>
         
             <li class="nav-item">
