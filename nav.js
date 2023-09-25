@@ -1,4 +1,4 @@
-let coinsdoc = document.getElementById("coins");
+let coinsdoc = document.getElementById("coin");
 var precoins = coinsdoc.innerHTML;
 let coins = precoins; // Initial number of coins 
 
