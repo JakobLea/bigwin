@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document test</title>
     <link rel="stylesheet" href="/bigwin/nav.css" />
-    <script type="text/javascript" src="home.js"></script>
+    <script type="text/javascript" src="nav.js"></script>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
             })) 
     </script>
 
-    <script src="home.js">
+    <script src="nav.js">
     
     </script>
 </body>
