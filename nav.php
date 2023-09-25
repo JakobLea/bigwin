@@ -36,7 +36,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         </ul>
         <div class="login-container">
             <li class="nav-item">
-                <div id="coinCount"><p id="coins"><h3 id="coins"><?php echo $_SESSION["coins"]; ?> </h3></div>
+                <div id="coinCount"><p id="coins"><h3 hidden id="coins"><?php echo $_SESSION["coins"]; ?> </h3></div>
             </li>
         
             <li class="nav-item">
@@ -49,6 +49,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <span class="bar"></span>
         </div>
     </nav>
+    <script>
+        
+    </script>
     <script>
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
