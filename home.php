@@ -87,7 +87,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 </body>
 
 
-
+<script src="home.js">
+    
+</script>
 <script src="home.js">
 
     includeHTML();
