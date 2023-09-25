@@ -1,5 +1,6 @@
 #coin{
   display: none;
+  opacity: 0;
 }
 .navbar {
   min-height: 70px;
