@@ -19,7 +19,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             let coin = '<?php echo $_SESSION["coins"]; ?>';
             // let coin = precoins; // Initial number of coins 
 
-            console.log(coins + " er på mongomåten")
+            console.log(coin + " er på mongomåten")
         </script>
         <nav class="navbar">
             <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png"
