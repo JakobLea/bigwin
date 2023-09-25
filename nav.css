@@ -1,3 +1,6 @@
+.ikke{
+  display: none;
+}
 .navbar {
   min-height: 70px;
   display: flex;
