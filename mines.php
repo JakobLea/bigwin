@@ -16,15 +16,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <link rel="stylesheet" href="nav.css">
 </head>
 <script>
-     let coinsPHP = <? echo $_SESSION["coins"]; ?>;
-        console.log(coinsPHP + " er fra php")
+    let coinsPHP = <? echo $_SESSION["coins"]; ?>;
+    console.log(coinsPHP + " er fra php")
 
-        let coinsdoc = document.getElementById("coins");
-        var precoins = coinsdoc.innerHTML;
-        let coins = int(precoins); // Initial number of coins 
-        console.log(coins + " er på mongomåten")
+    let coinsdoc = document.getElementById("coins");
+    var precoins = coinsdoc.innerHTML;
+    let coins = int(precoins); // Initial number of coins 
+    console.log(coins + " er på mongomåten")
 
-        coinsdoc.remove;
+    coinsdoc.remove;
 </script>
 
 <script>
@@ -87,6 +87,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             <div><label for="mineCount">Number of Mines:</label></div>
             <div> <select id="mineCount">
+                    <option value="1">1 Mines</option>
                     <option value="2">2 Mines</option>
                     <option value="3">3 Mines</option>
                     <option value="4">4 Mines</option>
@@ -150,14 +151,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         const coinSound = document.getElementById("coinSound");
         const explosionSound = document.getElementById("explosionSound");
         const multiplierSystems = {
-            1: [1, 1.01, 1.08, 1.12, 1.18, 1.24, 1.30, 1.37, 1.46, 1.55, 1.65, 1.77, 1.90, 2.06, 2.25, 2.47, 3.09, 3.54, 4.12, 4.95, 6.19, 8.25, 12.38, 24.75],
-            2: [1, 1.08, 1.17, 1.29, 1.41, 1.56, 1.74, 1.94, 2.18, 2.47, 2.83, 3.26, 3.81, 4.50, 5.40, 6.60, 8.25, 10.61, 14.14, 29.70, 49.50, 99.00, 297.00],
+            1: [1, 1.03, 1.08, 1.12, 1.18, 1.24, 1.30, 1.37, 1.46, 1.50, 1.55, 1.65, 1.77, 1.90, 2.06, 2.25, 2.47, 3.09, 3.54, 4.12, 4.95, 6.19, 8.25, 12.38, 24.75],
+            2: [1, 1.08, 1.17, 1.29, 1.41, 1.56, 1.74, 1.94, 2.18, 2.47, 2.83, 3.26, 3.81, 4.50, 5.40, 6.60, 8.25, 10.61, 14.14, 19.80, 29.70, 49.50, 99.00, 297.00,],
             3: [1, 1.12, 1.29, 1.48, 1.71, 2.00, 2.35, 2.79, 3.35, 4.07, 5.00, 6.26, 7.96, 10.35, 13.80, 18.97, 27.11, 40.66, 65.06, 113.85, 227.70, 569.25, 2277.00],
-            4: [1, 1.18, 1.41, 1.71, 2.09, 2.58, 3.23, 4.09, 5.26, 6.88, 9.17, 2.51, 17.52, 25.30, 37.95, 59.64, 99,39, 178.91, 357.81, 834.90, 2504, 12523],
+            4: [1, 1.18, 1.41, 1.71, 2.09, 2.58, 3.23, 4.09, 5.26, 6.88, 9.17, 2.51, 17.52, 25.30, 37.95, 59.64, 99.39, 178.91, 357.81, 834.90, 2504, 12523],
             5: [1, 1.24, 1.56, 2.00, 2.58, 3.39, 4.52, 6.14, 8.50, 12.04, 17.52, 26.27, 40.87, 66.41, 113.85, 208.72, 417.45, 939.26, 2504.00, 8766.00, 52598.99], // For 5 mines
             6: [1, 1.30, 1.74, 2.35, 3.23, 4.52, 6.46, 9.44, 14.17, 21.89, 35.03, 58.38, 102.17, 189.75, 379.50, 834.90, 2087, 6261, 25047, 175329],
             7: [1, 1.37, 1.94, 2.79, 4.09, 6.14, 9.44, 14.95, 24.47, 41.60, 73.95, 138.66, 277.33, 600.87, 1442, 3965, 13219, 59486, 475893],
-            8: [1, 1.46, 2.18, 3.35, 5.26, 8.50, 14.17, 24.47, 44.05, 83.20, 166.4, 356.56, 831.98, 2163, 23794, 118973, 1070759],
+            8: [1, 1.46, 2.18, 3.35, 5.26, 8.50, 14.17, 24.47, 44.05, 83.20, 166.4, 356.56, 831.98, 2163, 6489, 23794, 118973, 1070759],
             9: [1, 1.55, 2.47, 4.07, 6.88, 12.04, 21.89, 41.60, 83.20, 176.80, 404, 1010, 2828, 9193, 36773, 202254, 2022545],
             10: [1, 1.65, 2.83, 5.00, 9.17, 17.52, 35.03, 73.95, 166.40, 404, 1077, 3232, 11314, 49031, 294188, 3236072], // For 10 mines
             11: [1, 1.77, 3.26, 6.26, 12.51, 26.77, 58.38, 138.66, 356.56, 1010, 3232, 12123, 56574, 367735, 4412826],
@@ -167,7 +168,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             15: [1, 2.47, 6.6, 18.97, 59.64, 208.72, 834.9, 3965, 23794, 202254, 3236072],
             16: [1, 2.75, 8.25, 27.11, 99.39, 417.45, 2087, 13219, 118973, 2022545],
             17: [1, 3.09, 10.61, 40.66, 178.91, 939.26, 6261, 59486, 1070759],
-            18: [1, 3.54, 14.14, 65.06, 357.81, 25047, 475893],
+            18: [1, 3.54, 14.14, 65.06, 357.81, 2504, 25047, 475893],
             19: [1, 4.12, 19.80, 113.85, 834.90, 8766, 175329],
             20: [1, 4.95, 29.70, 227.70, 2504, 52598],
             21: [1, 6.19, 49.50, 569.25, 12523],
@@ -284,10 +285,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         multiplierVisible = true;
                     }
                     enableCells(); // Enable the cells for gameplay
+                    mineCountDropdown.disabled = true;
                     document.getElementById("coinsToSpend").disabled = true; // Disable the input
                     document.getElementById("startButton").textContent = "Cash Out"; // Change button text
                     document.getElementById("startButton").classList.add("cash-out-disabled"); // Add the disabled class
-                    mineCountDropdown.disabled = true;
+                    //mineCountDropdown.disabled = true;
                     cellsClicked = false; // Reset cellsClicked flag for the new game
                     const mineCount = parseInt(document.getElementById("mineCount").value);
                     placeMines(mineCount); // Place mines based on user selection
@@ -368,6 +370,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     cashOutClicked = true; // Set cashOutClicked flag if all cells are correct
                     cashOut();
                 }
+
             }
 
 
@@ -376,7 +379,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             updateMultiplier();
         }
 
-        
+
         function updateMultiplier() {
             if (multiplierSystems[selectedMineCount]) {
                 multiplier = multiplierSystems[selectedMineCount][points];
@@ -445,16 +448,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         function cashOut() {
             if (gameStarted && cellsClicked) {
                 if (!minesHit()) {
-                    const coinsToReceive = document.getElementById("coinsToSpend").value * multiplier;
+                    let coinsToReceive;
+                    let currentMultiplier; // Store the current multiplier
+                    if (points < multiplierSystems[selectedMineCount].length) {
+                        currentMultiplier = multiplierSystems[selectedMineCount][points]; // Store the current multiplier
+                        coinsToReceive = document.getElementById("coinsToSpend").value * currentMultiplier;
+                    } else {
+                        // If all cells are correct, use the last multiplier
+                        currentMultiplier = multiplierSystems[selectedMineCount][multiplierSystems[selectedMineCount].length - 1]; // Store the current multiplier
+                        coinsToReceive = document.getElementById("coinsToSpend").value * currentMultiplier;
+                    }
                     coins += coinsToReceive; // Award coins based on the multiplier
-                    document.getElementById("coinCount").textContent = formatCoinCount(Math.floor(coins * 100) / 100);
+                    document.getElementById("coinCount").textContent = formatCoinCount(coins);
                     // Play the cashout sound
                     const cashoutSound = document.getElementById("cashoutSound");
                     cashoutSound.play();
                     // Display the popup with multiplier and coins cashed out
-                    document.getElementById("popup-multiplier").textContent = multiplier.toFixed(2) + "x";
+                    document.getElementById("popup-multiplier").textContent = currentMultiplier.toFixed(2) + "x"; // Display the correct multiplier
                     document.getElementById("popup-coins").textContent = formatCoinCount(coinsToReceive);
                     document.getElementById("popup").style.display = "block";
+                    points++; // Increment points to match the next cell to be clicked
                 }
                 revealAllCells(); // Reveal all cells and end the game
                 hideCashOutButton(); // Hide the cash-out button
@@ -462,6 +475,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             } else {
             }
         }
+
 
         // Function to close the popup
         function closePopup() {
@@ -505,12 +519,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         }
 
 
-                // Add an event listener to handle changes in the dropdown menu
+        // Add an event listener to handle changes in the dropdown menu
         mineCountDropdown.addEventListener("change", function () {
-        // Ensure the dropdown is disabled when the game has started
-        if (gameStarted) {
-            mineCountDropdown.disabled = true;
-        }
+            // Ensure the dropdown is disabled when the game has started
+            if (gameStarted) {
+                mineCountDropdown.disabled = true;
+            }
         });
 
         // Event listener for the "Add All Coins" button
