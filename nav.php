@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document test</title>
     <link rel="stylesheet" href="/bigwin/nav.css" />
+    <script type="text/javascript" src="home.js"></script>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
         </ul>
         <div class="login-container">
             <li class="nav-item">
-                <div id="coinCount"><p id="coins">10</div>
+                <div id="coinCount"><p id="coins"><h3 id="coins"><?php echo $_SESSION["coins"]; ?> </h3></div>
             </li>
         
             <li class="nav-item">
@@ -56,6 +57,10 @@
                 hamburger.classList.remove("active");
                 navMenu.classList.remove("active");
             })) 
+    </script>
+
+    <script src="home.js">
+    
     </script>
 </body>
 

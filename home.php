@@ -16,9 +16,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="home.css">
-    <style>
-        
-    </style>
 </head>
 
 <script>
@@ -62,7 +59,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <div class="velkommen">
         <h1>
        Velkommen tilbake, <?php echo $_SESSION['name']; ?>
-       <h3 id="coins"><?php echo $_SESSION["coins"]; ?> </h3>
         </h1>
         <h2>
             Trykk her får å legge til penger
@@ -86,10 +82,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 </body>
 
-
-<script src="home.js">
-    
-</script>
 <script>
 
     includeHTML();
