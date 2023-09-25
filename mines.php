@@ -175,7 +175,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
         let mines = [];
         let points = 0;
-        let coins = 10; // Initial number of coins 
+
+        let coinsPHP = <? echo $_SESSION["coins"]; ?>;
+        console.log(coinsPHP + " er fra php")
+
+        let coinsdoc = document.getElementById("coins");
+        var precoins = coinsdoc.innerHTML;
+        let coins = int(precoins); // Initial number of coins 
+        console.log(coins + " er på mongomåten")
+
+        coinsdoc.remove;
+
         let gameStarted = false; // Flag to track if the game has started
         let cellsClicked = false; // Flag to track whether a cell has been clicked
         let cashOutClicked = false; // Flag to track if the cash-out button has been clicked

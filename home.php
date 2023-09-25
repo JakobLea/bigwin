@@ -62,6 +62,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <div class="velkommen">
         <h1>
        Velkommen tilbake, <?php echo $_SESSION['name']; ?>
+       <h3 id="coins"><?php echo $_SESSION["coins"]; ?> </h3>
         </h1>
         <h2>
             Trykk her får å legge til penger
