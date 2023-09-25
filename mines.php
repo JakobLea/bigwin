@@ -87,7 +87,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             <div><label for="mineCount">Number of Mines:</label></div>
             <div> <select id="mineCount">
-                    <option value="1">1 Mine</option>
                     <option value="2">2 Mines</option>
                     <option value="3">3 Mines</option>
                     <option value="4">4 Mines</option>
@@ -110,7 +109,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <option value="21">21 Mines</option>
                     <option value="22">22 Mines</option>
                     <option value="23">23 Mines</option>
-                    <option value="24">24 Mines</option>
                 </select></div>
 
 
@@ -289,6 +287,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     document.getElementById("coinsToSpend").disabled = true; // Disable the input
                     document.getElementById("startButton").textContent = "Cash Out"; // Change button text
                     document.getElementById("startButton").classList.add("cash-out-disabled"); // Add the disabled class
+                    mineCountDropdown.disabled = true;
                     cellsClicked = false; // Reset cellsClicked flag for the new game
                     const mineCount = parseInt(document.getElementById("mineCount").value);
                     placeMines(mineCount); // Place mines based on user selection
@@ -484,6 +483,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
         function resetGame() {
             gameStarted = false; // Reset the game flag
+            mineCountDropdown.disabled = false;
             document.getElementById("startButton").classList.remove("cash-out-disabled"); // Remove disabled class
             document.getElementById("startButton").disabled = false; // Enable the "Start Game" button
             document.getElementById("startButton").textContent = "Start Game"; // Reset button text
@@ -504,6 +504,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             resetSound.play();
         }
 
+
+                // Add an event listener to handle changes in the dropdown menu
+        mineCountDropdown.addEventListener("change", function () {
+        // Ensure the dropdown is disabled when the game has started
+        if (gameStarted) {
+            mineCountDropdown.disabled = true;
+        }
+        });
 
         // Event listener for the "Add All Coins" button
         document.getElementById("addRemainingCoinsButton").addEventListener("click", addAllCoins);
