@@ -11,7 +11,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document test</title>
-    <link rel="stylesheet" href="/bigwin/nav.css" />
+    <link rel="stylesheet" href="nav.css" />
     <script type="text/javascript" src="nav.js"></script>
 </head>
 
