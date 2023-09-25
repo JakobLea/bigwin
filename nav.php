@@ -29,9 +29,7 @@
         </ul>
         <div class="login-container">
             <li class="nav-item">
-                <div id="coinCount"><p id="coins"> her er coinsa dine 
-                    <?php echo $_SESSION['coins']; ?></p>
-                </div>
+                <div id="coinCount"><p id="coins"> <?php echo $_SESSION['coins']; ?></div>
             </li>
         
             <li class="nav-item">
