@@ -18,7 +18,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <script>
             let coin = '<?php echo $_SESSION["coins"]; ?>';
             // let coin = precoins; // Initial number of coins 
-
+            document.getElementById("coins").innerHTML = coin;
             console.log(coin + " er på mongomåten")
         </script>
         <nav class="navbar">
@@ -43,6 +43,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <li class="nav-item">
                     <div id="coinCount">
                         <p id="coins">
+
                     </div>
                 </li>
 
