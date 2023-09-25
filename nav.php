@@ -17,7 +17,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <body>
         <script>
             let coin = '<?php echo $_SESSION["coins"]; ?>';
-            let coin = precoins; // Initial number of coins 
+            // let coin = precoins; // Initial number of coins 
 
             console.log(coins + " er på mongomåten")
         </script>
