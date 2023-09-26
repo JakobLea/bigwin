@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
-print_r($_POST);
+print_r($_SESSION);
     ?>
     <!DOCTYPE html>
     <html lang="en">
