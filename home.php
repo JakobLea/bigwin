@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
-$values = $_SESSION;
- foreach ($values as $value) {
- print_r($value['coins']);
- }
+// $values = $_SESSION;
+//  foreach ($values as $value) {
+//  print_r($value['coins']);
+//  }
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -86,6 +86,7 @@ $values = $_SESSION;
             </h1>
             <h2>
                 Trykk her får å legge til penger
+                <?php echo $_SESSION['coins']; ?>
             </h2>
             <a class="penger" href="Penger.html">Penger</a>
         </div>
