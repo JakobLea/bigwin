@@ -614,7 +614,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             function hideResetButton() {
                 const resetButton = document.getElementById("resetButton");
                 resetButton.style.display = "none";
-
+            }
 
 
 
