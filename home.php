@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 $values = $_SESSION;
-print_r($values);
+print_r($values['coins']);
     <!DOCTYPE html>
     <html lang="en">
 
