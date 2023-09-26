@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
-
+print_r($_POST);
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -17,9 +17,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <link rel="stylesheet" href="nav.css">
         <link rel="stylesheet" href="home.css">
     </head>
+    
     <script>
-        $uname = validate($_POST['uname']);
-        tets = SELECT "coins" FROM users WHERE user_name='$uname';
+        $user_name = validate($_POST['user_name']);
+        tets = SELECT * FROM users WHERE user_name='$user_name';
         console.log(tets)
 
     </script>
