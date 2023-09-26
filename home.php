@@ -1,9 +1,8 @@
 <?php
 session_start();
-
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
-print_r($_SESSION);
-    ?>
+$values = $_SESSION;
+print_r($values);
     <!DOCTYPE html>
     <html lang="en">
 
@@ -110,7 +109,6 @@ print_r($_SESSION);
 
 
     </html>
-<?php
 } else {
     header("Location: index.php");
     exit();
