@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 $values = $_SESSION;
  foreach ($values as $value) {
- print_r($value);
+ print_r($value) . " ";
  }
 ?>
     <!DOCTYPE html>
