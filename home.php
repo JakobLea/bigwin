@@ -47,8 +47,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <div class="login-container">
                 <li class="nav-item">
                     <div id="coinCount">
-                        <p id="coins">10
-
+                        <p id="coins">
+                        <?php echo $_SESSION['coins']; ?>
                     </div>
                 </li>
 
@@ -86,7 +86,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             </h1>
             <h2>
                 Trykk her får å legge til penger
-                <?php echo $_SESSION['coins']; ?>
             </h2>
             <a class="penger" href="Penger.html">Penger</a>
         </div>
