@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 $values = $_SESSION;
- foreach $values as $value {
+ foreach ($values as $value) {
  print_r($value["coins"]);
  }
 ?>
@@ -111,7 +111,7 @@ $values = $_SESSION;
 
     </html>
 <?php
-} else {
+ } else {
     header("Location: index.php");
     exit();
 }
