@@ -10,14 +10,14 @@
      	<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
      	<?php } ?>
-     	<label>User Name</label>
+     	<label>Brukernavn</label>
      	<input type="text" name="uname" placeholder="User Name"><br>
 
-     	<label>Password</label>
+     	<label>Passord</label>
      	<input type="password" name="password" placeholder="Password"><br>
 
-     	<button type="submit">Login</button>
-          <a href="signup.php" class="ca">Create an account</a>
+     	<button type="submit">Logg Inn</button>
+          <a href="signup.php" class="ca">Registrer deg</a>
      </form>
 </body>
 </html>

@@ -17,6 +17,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <link rel="stylesheet" href="nav.css">
         <link rel="stylesheet" href="home.css">
     </head>
+    <script>
+        $uname = validate($_POST['uname']);
+        tets = SELECT "coins" FROM users WHERE user_name='$uname';
+        console.log(tets)
+
+    </script>
 
     <body style="background-color:#333333">
         <nav class="navbar">
@@ -55,9 +61,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <span class="bar"></span>
             </div>
         </nav>
-        <script>
-
-        </script>
         <script>
             const hamburger = document.querySelector(".hamburger");
             const navMenu = document.querySelector(".nav-menu");
