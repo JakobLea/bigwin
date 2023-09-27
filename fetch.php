@@ -9,8 +9,8 @@ include("db_conn.php");
 // lets continue to check data in database with loop
 $p = '';
 while(true){
-// now fetch data from database
-$result = $conn->query("SELECT * FROM user WHERE user_name='$uname'");
+// now fetch data from database WHERE user_name='$uname'
+$result = $conn->query("SELECT * FROM user");
 $r = array();
 if($result->num_rows > 0){
     while($row = $result-> fetch_assoc()){
