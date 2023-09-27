@@ -49,8 +49,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <li class="nav-item">
                     <div id="coinCount">
                         <p id="coins">
-                            <tbody>
-                            </tbody>
+                        
                     </div>
                 </li>
 
@@ -64,23 +63,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <span class="bar"></span>
             </div>
         </nav>
-        <script>
-            var source = new EventSource("fetch.php");
-            source.onmessage = function (event) {
-                var arrayData = JSON.parse(event.data);
-                var dataContainer = document.querySelector('tbody')
-                dataContainer.innerHTML = ''
-                arrayData.forEach(e => {
-                    dataContainer.innerHTML += `
-                            <tr>
-                                <td>${e.id}</td>
-                                <td>${e.coins}</td>
-                                <td>${e.name}</td>
-                            </tr>
-                        `;
-                });
-            }
-        </script>
 
         <script>
             const hamburger = document.querySelector(".hamburger");
