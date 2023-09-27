@@ -49,7 +49,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <li class="nav-item">
                     <div id="coinCount">
                         <p id="coins">
-                        
+                        <?php echo $_SESSION['coins']; ?>
                     </div>
                 </li>
 
