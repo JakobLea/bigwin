@@ -233,7 +233,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             let mines = [];
             let points = 0;
-            let coins = document.getElementById("coins").innerHTML;
+            let coins = 10;
+
 
             let gameStarted = false; // Flag to track if the game has started
             let cellsClicked = false; // Flag to track whether a cell has been clicked
