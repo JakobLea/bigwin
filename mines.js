@@ -3,6 +3,6 @@ $(document).ready(function(){
 });
 
 function loadstation(){
-    $("#station_data").load("station.php");
+    $("#coinCount").load("station.php");
     setTimeout(loadstation, 2000);
 }
