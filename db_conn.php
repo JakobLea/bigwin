@@ -11,3 +11,8 @@ $conn = mysqli_connect($sname, $unmae, $password, $db_name);
 if (!$conn) {
 	echo "Connection failed!";
 }
+$db = mysqli_select_db($conn, $db_name);
+if(!$db){
+    echo 'Database not connected';
+}
+?>
