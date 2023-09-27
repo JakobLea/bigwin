@@ -4,13 +4,13 @@ error_reporting(0);
 header("Cache-Control: no-store");
 header("Content-Type: text/event-stream");
 // make connection with database
-include("db_connection.php");
+include("db_conn.php");
 
 // lets continue to check data in database with loop
 $p = '';
 while(true){
 // now fetch data from database
-$result = $con->query("SELECT * FROM data");
+$result = $conn->query("SELECT * FROM user WHERE user_name='$uname'");
 $r = array();
 if($result->num_rows > 0){
     while($row = $result-> fetch_assoc()){

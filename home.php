@@ -1,13 +1,14 @@
 <?php
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
-// $values = $_SESSION;
+    // $values = $_SESSION;
 //  foreach ($values as $value) {
 //  print_r($value['coins']);
 //  }
-?>
+    ?>
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
 
         <meta charset="UTF-8">
@@ -17,10 +18,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <link rel="stylesheet" href="nav.css">
         <link rel="stylesheet" href="home.css">
     </head>
-    
+
     <script>
         $user_name = validate($_POST['user_name']);
-        tets = SELECT * FROM users WHERE user_name='$user_name';
+        tets = SELECT * FROM users WHERE user_name = '$user_name';
         console.log(tets)
 
     </script>
@@ -48,7 +49,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <li class="nav-item">
                     <div id="coinCount">
                         <p id="coins">
-                        <?php echo $_SESSION['coins']; ?>
+                            <tbody>
+                            </tbody>
                     </div>
                 </li>
 
@@ -62,6 +64,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <span class="bar"></span>
             </div>
         </nav>
+        <script>
+            var source = new EventSource("fetch.php");
+            source.onmessage = function (event) {
+                var arrayData = JSON.parse(event.data);
+                var dataContainer = document.querySelector('tbody')
+                dataContainer.innerHTML = ''
+                arrayData.forEach(e => {
+                    dataContainer.innerHTML += `
+                            <tr>
+                                <td>${e.id}</td>
+                                <td>${e.coins}</td>
+                                <td>${e.name}</td>
+                            </tr>
+                        `;
+                });
+            }
+        </script>
+
         <script>
             const hamburger = document.querySelector(".hamburger");
             const navMenu = document.querySelector(".nav-menu");
@@ -110,8 +130,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
     </html>
-<?php
- } else {
+    <?php
+} else {
     header("Location: index.php");
     exit();
 }
