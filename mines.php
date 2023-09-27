@@ -15,17 +15,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <link rel="stylesheet" href="mines.css">
         <link rel="stylesheet" href="nav.css">
     </head>
-    <script>
-        let coinsPHP = <? echo $_SESSION["coins"]; ?>;
-        console.log(coinsPHP + " er fra php")
 
-        let coinsdoc = document.getElementById("coins");
-        var precoins = coinsdoc.innerHTML;
-        let coins = int(precoins); // Initial number of coins 
-        console.log(coins + " er på mongomåten")
-
-        coinsdoc.remove;
-    </script>
+    <script src="jonsfiler/jquery-3.7.1.min.js"></script>
 
     <script>
 
@@ -96,6 +87,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <span class="bar"></span>
             </div>
         </nav>
+    
+        <!-- Jon igjen :) -->
+        <script src="mines.js"></script>
+
         <script>
 
         </script>
@@ -621,7 +616,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             initializeGame();
         </script>
 
-
+<div id="station_data"></div>
 
     </body>
 
