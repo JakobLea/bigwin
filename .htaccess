@@ -1,0 +1,10 @@
+//301 Redirect Entire Directory
+RedirectMatch 301 /bigwin/(.*) //$1
+
+//Password Protect file
+<Files /bigwin/db_conn.php/>
+AuthName "Prompt"
+AuthType Basic
+AuthUserFile /bigwin/.htpasswd
+Require valid-user
+</Files>
