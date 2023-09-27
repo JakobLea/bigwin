@@ -2,9 +2,9 @@
 RedirectMatch 301 /bigwin/(.*) //$1
 
 //Password Protect file
-<Files /bigwin/db_conn.php/>
+<Files /db_conn.php/>
 AuthName "Prompt"
 AuthType Basic
-AuthUserFile /bigwin/.htpasswd
+AuthUserFile /.htpasswd
 Require valid-user
 </Files>
