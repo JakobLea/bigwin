@@ -193,6 +193,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <audio id="startGameSound" src="Sound/Click.mp3"></audio>
         <audio id="resetSound" src="Sound/Reset.mp3"></audio>
         <script>
+            
+            function changeCoins(changeBy) {
+                var document.getElementById("coins").innerHTML;
+
+                coins = coins + changeBy;
+
+                document.cookie = "coins=" + coins + "; max-age=5; path=/";
+                $("#coinCount").load("updateCoins.php");
+            }
+
+
             const gridSize = 5; // Updated to 5 rows and columns
             const numMines = 5; // Adjust as needed
             const mineCountDropdown = document.getElementById("mineCount");
@@ -235,7 +246,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             let mines = [];
             let points = 0;
-            let coins = $("#coins").val();;
+            let coins = document.getElementById("coins").innerHTML;
 
 
             let gameStarted = false; // Flag to track if the game has started
