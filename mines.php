@@ -231,9 +231,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 selectedMineCount = parseInt(mineCountDropdown.value);
             });
 
+            
+
             let mines = [];
             let points = 0;
-            let coins = 10;
 
 
             let gameStarted = false; // Flag to track if the game has started
