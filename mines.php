@@ -195,7 +195,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <script>
             
             function changeCoins(changeBy) {
-                var document.getElementById("coins").innerHTML;
+                var coins  = document.getElementById("coins").innerHTML;
 
                 coins = coins + changeBy;
 
