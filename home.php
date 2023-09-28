@@ -27,7 +27,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     </script>
 
     <body style="background-color:#333333">
-    <script src="mines.js"></script>
+    <script src="home.js"></script>
         <nav class="navbar">
             <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png"
                     width=100px, height=50px></a>
