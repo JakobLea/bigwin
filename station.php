@@ -11,4 +11,6 @@ while ($row = mysqli_fetch_array($result))
     {
     echo "<p class='coins' id='coins'>" . $row['coins'] . "</p>";
     }
+
+mysqli_close($conn);
 ?>
