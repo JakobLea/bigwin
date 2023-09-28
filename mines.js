@@ -4,6 +4,14 @@ $(document).ready(function(){
 
 function loadstation(){
     $("#coinCount").load("station.php");
-    let coins = document.getElementById("coins").innerHTML;
     setTimeout(loadstation, 2000);
+}
+
+function changeCoins(changeBy) {
+    var coins = $("#coins").val();
+
+    coins = coins + changeBy;
+
+    document.cookie = "coins=" + coins + "; max-age=5; path=/";
+    $("#coinCount").load("updateCoins.php");
 }
