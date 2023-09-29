@@ -247,7 +247,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             let mines = [];
             let points = 0;
-            var coins = parseInt(document.getElementById("coins").innerHTML);
+            let coins = 10;
 
 
             let gameStarted = false; // Flag to track if the game has started
@@ -272,9 +272,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
             // Function to format the coin count with two decimal places
-            // function formatCoinCount(coins) {
-            //     return parseFloat(coins.toFixed(2));
-            // }
+            function formatCoinCount(coins) {
+                return parseFloat(coins.toFixed(2));
+            }
 
 
 
