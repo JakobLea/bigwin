@@ -328,7 +328,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         coinsToSpendInput.classList.add("error");
                         coinsToSpendInput.style.border = "2px solid red";
                         errorMessage.textContent = "Invalid Number.";
-                    } else if (coinsToSpend > getCoins() ) {
+                    } else if (coinsToSpend > getCoins()) {
                         // Hide the error message and remove the 'error' class from the input
                         errorMessage.style.display = "none";
                         coinsToSpendInput.style.border = "2px solid red";
@@ -345,8 +345,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     } else {
                         errorMessage.style.display = "none";
                         coinsToSpendInput.style.border = "";
-                         changeCoins(-coinsToSpend); // Deduct the specified number of coins to start the game
-                    //    document.getElementById("coinCount").textContent = formatCoinCount(Math.floor(coins * 100) / 100);
+                        changeCoins(-coinsToSpend); // Deduct the specified number of coins to start the game
+                        //    document.getElementById("coinCount").textContent = formatCoinCount(Math.floor(coins * 100) / 100);
                         gameStarted = true; // Set the game as started
                         // Show the multiplier if it's not visible
                         // Reset the multiplier
@@ -529,6 +529,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                             currentMultiplier = multiplierSystems[selectedMineCount][multiplierSystems[selectedMineCount].length - 1]; // Store the current multiplier
                             coinsToReceive = document.getElementById("coinsToSpend").value * currentMultiplier;
                         }
+
+                        // Use toFixed to format the number with 2 decimal places
+                        coinsToReceive = parseFloat(coinsToReceive.toFixed(2));
+
                         changeCoins(coinsToReceive); // Award coins based on the multiplier
                         document.getElementById("coinCount").textContent = formatCoinCount(coins);
                         // Play the cashout sound
