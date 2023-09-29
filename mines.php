@@ -169,6 +169,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <div id="multiplier" style="display: none;">Multiplier: 1x</div>
             </div>
 
+            <button onclick="changeCoins(5)">Trykk</button>
+
             <div class="container" id="container"></div>
             <div></div>
         </div>
