@@ -306,8 +306,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
             function startGame() {
-                let coins = load("station.php");
-                console.log(coins)
+                let coins = document.getElementById("coinCount").innerHTML
                 if (!gameStarted) {
                     const startGameSound = document.getElementById("startGameSound");
                     startGameSound.play();
