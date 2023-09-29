@@ -204,7 +204,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                 document.cookie = "coins=" + coinsChanged + "; max-age=5; path=/";
                 $("#coinCount").load("updateCoins.php");
-                return coinsChanged;
+            }
+
+            function getCoins() {
+                var gottenCoins = document.getElementById("coins").innerHTML;
+
+                return gottenCoins;
             }
 
 
@@ -324,7 +329,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         coinsToSpendInput.classList.add("error");
                         coinsToSpendInput.style.border = "2px solid red";
                         errorMessage.textContent = "Invalid Number.";
-                    } else if (coinsToSpend > changeCoins(0) ) {
+                    } else if (coinsToSpend > getCoins() ) {
                         // Hide the error message and remove the 'error' class from the input
                         errorMessage.style.display = "none";
                         coinsToSpendInput.style.border = "2px solid red";
