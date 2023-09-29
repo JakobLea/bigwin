@@ -198,7 +198,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <script>
 
             function changeCoins(changeBy) {
-                var coinsChanged = float(document.getElementById("coins").innerHTML);
+                var coinsChanged = document.getElementById("coins").innerHTML;
 
                 coinsChanged = parseInt(coinsChanged) + changeBy;
 
@@ -207,7 +207,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
             function getCoins() {
-                var gottenCoins = float(document.getElementById("coins").innerHTML);
+                var gottenCoins = document.getElementById("coins").innerHTML;
 
                 return gottenCoins;
             }
