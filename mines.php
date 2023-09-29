@@ -204,6 +204,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                 document.cookie = "coins=" + coinsChanged + "; max-age=5; path=/";
                 $("#coinCount").load("updateCoins.php");
+                return coinsChanged;
             }
 
 
@@ -323,7 +324,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         coinsToSpendInput.classList.add("error");
                         coinsToSpendInput.style.border = "2px solid red";
                         errorMessage.textContent = "Invalid Number.";
-                    } else if (coinsToSpend > 50 ) {
+                    } else if (coinsToSpend > changeCoins(0) ) {
                         // Hide the error message and remove the 'error' class from the input
                         errorMessage.style.display = "none";
                         coinsToSpendInput.style.border = "2px solid red";
