@@ -196,7 +196,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <script>
 
             function changeCoins(changeBy) {
-                var coinsChanged = document.getElementById("coinCount").innerHTML;
+                var coinsChanged = document.getElementById("coins").innerHTML;
 
                 coinsChanged = parseInt(coinsChanged) + changeBy;
 
@@ -247,7 +247,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             let mines = [];
             let points = 0;
-            let coins = document.getElementById("coins").innerHTML;;
+            let coins = 10;
 
 
             let gameStarted = false; // Flag to track if the game has started
