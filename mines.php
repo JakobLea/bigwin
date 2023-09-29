@@ -196,7 +196,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <script>
 
             function changeCoins(changeBy) {
-                var coinsChanged = document.getElementById("coins").innerHTML;
+                var coinsChanged = document.getElementById("coinCount").innerHTML;
 
                 coinsChanged = parseInt(coinsChanged) + changeBy;
 
@@ -522,7 +522,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                             currentMultiplier = multiplierSystems[selectedMineCount][multiplierSystems[selectedMineCount].length - 1]; // Store the current multiplier
                             coinsToReceive = document.getElementById("coinsToSpend").value * currentMultiplier;
                         }
-                        coins += coinsToReceive; // Award coins based on the multiplier
+                        // coins += coinsToReceive; // Award coins based on the multiplier
                         document.getElementById("coinCount").textContent = formatCoinCount(coins);
                         // Play the cashout sound
                         const cashoutSound = document.getElementById("cashoutSound");
@@ -595,7 +595,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             document.getElementById("addRemainingCoinsButton").addEventListener("click", addAllCoins);
 
             function addAllCoins() {
-                const availableCoins = Math.floor(coins * 100) / 100; // Round down to two decimal places
+                // const availableCoins = Math.floor(coins * 100) / 100; // Round down to two decimal places
                 document.getElementById("coinsToSpend").value = availableCoins.toFixed(2); // Display the available coins in the input field
                 coinsToSpendInput.value = coins.toFixed(2);
             }
