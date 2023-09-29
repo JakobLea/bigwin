@@ -4,5 +4,5 @@ $(document).ready(function(){
 
 function loadstation(){
     $("#coinCount").load("station.php");
-    setTimeout(loadstation, 2000);
+    setTimeout(loadstation, 1000);
 }

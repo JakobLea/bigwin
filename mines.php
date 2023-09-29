@@ -246,7 +246,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             let mines = [];
             let points = 0;
-            let coins = 10;
+            
 
 
             let gameStarted = false; // Flag to track if the game has started
@@ -306,6 +306,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
             function startGame() {
+                let coins = load("station.php");
+                console.log(coins)
                 if (!gameStarted) {
                     const startGameSound = document.getElementById("startGameSound");
                     startGameSound.play();
