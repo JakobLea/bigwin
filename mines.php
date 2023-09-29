@@ -339,7 +339,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         errorMessage.style.display = "none";
                         coinsToSpendInput.style.border = "";
                         // coins -= coinsToSpend; // Deduct the specified number of coins to start the game
-                        parseInt(document.getElementById("coinCount").textContent) = formatCoinCount(Math.floor(coins * 100) / 100);
+                    //    document.getElementById("coinCount").textContent = formatCoinCount(Math.floor(coins * 100) / 100);
                         gameStarted = true; // Set the game as started
                         // Show the multiplier if it's not visible
                         // Reset the multiplier
