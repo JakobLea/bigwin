@@ -272,9 +272,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
             // Function to format the coin count with two decimal places
-            function formatCoinCount(coins) {
-                return parseFloat(coins.toFixed(2));
-            }
+            // function formatCoinCount(coins) {
+            //     return parseFloat(coins.toFixed(2));
+            // }
 
 
 
