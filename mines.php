@@ -247,7 +247,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             let mines = [];
             let points = 0;
-            let coins = document.getElementById("coinCount").innerHTML;
+            let coins = loadstation();
 
 
             let gameStarted = false; // Flag to track if the game has started
