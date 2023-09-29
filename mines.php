@@ -133,10 +133,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <button id="addRemainingCoinsButton">MAX</button>
                 </div>
 
-                <form action="update_number.php" method="POST">
-                    New Number: <input type="number" name="new_number">
-                    <input type="submit" value="Update Number">
-                </form>
 
                 <div><label for="mineCount">Number of Mines:</label></div>
                 <div> <select id="mineCount">
