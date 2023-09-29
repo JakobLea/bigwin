@@ -307,8 +307,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
             function startGame() {
-                loadstasion();
                 if (!gameStarted) {
+                    loadstasion();
                     const startGameSound = document.getElementById("startGameSound");
                     startGameSound.play();
                     const coinsToSpendInput = document.getElementById("boxforinp");
