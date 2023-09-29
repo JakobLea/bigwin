@@ -255,7 +255,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             let mines = [];
             let points = 0;
-
+            let coins = o;
 
             let gameStarted = false; // Flag to track if the game has started
             let cellsClicked = false; // Flag to track whether a cell has been clicked
@@ -279,9 +279,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
             // Function to format the coin count with two decimal places
-            // function formatCoinCount(coins) {
-            //     return parseFloat(coins.toFixed(2));
-            // }
+            function formatCoinCount(coins) {
+                return parseFloat(coins.toFixed(2));
+            }
 
 
 
