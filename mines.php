@@ -86,7 +86,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <span class="bar"></span>
             </div>
         </nav>
-    
+
         <!-- Jon igjen :) -->
         <script src="mines.js"></script>
 
@@ -132,6 +132,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <input type="number" id="coinsToSpend" placeholder="Enter coins">
                     <button id="addRemainingCoinsButton">MAX</button>
                 </div>
+
+                <form action="update_number.php" method="POST">
+                    New Number: <input type="number" name="new_number">
+                    <input type="submit" value="Update Number">
+                </form>
 
                 <div><label for="mineCount">Number of Mines:</label></div>
                 <div> <select id="mineCount">
@@ -193,9 +198,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <audio id="startGameSound" src="Sound/Click.mp3"></audio>
         <audio id="resetSound" src="Sound/Reset.mp3"></audio>
         <script>
-            
+
             function changeCoins(changeBy) {
-                var coinsChanged  = document.getElementById("coins").innerHTML;
+                var coinsChanged = document.getElementById("coins").innerHTML;
 
                 coinsChanged = coinsChanged + changeBy;
 
@@ -242,7 +247,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 selectedMineCount = parseInt(mineCountDropdown.value);
             });
 
-            
+
 
             let mines = [];
             let points = 0;
@@ -631,7 +636,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     </body>
 
     </html>
-<?php
+    <?php
 } else {
     header("Location: index.php");
     exit();
