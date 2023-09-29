@@ -247,7 +247,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             let mines = [];
             let points = 0;
-            let coins = parseInt(document.getElementById("coinCount").innerHTML);
+            let coins = document.getElementById("coinCount").innerHTML;
 
 
             let gameStarted = false; // Flag to track if the game has started
@@ -321,7 +321,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         coinsToSpendInput.classList.add("error");
                         coinsToSpendInput.style.border = "2px solid red";
                         errorMessage.textContent = "Invalid Number.";
-                    } else if (coinsToSpend > coins) {
+                    } else if (coinsToSpend > parseInt(coins)) {
                         // Hide the error message and remove the 'error' class from the input
                         errorMessage.style.display = "none";
                         coinsToSpendInput.style.border = "2px solid red";
