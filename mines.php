@@ -162,6 +162,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
                 <div>
+                    <button onclick="loadstation()"></button>
                     <button id="startButton" onclick="startGame()">Start Game</button>
                     <button id="resetButton" style="display:none;">Reset</button>
                 </div>
