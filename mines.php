@@ -604,7 +604,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             function addAllCoins() {
                 // const availableCoins = Math.floor(coins * 100) / 100; // Round down to two decimal places
-                document.getElementById("coinsToSpend").value = availableCoins.toFixed(2); // Display the available coins in the input field
+                document.getElementById("coins").value = availableCoins.toFixed(2); // Display the available coins in the input field
                 coinsToSpendInput.value = coins.toFixed(2);
             }
 
