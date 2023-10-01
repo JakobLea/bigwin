@@ -18,7 +18,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
     <script src="jonsfiler/jquery-3.7.1.min.js"></script>
 
-    <script>
+    <!-- <script>
         function includeHTML() {
             var z, i, elmnt, file, xhttp;
             /*loop through a collection of all HTML elements:*/
@@ -50,7 +50,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 }
             }
         };
-    </script>
+    </script> -->
 
     <body style="background-color:#333333">
         <nav class="navbar">
