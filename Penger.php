@@ -12,6 +12,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Daglig Penger</title>
         <link rel="stylesheet" href="nav.css">
+        <link rel="stylesheet" href="Penger.css">
     </head>
 
 
@@ -52,7 +53,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         </nav>
 
         <input type="button" value="spin" style="float:left;" id='spin' />
-        <canvas id="canvas" width="500" height="500"></canvas>
+        <canvas class="lykkehjul" id="canvas" width="500" height="500"></canvas>
+
         <script>
             var options = ["$30", "$200", "$45", "Lose", "$350"];
 
