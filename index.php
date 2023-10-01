@@ -4,6 +4,7 @@
 <head>
 	<title>LOGIN</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
 </head>
 
 <body>
