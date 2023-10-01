@@ -85,7 +85,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <h2>
                 Trykk her får å legge til penger
             </h2>
-            <a class="penger" href="Penger.html">Penger</a>
+            <a class="penger" href="Penger.php">Penger</a>
         </div>
 
 
