@@ -10,15 +10,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
         <title>Daglig Penger</title>
         <link rel="stylesheet" href="nav.css">
         <link rel="stylesheet" href="Penger.css">
     </head>
 
+    <script src="jonsfiler/jquery-3.7.1.min.js"></script>
 
     <body style="background-color:#333333">
+
         <script src="mines.js"></script>
+
         <nav class="navbar">
             <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png" width=100px, height=50px></a>
 
