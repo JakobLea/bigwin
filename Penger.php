@@ -58,7 +58,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <canvas class="lykkehjul" id="canvas" width="500" height="500"></canvas>
 
         <script>
-            var options = [ "0", "10", "0", "50", "100", "10", "0", "500", "0", "20", "30"];
+            var options = [ "0", "10", "0", "50", "100", "10", "1", "0", "500", "0", "1", "20", "30", "1", "50", "20", "100"];
 
             var startAngle = 0;
             var arc = Math.PI / (options.length / 2);
