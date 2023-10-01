@@ -1,0 +1,215 @@
+html {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  html body main {
+    padding: 0;
+  }
+  
+  form {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .wrapper {
+    position: relative;
+    width: 40vw;
+    max-width: 100vw;
+    min-height: fit-content;
+    margin-top: 5vh;
+  }
+  
+  .wrapper header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #coin-img {
+    height: 1.8rem;
+  }
+  
+  .wrapper header h1 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+  }
+  
+  .wrapper .container-fluid {
+    padding: 0;
+  }
+  
+  .wrapper .container-fluid h2 {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2%;
+  }
+  
+  .wrapper .container-fluid h2 button {
+    width: 3rem;
+    height: 1.5rem;
+    background-color: var(--secondary);
+    margin-top: 3rem;
+    margin-left: 2rem;
+    padding: 0;
+    line-height: 1.5rem;
+    border: 0;
+    transform: translateY(-50%);
+  }
+  
+  .wrapper .container-fluid h2 input {
+    width: 50%;
+    margin: 0;
+    margin-bottom: -0.7rem;
+  }
+  
+  .wrapper button {
+    width: 50%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  #progress-bar {
+    height: 2rem;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+  }
+  
+  #bet-bar {
+    background-color: var(--contrast);
+    width: 4px;
+    height: 3rem;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    overflow: hidden;
+  }
+  
+  #progress {
+    margin: 0;
+    height: 100%;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  #money,
+  #betMoney {
+    transition: all 0.1s ease-in-out;
+  }
+  
+  footer h2 {
+    margin: 0;
+    height: 2rem;
+  }
+  
+  main {
+    display: grid;
+    place-items: center;
+  }
+  
+  .game-footer {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  
+  #menu-btn {
+    width: 3.3em;
+    height: 3rem;
+    margin-left: var(--block-spacing-horizontal);
+    margin-bottom: 0;
+    background-image: url("../img/return-icon.svg");
+    background-size: contain;
+  }
+  
+  .room-select-box {
+    width: 100%;
+    flex-flow: column;
+    gap: 2rem;
+  }
+  
+  .room-select-box article {
+    margin: 0;
+    width: 100%;
+  }
+  
+  .room-select-box h2 {
+    margin: 0;
+  }
+  
+  .room-select-box header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .room-select-box header img {
+    color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 1px 1px 5px -2px black;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  
+  @media only screen and (max-aspect-ratio: 3/2) {
+    .wrapper {
+      width: 80vw;
+    }
+  }
+  
+  #dice-box {
+    color: var(--contrast);
+    display: flex;
+    flex-flow: row;
+  }
+  
+  #dice-box svg {
+    border-radius: 18%;
+    background-color: var(--secondary);
+  }
+  
+  #dice-box svg:hover {
+    cursor: pointer;
+  }
+  
+  .selected {
+    box-shadow: 0 0 15px -3px var(--primary);
+    background-color: var(--primary) !important;
+  }
+  
+  #dice-else-box {
+    margin-top: 2rem;
+    align-items: center;
+  }
+  
+  #dice-else-box input:not([type="range"]) {
+    width: 60%;
+    margin-left: 40%;
+  }
+  
+  #bet-range {
+    width: 140%;
+    max-width: 67vw;
+  }
+  
+  #die-container {
+    padding: 2rem 0;
+  }
+  
+  #die-container svg {
+    width: 15%;
+  }
+  
+  #theme-toggle {
+    background-image: url(../img/settings_brightness_FILL0_wght500_GRAD0_opsz48.svg);
+    background-size: contain;
+    height: 2.1rem;
+    position: absolute;
+    right: 0.4rem;
+    top: 0.4rem;
+    width: 1rem;
+  }
