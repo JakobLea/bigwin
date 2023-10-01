@@ -6,7 +6,7 @@
      <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
+<body style="background-color:#333333">
      <form action="signup-check.php" method="post">
           <h2>Registrer</h2>
           <?php if (isset($_GET['error'])) { ?>

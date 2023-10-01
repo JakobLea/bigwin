@@ -14,10 +14,10 @@
 			<p class="error"><?php echo $_GET['error']; ?></p>
 		<?php } ?>
 		<label>Brukernavn</label>
-		<input type="text" name="uname" placeholder="User Name"><br>
+		<input type="text" name="uname" placeholder="Brukernavn"><br>
 
 		<label>Passord</label>
-		<input type="password" name="password" placeholder="Password"><br>
+		<input type="password" name="password" placeholder="Passord"><br>
 
 		<button type="submit">Logg Inn</button>
 		<a href="signup.php" class="ca">Registrer deg</a>
