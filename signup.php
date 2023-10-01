@@ -19,24 +19,24 @@
 
           <label>Navn</label>
           <?php if (isset($_GET['name'])) { ?>
-               <input type="text" name="name" placeholder="Name" value="<?php echo $_GET['name']; ?>"><br>
+               <input type="text" name="name" placeholder="Navn" value="<?php echo $_GET['name']; ?>"><br>
           <?php } else { ?>
-               <input type="text" name="name" placeholder="Name"><br>
+               <input type="text" name="name" placeholder="Navn"><br>
           <?php } ?>
 
           <label>Brukernavn</label>
           <?php if (isset($_GET['uname'])) { ?>
-               <input type="text" name="uname" placeholder="User Name" value="<?php echo $_GET['uname']; ?>"><br>
+               <input type="text" name="uname" placeholder="Brukernavn" value="<?php echo $_GET['uname']; ?>"><br>
           <?php } else { ?>
-               <input type="text" name="uname" placeholder="User Name"><br>
+               <input type="text" name="uname" placeholder="Brukernavn"><br>
           <?php } ?>
 
 
-          <label>passord</label>
-          <input type="password" name="password" placeholder="Password"><br>
+          <label>Passord</label>
+          <input type="password" name="password" placeholder="Passord"><br>
 
           <label>Skriv passord på nytt</label>
-          <input type="password" name="re_password" placeholder="Re_Password"><br>
+          <input type="password" name="re_password" placeholder="Gjenta Passord"><br>
 
           <button type="submit">Registrer</button>
           <a href="index.php" class="ca">Har du bruker, Logg inn her!</a>
