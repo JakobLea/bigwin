@@ -10,7 +10,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
+        
         <title>Daglig Penger</title>
         <link rel="stylesheet" href="nav.css">
         <link rel="stylesheet" href="Penger.css">
@@ -58,7 +58,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <canvas class="lykkehjul" id="canvas" width="500" height="500"></canvas>
 
         <script>
-            var options = ["$30", "$200", "$45", "Lose", "$350"];
+            var options = [ "0", "10", "0", "50", "100", "10", "0", "500", "0", "20", "30"];
 
             var startAngle = 0;
             var arc = Math.PI / (options.length / 2);
@@ -69,6 +69,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             var spinTimeTotal = 0;
 
             var ctx;
+
+            function changeCoins(changeBy) {
+                var coinsChanged = document.getElementById("coins").innerHTML;
+
+                coinsChanged = parseInt(coinsChanged) + changeBy;
+
+                document.cookie = "coins=" + coinsChanged + "; max-age=5; path=/";
+                $("#coinCount").load("updateCoins.php");
+            }
 
             document.getElementById("spin").addEventListener("click", spin);
 
