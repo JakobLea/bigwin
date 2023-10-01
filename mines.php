@@ -61,7 +61,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <a href="mines.php" class="nav-link">Mines</a>
                 </li>
                 <li class="nav-item">
-                    <a href="Tjenester.html" class="nav-link">Tjenester</a>
+                    <a href="Penger.php" class="nav-link">Penger</a>
                 </li>
                 <li class="nav-item">
                     <a href="Omoss.html" class="nav-link">Om oss</a>
