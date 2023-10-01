@@ -2,14 +2,14 @@
 <html>
 
 <head>
-	<title>LOGIN</title>
+	<title>Logg Inn</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
 </head>
 
 <body>
 	<form action="login.php" method="post">
-		<h2>LOGIN</h2>
+		<h2>Logg Inn</h2>
 		<?php if (isset($_GET['error'])) { ?>
 			<p class="error"><?php echo $_GET['error']; ?></p>
 		<?php } ?>
