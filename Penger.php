@@ -58,7 +58,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         </nav>
 
         <input type="button" value="spin" style="float:left;" id='spin' />
-        <canvas class="lykkehjul" id="canvas" width="500" height="500"></canvas>
+        <canvas class="lykkehjul" id="canvas" width="1000" height="1000"></canvas>
 
         <script>
             var options = [ "0", "10", "0", "50", "100", "10", "1", "0", "500", "0", "1", "20", "30", "1", "50", "20", "100"];
