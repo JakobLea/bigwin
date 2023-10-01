@@ -188,6 +188,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 ctx.save();
                 ctx.font = 'bold 30px Helvetica, Arial';
                 var text = options[index]
+                changeCoins(parseInt(text))
                 ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
                 ctx.restore();
             }
