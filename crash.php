@@ -1,27 +1,3 @@
-<?php
-session_start();
-isset($_POST["money"]) &&
-    $_SESSION["money"] = $_POST["money"];
-
-if (isset($_POST["numberRange"])) {
-    $_SESSION["numberRange"] = $_POST["numberRange"];
-    $reward = 1 / (1.01 - ($_SESSION["numberRange"] / 100));
-} else
-    $_SESSION["numberRange"] = 1;
-
-$spin;
-$win = 0;
-
-if (isset($_SESSION["numberRange"]) && $_SESSION["numberRange"] > 0 && isset($_POST["betMoney"]) && $_POST["betMoney"] <= $_SESSION["money"]) {
-    $spin = rand(-5, 100);
-    $_SESSION["money"] -= $_POST["betMoney"];
-    if ($spin >= $_SESSION["numberRange"]) {
-        $win = $_POST["betMoney"] * $reward;
-    }
-}
-$_SESSION["money"] += $win;
-$_SESSION["money"] = round($_SESSION["money"], 2);
-?>
 
 <!DOCTYPE html>
 <html>
