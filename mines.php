@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
-    ?>
+?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -19,7 +19,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <script src="jonsfiler/jquery-3.7.1.min.js"></script>
 
     <script>
-
         function includeHTML() {
             var z, i, elmnt, file, xhttp;
             /*loop through a collection of all HTML elements:*/
@@ -31,10 +30,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 if (file) {
                     /*make an HTTP request using the attribute value as the file name:*/
                     xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function () {
+                    xhttp.onreadystatechange = function() {
                         if (this.readyState == 4) {
-                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
-                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                            }
+                            if (this.status == 404) {
+                                elmnt.innerHTML = "Page not found.";
+                            }
                             /*remove the attribute, and call this function once more:*/
                             elmnt.removeAttribute("w3-include-html");
                             includeHTML();
@@ -47,13 +50,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 }
             }
         };
-
     </script>
 
     <body style="background-color:#333333">
         <nav class="navbar">
-            <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png"
-                    width=100px, height=50px></a>
+            <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png" width=100px, height=50px></a>
 
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -102,11 +103,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 navMenu.classList.toggle("active");
             })
 
-            document.querySelectorAll("nav-link").forEach(n => n.
-                addEventListener("click", () => {
-                    hamburger.classList.remove("active");
-                    navMenu.classList.remove("active");
-                })) 
+            document.querySelectorAll("nav-link").forEach(n => n.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                navMenu.classList.remove("active");
+            }))
         </script>
 
 
@@ -196,7 +196,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <audio id="startGameSound" src="Sound/Click.mp3"></audio>
         <audio id="resetSound" src="Sound/Reset.mp3"></audio>
         <script>
-
             function changeCoins(changeBy) {
                 var coinsChanged = document.getElementById("coins").innerHTML;
 
@@ -220,7 +219,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             const explosionSound = document.getElementById("explosionSound");
             const multiplierSystems = {
                 1: [1, 1.03, 1.08, 1.12, 1.18, 1.24, 1.30, 1.37, 1.46, 1.50, 1.55, 1.65, 1.77, 1.90, 2.06, 2.25, 2.47, 3.09, 3.54, 4.12, 4.95, 6.19, 8.25, 12.38, 24.75],
-                2: [1, 1.08, 1.17, 1.29, 1.41, 1.56, 1.74, 1.94, 2.18, 2.47, 2.83, 3.26, 3.81, 4.50, 5.40, 6.60, 8.25, 10.61, 14.14, 19.80, 29.70, 49.50, 99.00, 297.00,],
+                2: [1, 1.08, 1.17, 1.29, 1.41, 1.56, 1.74, 1.94, 2.18, 2.47, 2.83, 3.26, 3.81, 4.50, 5.40, 6.60, 8.25, 10.61, 14.14, 19.80, 29.70, 49.50, 99.00, 297.00, ],
                 3: [1, 1.12, 1.29, 1.48, 1.71, 2.00, 2.35, 2.79, 3.35, 4.07, 5.00, 6.26, 7.96, 10.35, 13.80, 18.97, 27.11, 40.66, 65.06, 113.85, 227.70, 569.25, 2277.00],
                 4: [1, 1.18, 1.41, 1.71, 2.09, 2.58, 3.23, 4.09, 5.26, 6.88, 9.17, 2.51, 17.52, 25.30, 37.95, 59.64, 99.39, 178.91, 357.81, 834.90, 2504, 12523],
                 5: [1, 1.24, 1.56, 2.00, 2.58, 3.39, 4.52, 6.14, 8.50, 12.04, 17.52, 26.27, 40.87, 66.41, 113.85, 208.72, 417.45, 939.26, 2504.00, 8766.00, 52598.99], // For 5 mines
@@ -247,7 +246,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             };
             let selectedMineCount = parseInt(mineCountDropdown.value);
 
-            mineCountDropdown.addEventListener("change", function () {
+            mineCountDropdown.addEventListener("change", function() {
                 selectedMineCount = parseInt(mineCountDropdown.value);
             });
 
@@ -267,7 +266,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
 
-            mineCountDropdown.addEventListener("change", function () {
+            mineCountDropdown.addEventListener("change", function() {
                 selectedMineCount = parseInt(mineCountDropdown.value);
             });
 
@@ -295,7 +294,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         row = Math.floor(Math.random() * gridSize);
                         col = Math.floor(Math.random() * gridSize);
                     } while (mines.some(mine => mine.row === row && mine.col === col));
-                    mines.push({ row, col });
+                    mines.push({
+                        row,
+                        col
+                    });
                 }
             }
 
@@ -328,7 +330,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         coinsToSpendInput.classList.add("error");
                         coinsToSpendInput.style.border = "2px solid red";
                         errorMessage.textContent = "Invalid Number.";
-                    } else if (coinsToSpend > getCoins() ) {
+                    } else if (coinsToSpend > getCoins()) {
                         // Hide the error message and remove the 'error' class from the input
                         errorMessage.style.display = "none";
                         coinsToSpendInput.style.border = "2px solid red";
@@ -337,7 +339,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         modal.style.display = "block";
 
                         // Close the modal when clicking outside of it
-                        window.onclick = function (event) {
+                        window.onclick = function(event) {
                             if (event.target === modal) {
                                 modal.style.display = "none";
                             }
@@ -345,8 +347,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     } else {
                         errorMessage.style.display = "none";
                         coinsToSpendInput.style.border = "";
-                         changeCoins(-coinsToSpend); // Deduct the specified number of coins to start the game
-                    //    document.getElementById("coinCount").textContent = formatCoinCount(Math.floor(coins * 100) / 100);
+                        changeCoins(-coinsToSpend); // Deduct the specified number of coins to start the game
+                        //    document.getElementById("coinCount").textContent = formatCoinCount(Math.floor(coins * 100) / 100);
                         gameStarted = true; // Set the game as started
                         // Show the multiplier if it's not visible
                         // Reset the multiplier
@@ -543,8 +545,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     revealAllCells(); // Reveal all cells and end the game
                     hideCashOutButton(); // Hide the cash-out button
                     showResetButton(); // Show the reset button
-                } else {
-                }
+                } else {}
             }
 
 
@@ -591,7 +592,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
             // Add an event listener to handle changes in the dropdown menu
-            mineCountDropdown.addEventListener("change", function () {
+            mineCountDropdown.addEventListener("change", function() {
                 // Ensure the dropdown is disabled when the game has started
                 if (gameStarted) {
                     mineCountDropdown.disabled = true;
@@ -640,7 +641,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     </body>
 
     </html>
-    <?php
+<?php
 } else {
     header("Location: index.php");
     exit();

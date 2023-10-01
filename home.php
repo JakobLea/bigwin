@@ -2,15 +2,15 @@
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     // $values = $_SESSION;
-//  foreach ($values as $value) {
-//  print_r($value['coins']);
-//  }
-    ?>
+    //  foreach ($values as $value) {
+    //  print_r($value['coins']);
+    //  }
+?>
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
-    <script src="jonsfiler/jquery-3.7.1.min.js"></script>
+        <script src="jonsfiler/jquery-3.7.1.min.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BigWin</title>
@@ -19,18 +19,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <link rel="stylesheet" href="home.css">
     </head>
 
-    <script>
+    <!-- <script>
         $user_name = validate($_POST['user_name']);
         tets = SELECT * FROM users WHERE user_name = '$user_name';
         console.log(tets)
-
-    </script>
+    </script> -->
 
     <body style="background-color:#333333">
-    <script src="mines.js"></script>
+        <script src="mines.js"></script>
         <nav class="navbar">
-            <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png"
-                    width=100px, height=50px></a>
+            <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png" width=100px, height=50px></a>
 
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -72,11 +70,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 navMenu.classList.toggle("active");
             })
 
-            document.querySelectorAll("nav-link").forEach(n => n.
-                addEventListener("click", () => {
-                    hamburger.classList.remove("active");
-                    navMenu.classList.remove("active");
-                })) 
+            document.querySelectorAll("nav-link").forEach(n => n.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                navMenu.classList.remove("active");
+            }))
         </script>
 
 
@@ -111,7 +108,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
     </html>
-    <?php
+<?php
 } else {
     header("Location: index.php");
     exit();

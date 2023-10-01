@@ -38,8 +38,6 @@
   transform: scale(0.95);
 }
 
-
-
 .mine {
   background-color: rgb(0, 0, 0);
   color: white;
@@ -65,7 +63,6 @@
   /* Add fade-in zoom animation */
   transform: scale(1);
 }
-
 
 @keyframes fadeInZoomCell {
   from {
@@ -101,8 +98,8 @@ select:hover {
 }
 
 select:disabled {
-  cursor: not-allowed; 
-  opacity: 0.7; 
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .selectbox {
@@ -113,7 +110,7 @@ select:disabled {
   width: 300px;
 }
 
-.selectbox>div {
+.selectbox > div {
   display: flex;
   flex-direction: row;
   background-color: #f1f1f100;
@@ -134,13 +131,12 @@ select:disabled {
   height: 44.2px;
 }
 
-#boxforinp>div {
+#boxforinp > div {
   background-color: #ff060600;
   width: 100px;
   margin: 10px;
   font-size: 30px;
 }
-
 
 #boxforinp:focus-within {
   border: solid 2px rgb(77, 77, 77);
@@ -159,7 +155,7 @@ select:disabled {
   background-color: rgba(30, 143, 255, 0);
 }
 
-.flex-container>div {
+.flex-container > div {
   background-color: #f1f1f100;
   width: 400px;
   margin: 10px;
@@ -173,7 +169,7 @@ p {
   color: #ffffff;
 }
 
-#coins.coins{
+#coins.coins {
   color: #000000;
   font-size: 16px;
   font-weight: 200;
@@ -238,7 +234,6 @@ button:active {
   box-shadow: 1px 1px 1px #1b1b1b00;
 }
 
-
 input:focus {
   outline: none;
   /* Remove the focus outline (optional) */
@@ -271,8 +266,6 @@ input:focus {
   pointer-events: none;
   /* Disable hover effect */
 }
-
-
 
 /* Styles for the modal */
 .modal {
@@ -325,21 +318,18 @@ input:focus {
   }
 }
 
-
 #Deposit {
   margin-top: 20px;
-  background-color: #00C74D;
+  background-color: #00c74d;
   border-radius: 10px;
   box-shadow: 0px 4px #008d36;
 }
 
-
 #Deposit:active {
-  background-color: #00C74D;
-  box-shadow: 0px 2px #00C74D;
+  background-color: #00c74d;
+  box-shadow: 0px 2px #00c74d;
   transform: translateY(2px);
 }
-
 
 .error-message {
   color: red;
@@ -349,8 +339,6 @@ input:focus {
   margin-bottom: -30px;
   display: none;
 }
-
-
 
 /* Add these styles to your CSS file */
 .popup-content {
@@ -389,18 +377,15 @@ input:focus {
   margin: 10px 0;
 }
 
-
 #popup-multiplier {
   color: #6967ff;
   font-size: 28px;
 }
 
-
 #popup-coins {
   color: #6967ff;
   font-size: 18px;
 }
-
 
 hr {
   width: 35.5px;
@@ -409,7 +394,6 @@ hr {
   height: 3px;
   border: 0px solid;
 }
-
 
 #chip {
   margin-left: 3px;

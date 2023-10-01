@@ -1,7 +1,7 @@
 <?php
 
-$sname= "bigwincash01.mysql.domeneshop.no";
-$unmae= "bigwincash01";
+$sname = "bigwincash01.mysql.domeneshop.no";
+$unmae = "bigwincash01";
 $password = "Gambling123.";
 
 $db_name = "bigwincash01";

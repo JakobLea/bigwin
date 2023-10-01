@@ -3,12 +3,12 @@
   margin-top: 15%;
 }
 
-.flex-container>div>img {
+.flex-container > div > img {
   border-radius: 10px;
   transition: transform 0.2s ease-in-out;
 }
 
-.flex-container>div>img:hover {
+.flex-container > div > img:hover {
   cursor: pointer;
   transform: translateY(-7px);
 }
@@ -19,7 +19,7 @@
   background-color: rgba(30, 143, 255, 0);
 }
 
-.flex-container>div {
+.flex-container > div {
   background-color: #f1f1f100;
   width: 150px;
   margin: 0px;
@@ -36,7 +36,7 @@
   background-color: rgba(30, 143, 255, 0);
 }
 
-.overskrift-container>div {
+.overskrift-container > div {
   background-color: #f1f1f100;
   width: 100%;
   margin: 0px;
@@ -44,8 +44,6 @@
   line-height: 75px;
   font-size: 30px;
 }
-
-
 
 .container {
   position: relative;
@@ -67,8 +65,8 @@
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: .5s ease;
-  background-color: #008CBA;
+  transition: 0.5s ease;
+  background-color: #008cba;
 }
 
 .container:hover .overlay {
