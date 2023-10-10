@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
-?>
+    ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -23,7 +23,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <script src="mines.js"></script>
 
         <nav class="navbar">
-            <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png" width=100px, height=50px></a>
+            <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png"
+                    width=100px, height=50px></a>
 
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -61,7 +62,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <canvas class="lykkehjul" id="canvas" width="1000" height="1000"></canvas>
 
         <script>
-            var options = [ "0", "10", "0", "50", "100", "10", "5000", "0", "500", "0", "-10", "20", "30", "20", "50", "20", "100"];
+            var options = ["0", "10", "0", "50", "100", "10", "5000", "0", "500", "0", "-10", "20", "30", "20", "50", "20", "100"];
 
             var startAngle = 0;
             var arc = Math.PI / (options.length / 2);
@@ -76,11 +77,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             function changeCoins(changeBy) {
                 var coinsChanged = document.getElementById("coins").innerHTML;
 
-                coinsChanged = parseInt(coinsChanged) + changeBy;
+                // Parse the current number of coins
+                coinsChanged = parseFloat(coinsChanged);
+
+                // Round to the nearest integer
+                coinsChanged = Math.round(coinsChanged + changeBy);
 
                 document.cookie = "coins=" + coinsChanged + "; max-age=5; path=/";
                 $("#coinCount").load("updateCoins.php");
             }
+
 
             document.getElementById("spin").addEventListener("click", spin);
 
@@ -204,7 +210,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     </body>
 
     </html>
-<?php
+    <?php
 } else {
     header("Location: index.php");
     exit();
