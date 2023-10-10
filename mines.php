@@ -199,7 +199,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             function changeCoins(changeBy) {
                 var coinsChanged = document.getElementById("coins").innerHTML;
 
-                coinsChanged = ((parseInt(coinsChanged) * 10) + (changeBy * 10) / 10);
+                coinsChanged = parseInt(coinsChanged) + changeBy;
 
                 document.cookie = "coins=" + coinsChanged + "; max-age=5; path=/";
                 $("#coinCount").load("updateCoins.php");
