@@ -105,8 +105,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <h1>Blackjack Game</h1>
                 <div id="message">Welcome to Blackjack!</div>
                 <div id="cards">
-                    Player: <span id="player-hand"></span><br>
-                    Dealer: <span id="dealer-hand"></span>
+                    <div id="dealer"></div>
+                    <div id="player"></div>
+                    <!-- Player: <span id="player-hand"></span><br>
+                    Dealer: <span id="dealer-hand"></span> -->
                 </div>
             </div>
         </div>
@@ -171,8 +173,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
         // Display hands
         function displayHands() {
-            document.getElementById('player-hand').textContent = playerHand.join(', ');
-            document.getElementById('dealer-hand').textContent = dealerHand[0] + ', ?';
+            document.getElementById('player').textContent = playerHand.join(', ');
+            document.getElementById('dealer').textContent = dealerHand[0] + ', ?';
         }
 
         // Check for a win, lose, or draw
