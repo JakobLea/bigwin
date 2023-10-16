@@ -23,6 +23,7 @@
     font-size: 16px;
     box-shadow: 0px 4px #333359;
     margin-top: 1px;
+    margin-left: 10px;
 }
 
 .velg:hover {
@@ -53,6 +54,11 @@
     line-height: 20px;
     font-size: 30px;
 }
+
+#mineCountLabel {
+    margin-left: 10px;
+}
+
 
 #addRemainingCoinsButton {
     font-size: 14px;
@@ -108,10 +114,12 @@
     justify-content: space-between;
     display: flex;
     align-items: center;
+    margin-left: 19px;
     padding: 5px;
     border-radius: 7px;
     border: #292929 solid 2px;
     height: 44.2px;
+    width: 67.3%;
 }
 
 #coinsToSpend {

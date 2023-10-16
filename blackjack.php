@@ -83,17 +83,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             </div>
 
 
-            <div><label for="mineCount">Number of Mines:</label></div>
             <div>
-                <button class="velg" id="deal-button">Deal</button>
                 <button class="velg" id="hit-button">Hit</button>
-                <button class="velg" id="stand-button">Stand</button> 
+                <button class="velg" id="stand-button">Stand</button>
             </div>
 
 
             <div>
-                <button id="startButton" onclick="startGame()">Start Game</button>
-                <button id="resetButton" style="display:none;">Reset</button>
+                <button class="velg" id="deal-button">Deal</button>
             </div>
             <div id="multiplier" style="display: none;">Multiplier: 1x</div>
         </div>
