@@ -38,7 +38,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <a href="Penger.php" class="nav-link">Penger</a>
                 </li>
                 <li class="nav-item">
-                    <a href="Omoss.html" class="nav-link">Om oss</a>
+                    <a href="blackjack.php" class="nav-link">Blackjack</a>
                 </li>
                 <li class="nav-item">
                     <a href="Kontakt.html" class="nav-link">Kontakt</a>
