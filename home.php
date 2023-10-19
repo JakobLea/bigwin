@@ -99,7 +99,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <div><img onclick="location.href = 'dice.html';" src="Stake bilder/Dice.png" width=139px, height=187px></div>
             <div><img onclick="location.href = 'mines.php';" src="Stake bilder/Mines.png" width=139px, height=187px></div>
             <div><img onclick="location.href = 'hilo.html';" src="Stake bilder/Hilo.png" width=139px, height=187px></div>
-            <div><img onclick="location.href = 'plinko.html';" src="Stake bilder/Plinko.png" width=139px, height=187px>
+            <div><img onclick="location.href = 'blackjack.php';" src="Stake bilder/Plinko.png" width=139px, height=187px>
             </div>
         </div>
 
