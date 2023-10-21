@@ -46,6 +46,10 @@
             height: 150px;
             margin: 10px;
         }
+
+        .counter {
+            font-size: 24px;
+        }
     </style>
 </head>
 
@@ -105,6 +109,8 @@
         </div>
     </div>
 
+
+
     <script>
         const suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
         const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"];
@@ -115,6 +121,8 @@
 
         const playerHandElement = document.getElementById("player-hand");
         const dealerHandElement = document.getElementById("dealer-hand");
+        const playerCounterElement = document.getElementById("player-counter");
+        const dealerCounterElement = document.getElementById("dealer-counter");
         const dealButton = document.getElementById("deal-button");
         const hitButton = document.getElementById("hit-button");
         const standButton = document.getElementById("stand-button");
@@ -148,6 +156,8 @@
         function renderHands() {
             playerHandElement.innerHTML = playerHand.map(card => getCardImageURL(card)).join('');
             dealerHandElement.innerHTML = dealerHand.map(card => getCardImageURL(card)).join('');
+            playerCounterElement.textContent = `Total: ${calculateHandValue(playerHand)}`;
+            dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerHand)}`;
         }
 
         function getCardImageURL(card) {
