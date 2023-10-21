@@ -49,7 +49,7 @@
 
         .counter {
             font-size: 24px;
-        }
+        }   
     </style>
 </head>
 
@@ -113,7 +113,7 @@
 
     <script>
         const suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
-        const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"];
+        const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
         let deck = [];
         let playerHand = [];
@@ -126,6 +126,7 @@
         const dealButton = document.getElementById("deal-button");
         const hitButton = document.getElementById("hit-button");
         const standButton = document.getElementById("stand-button");
+        let dealerCardHidden = true; // Dealer's first card is hidden.
 
         function createDeck() {
             for (let suit of suits) {
@@ -143,6 +144,11 @@
         }
 
         function dealInitialCards() {
+            // Clear previous cards only when the game is redealt.
+            playerHand = [];
+            dealerHand = [];
+            dealerCardHidden = true; // Reset dealer's first card as hidden.
+
             for (let i = 0; i < 2; i++) {
                 playerHand.push(deck.pop());
                 dealerHand.push(deck.pop());
@@ -153,17 +159,38 @@
             standButton.disabled = false;
         }
 
+
         function renderHands() {
             playerHandElement.innerHTML = playerHand.map(card => getCardImageURL(card)).join('');
-            dealerHandElement.innerHTML = dealerHand.map(card => getCardImageURL(card)).join('');
+            dealerHandElement.innerHTML = dealerHand.map((card, index) => getCardImageImageHTML(card, index)).join('');
             playerCounterElement.textContent = `Total: ${calculateHandValue(playerHand)}`;
-            dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerHand)}`;
+
+            // Update the dealer's card counter including the hidden card
+            if (dealerCardHidden) {
+                dealerCounterElement.textContent = `Total: ?`;
+            } else {
+                dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerHand)}`;
+            }
         }
+
 
         function getCardImageURL(card) {
             const suitSymbol = getSuitSymbol(card.suit);
             const rankSymbol = getRankSymbol(card.rank);
             return `<img class="card-image" src="Cards/${rankSymbol}${suitSymbol}.png" alt="${card.rank} of ${card.suit}">`;
+        }
+
+        function getCardImageImageHTML(card, index) {
+            const suitSymbol = getSuitSymbol(card.suit);
+            const rankSymbol = getRankSymbol(card.rank);
+            const cardImageHTML = `<img class="card-image" src="Cards/${rankSymbol}${suitSymbol}.png" alt="${card.rank} of ${card.suit}">`;
+
+            // If the dealer's first card is hidden, show the back of the card.
+            if (index === 0 && dealerCardHidden) {
+                return '<img class="card-image" src="Cards/bak.png" alt="Card Back">';
+            }
+
+            return cardImageHTML;
         }
 
         function getSuitSymbol(suit) {
@@ -217,28 +244,27 @@
             }
         }
 
-        function resetGame() {
-            deck = [];
-            playerHand = [];
-            dealerHand = [];
-            playerHandElement.innerHTML = "";
-            dealerHandElement.innerHTML = "";
-            dealButton.disabled = false;
+        function endGame(outcome) {
+            dealerCardHidden = false;
+            renderHands();
             hitButton.disabled = true;
             standButton.disabled = true;
-            createDeck();
-            shuffleDeck();
+            dealButton.disabled = false;
+            alert(outcome);
         }
 
+
+
+        // Event listeners for the buttons
         dealButton.addEventListener("click", dealInitialCards);
         hitButton.addEventListener("click", () => {
             playerHand.push(deck.pop());
             renderHands();
             if (calculateHandValue(playerHand) > 21) {
-                alert("Bust! You lose.");
-                resetGame();
+                endGame("Bust! You lose.");
             }
         });
+
         standButton.addEventListener("click", () => {
             while (calculateHandValue(dealerHand) < 17) {
                 dealerHand.push(deck.pop());
@@ -246,14 +272,12 @@
             renderHands();
 
             if (calculateHandValue(dealerHand) > 21 || calculateHandValue(playerHand) > calculateHandValue(dealerHand)) {
-                alert("You win!");
+                endGame("You win!");
             } else if (calculateHandValue(playerHand) < calculateHandValue(dealerHand)) {
-                alert("You lose.");
+                endGame("You lose.");
             } else {
-                alert("It's a push!");
+                endGame("It's a push!");
             }
-
-            resetGame();
         });
 
         createDeck();
