@@ -74,9 +74,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <div>
                 <p class="error-message" id="errorMessage"></p>
             </div>
-            <!-- <div>
-            <p class="Bet">Bet amount</p>
-        </div> -->
+
             <div id="boxforinp">
                 <input type="number" id="coinsToSpend" placeholder="Enter coins">
                 <button id="addRemainingCoinsButton">MAX</button>
@@ -142,6 +140,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         function dealHand(hand) {
             hand.push(deck.pop());
             hand.push(deck.pop());
+        }
+
+        // Display hands as card images
+        function displayHands() {
+            document.getElementById('player-hand').innerHTML = playerHand.map(card => `<img class="card" src="Cards/${card}.png" />`).join('');
+            document.getElementById('dealer-hand').innerHTML = dealerHand.map((card, index) => `<img class="card" src="Cards/${index === 0 ? 'back' : card}.png" />`).join('');
         }
 
         // Calculate the hand value
