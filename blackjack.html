@@ -41,6 +41,13 @@
             margin: 10px;
         }
 
+        /* Add a border to the player's cards */
+        .player-card {
+            border: 5px solid #ff0000;
+            border-radius: 7px;
+            background-color: red;
+        }
+
         .card-image {
             width: 100px;
             height: 150px;
@@ -49,7 +56,7 @@
 
         .counter {
             font-size: 24px;
-        }   
+        }
     </style>
 </head>
 
@@ -161,7 +168,7 @@
 
 
         function renderHands() {
-            playerHandElement.innerHTML = playerHand.map(card => getCardImageURL(card)).join('');
+            playerHandElement.innerHTML = playerHand.map(card => getCardImageURL(card, true)).join('');
             dealerHandElement.innerHTML = dealerHand.map((card, index) => getCardImageImageHTML(card, index)).join('');
             playerCounterElement.textContent = `Total: ${calculateHandValue(playerHand)}`;
 
@@ -171,12 +178,16 @@
             } else {
                 dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerHand)}`;
             }
+
+            // Add the "player-card" class to player's card images
+            const playerCardImages = playerHandElement.querySelectorAll('.card-image');
         }
 
 
         function getCardImageURL(card) {
             const suitSymbol = getSuitSymbol(card.suit);
             const rankSymbol = getRankSymbol(card.rank);
+
             return `<img class="card-image" src="Cards/${rankSymbol}${suitSymbol}.png" alt="${card.rank} of ${card.suit}">`;
         }
 
@@ -234,19 +245,16 @@
             return value;
         }
 
-        function checkBlackjack() {
-            if (playerHand.length === 2 && calculateHandValue(playerHand) === 21) {
-                alert("Blackjack! You win!");
-                resetGame();
-            } else if (dealerHand.length === 2 && calculateHandValue(dealerHand) === 21) {
-                alert("Dealer has blackjack. You lose.");
-                resetGame();
-            }
-        }
-
         function endGame(outcome) {
             dealerCardHidden = false;
             renderHands();
+
+            // If the player loses, add the "player-card" class to player's card images to apply the border
+            if (outcome === "You lose." || "Bust! You Loose!" ) {
+                const playerCardImages = playerHandElement.querySelectorAll('.card-image');
+                playerCardImages.forEach(image => image.classList.add('player-card'));
+            }
+
             hitButton.disabled = true;
             standButton.disabled = true;
             dealButton.disabled = false;
@@ -261,7 +269,7 @@
             playerHand.push(deck.pop());
             renderHands();
             if (calculateHandValue(playerHand) > 21) {
-                endGame("Bust! You lose.");
+                endGame("Bust! You Loose!");
             }
         });
 
