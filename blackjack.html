@@ -1,7 +1,16 @@
+<?php
+session_start();
+
+if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
+
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
     <title>Blackjack Game</title>
     <link rel="stylesheet" href="bj.css">
     <link rel="stylesheet" href="nav.css">
@@ -328,3 +337,10 @@
 </body>
 
 </html>
+
+<?php
+} else {
+    header("Location: index.php");
+    exit();
+}
+?>
