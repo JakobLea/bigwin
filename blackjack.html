@@ -197,7 +197,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             dealButton.disabled = true;
             hitButton.disabled = false;
             standButton.disabled = false;
+
+            // Check if the player has blackjack
+            checkPlayerBlackjack();
         }
+
+
+        // Function to check if the player has blackjack (initial hand value of 21)
+        function checkPlayerBlackjack() {
+            if (calculateHandValue(playerHand) === 21) {
+                dealerCardHidden = false;
+                renderHands();
+                if (calculateHandValue(dealerHand) === 21) {
+                    endGame("It's a push!");
+                } else {
+                    endGame("You win!");
+                }
+            }
+        }
+
 
         function renderHands() {
             playerHandElement.innerHTML = playerHand.map(card => getCardImageURL(card)).join('');
@@ -293,6 +311,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             dealButton.disabled = false;
         }
 
+        function checkPlayerWin() {
+            const playerValue = calculateHandValue(playerHand);
+            const dealerValue = calculateHandValue(dealerHand);
+
+            if (playerValue === 21) {
+                if (dealerValue === 21) {
+                    endGame("It's a push!");
+                } else {
+                    endGame("You win!");
+                }
+            }
+        }
+
+
+
         createDeck();
         shuffleDeck();
         renderHands(); // Render initial state
@@ -311,6 +344,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 if (calculateHandValue(playerHand) > 21) {
                     endGame("You Lost");
                 }
+                checkPlayerWin(); // Check if the player has 21 and win
             }
         });
 
