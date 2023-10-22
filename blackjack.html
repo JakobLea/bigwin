@@ -42,10 +42,23 @@
         }
 
         /* Add a border to the player's cards */
-        .player-card {
+        .player-loose-card {
             border: 5px solid #ff0000;
             border-radius: 7px;
             background-color: red;
+        }
+
+        /* Add a green border to the player's cards when they win */
+        .player-win-card {
+            border: 5px solid #00ff00;
+            border-radius: 7px;
+            background-color: #00ff00;
+        }
+
+        .player-push-card {
+            border: 5px solid #ff8800;
+            border-radius: 7px;
+            background-color: #ff8800;
         }
 
         .card-image {
@@ -81,9 +94,7 @@
         </ul>
         <div class="login-container">
             <li class="nav-item">
-                <div id="coinCount">
-
-                </div>
+                <div id="coinCount"></div>
             </li>
 
             <li class="nav-item">
@@ -96,7 +107,6 @@
             <span class="bar"></span>
         </div>
     </nav>
-
 
     <div id="container">
         <div id="game">
@@ -115,8 +125,6 @@
             <button id="stand-button">Stand</button>
         </div>
     </div>
-
-
 
     <script>
         const suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
@@ -151,13 +159,29 @@
         }
 
         function dealInitialCards() {
+            if (deck.length < 4) {
+                // If there are fewer than 4 cards left, reshuffle the deck.
+                createDeck();
+                shuffleDeck();
+            }
+
             // Clear previous cards only when the game is redealt.
             playerHand = [];
             dealerHand = [];
             dealerCardHidden = true; // Reset dealer's first card as hidden.
 
             for (let i = 0; i < 2; i++) {
+                if (deck.length === 0) {
+                    // If the deck is empty, reshuffle the deck.
+                    createDeck();
+                    shuffleDeck();
+                }
                 playerHand.push(deck.pop());
+                if (deck.length === 0) {
+                    // If the deck is empty, reshuffle the deck.
+                    createDeck();
+                    shuffleDeck();
+                }
                 dealerHand.push(deck.pop());
             }
             renderHands();
@@ -166,9 +190,8 @@
             standButton.disabled = false;
         }
 
-
         function renderHands() {
-            playerHandElement.innerHTML = playerHand.map(card => getCardImageURL(card, true)).join('');
+            playerHandElement.innerHTML = playerHand.map(card => getCardImageURL(card)).join('');
             dealerHandElement.innerHTML = dealerHand.map((card, index) => getCardImageImageHTML(card, index)).join('');
             playerCounterElement.textContent = `Total: ${calculateHandValue(playerHand)}`;
 
@@ -178,11 +201,7 @@
             } else {
                 dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerHand)}`;
             }
-
-            // Add the "player-card" class to player's card images
-            const playerCardImages = playerHandElement.querySelectorAll('.card-image');
         }
-
 
         function getCardImageURL(card) {
             const suitSymbol = getSuitSymbol(card.suit);
@@ -249,32 +268,50 @@
             dealerCardHidden = false;
             renderHands();
 
-            // If the player loses, add the "player-card" class to player's card images to apply the border
-            if (outcome === "You lose." || "Bust! You Loose!" ) {
+            if (outcome === "You Lost") {
                 const playerCardImages = playerHandElement.querySelectorAll('.card-image');
-                playerCardImages.forEach(image => image.classList.add('player-card'));
+                playerCardImages.forEach(image => image.classList.add('player-loose-card'));
+            } else if (outcome === "You win!") {
+                const playerCardImages = playerHandElement.querySelectorAll('.card-image');
+                playerCardImages.forEach(image => image.classList.add('player-win-card'));
+            } else if (outcome === "It's a push!") {
+                const playerCardImages = playerHandElement.querySelectorAll('.card-image');
+                playerCardImages.forEach(image => image.classList.add('player-push-card'));
             }
 
             hitButton.disabled = true;
             standButton.disabled = true;
             dealButton.disabled = false;
-            alert(outcome);
         }
 
-
+        createDeck();
+        shuffleDeck();
+        renderHands(); // Render initial state
 
         // Event listeners for the buttons
         dealButton.addEventListener("click", dealInitialCards);
         hitButton.addEventListener("click", () => {
-            playerHand.push(deck.pop());
-            renderHands();
-            if (calculateHandValue(playerHand) > 21) {
-                endGame("Bust! You Loose!");
+            if (playerHand.length < 5) { // Limit the number of cards a player can have
+                if (deck.length === 0) {
+                    // If the deck is empty, reshuffle the deck.
+                    createDeck();
+                    shuffleDeck();
+                }
+                playerHand.push(deck.pop());
+                renderHands();
+                if (calculateHandValue(playerHand) > 21) {
+                    endGame("You Lost");
+                }
             }
         });
 
         standButton.addEventListener("click", () => {
             while (calculateHandValue(dealerHand) < 17) {
+                if (deck.length === 0) {
+                    // If the deck is empty, reshuffle the deck.
+                    createDeck();
+                    shuffleDeck();
+                }
                 dealerHand.push(deck.pop());
             }
             renderHands();
@@ -282,14 +319,11 @@
             if (calculateHandValue(dealerHand) > 21 || calculateHandValue(playerHand) > calculateHandValue(dealerHand)) {
                 endGame("You win!");
             } else if (calculateHandValue(playerHand) < calculateHandValue(dealerHand)) {
-                endGame("You lose.");
+                endGame("You Lost");
             } else {
                 endGame("It's a push!");
             }
         });
-
-        createDeck();
-        shuffleDeck();
     </script>
 </body>
 
