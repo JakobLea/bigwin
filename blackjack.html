@@ -217,18 +217,53 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         }
 
 
-        function renderHands() {
-            playerHandElement.innerHTML = playerHand.map(card => getCardImageURL(card)).join('');
-            dealerHandElement.innerHTML = dealerHand.map((card, index) => getCardImageImageHTML(card, index)).join('');
-            playerCounterElement.textContent = `Total: ${calculateHandValue(playerHand)}`;
+        
+        // Function to load card images with a placeholder (back of the card)
+        function loadCardImages(cards, element, callback) {
+            let loadedImages = 0;
 
-            // Update the dealer's card counter including the hidden card
-            if (dealerCardHidden) {
-                dealerCounterElement.textContent = `Total: ?`;
-            } else {
-                dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerHand)}`;
-            }
+            cards.forEach((card, index) => {
+                const image = new Image();
+                image.onload = function () {
+                    loadedImages++;
+                    if (loadedImages === cards.length) {
+                        callback();
+                    }
+                };
+                image.src = `Cards/${getRankSymbol(card.rank)}${getSuitSymbol(card.suit)}.png`;
+                image.alt = `${card.rank} of ${card.suit}`;
+                image.classList.add('card-image');
+
+                // Display the back of the card as a placeholder
+                if (index === 0 && dealerCardHidden) {
+                    image.src = 'Cards/bak.png';
+                }
+
+                element.appendChild(image);
+            });
         }
+
+
+
+        // Function to load card images and render hands
+        function renderHands() {
+            playerHandElement.innerHTML = '';
+            dealerHandElement.innerHTML = '';
+
+            loadCardImages(playerHand, playerHandElement, () => {
+                loadCardImages(dealerHand, dealerHandElement, () => {
+                    playerCounterElement.textContent = `Total: ${calculateHandValue(playerHand)}`;
+
+                    // Update the dealer's card counter including the hidden card
+                    if (dealerCardHidden) {
+                        dealerCounterElement.textContent = 'Total: ?';
+                    } else {
+                        dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerHand)}`;
+                    }
+                });
+            });
+        }
+
 
         function getCardImageURL(card) {
             const suitSymbol = getSuitSymbol(card.suit);
