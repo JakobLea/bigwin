@@ -150,20 +150,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     gameStarted = true; // Set the game as started
                     // Show the multiplier if it's not visible
                     // Reset the multiplier
-                    multiplier = 1;
-                    if (!multiplierVisible) {
-                        document.getElementById("multiplier").style.display = "block";
-                        multiplierVisible = true;
-                    }
+                    // multiplier = 1;
+                    // if (!multiplierVisible) {
+                    //     document.getElementById("multiplier").style.display = "block";
+                    //     multiplierVisible = true;
+                    // }
                     document.getElementById("coinsToSpend").disabled = true; // Disable the input
                     document.getElementById("startButton").textContent = "Cash Out"; // Change button text
                     document.getElementById("startButton").classList.add("cash-out-disabled"); // Add the disabled class
 
                     const targetNumber = Math.floor(Math.random() * 100) + 1;
 
-                    slider.addEventListener("input", () => {
-                guessValue.textContent = slider.value;
-                });
 
                 checkButton.addEventListener("click", () => {
                     const userGuess = parseInt(slider.value, 10);
