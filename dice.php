@@ -97,6 +97,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
         let gameStarted = false; // Flag to track if the game has started
 
+        slider.addEventListener("input", () => {
+            guessValue.textContent = slider.value;
+        });
+
         function changeCoins(changeBy) {
                 var coinsChanged = document.getElementById("coins").innerHTML;
 
