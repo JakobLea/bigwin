@@ -56,10 +56,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
         <!-- Jon igjen :) -->
         <script src="mines.js"></script>
-
-        <script>
-
-        </script>
+        
         <script>
             const hamburger = document.querySelector(".hamburger");
             const navMenu = document.querySelector(".nav-menu");

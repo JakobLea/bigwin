@@ -176,6 +176,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         }
 
     </script>
+    <script src="mines.js"></script>
 </body>
 
 </html>
