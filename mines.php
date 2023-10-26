@@ -96,7 +96,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             </div> -->
                 <div id="boxforinp">
                     <input type="number" id="coinsToSpend" placeholder="Enter coins">
-                    <button id="addRemainingCoinsButton">MAX</button>
+                    <button id="addRemainingCoinsButton">Max</button>
                 </div>
 
 
