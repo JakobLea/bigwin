@@ -87,6 +87,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         </div>
         <div></div>
     </div>
+    <script src="mines.js"></script>
     <script>
         const slider = document.getElementById("slider");
         const guessValue = document.getElementById("guessValue");
@@ -176,7 +177,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         }
 
     </script>
-    <script src="mines.js"></script>
 </body>
 
 </html>
