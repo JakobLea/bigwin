@@ -92,7 +92,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <script>
         const slider = document.getElementById("slider");
         const guessValue = document.getElementById("guessValue");
-        const checkButton = document.getElementById("checkButton");
+        const checkButton = document.getElementById("startButton");
         const message = document.getElementById("message");
 
         let gameStarted = false; // Flag to track if the game has started
