@@ -167,8 +167,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                     if (userGuess > targetNumber) {
                         message.textContent = "Congratulations! You guessed correctly. The target number was lower.";
+                        changeCoins( (2 * coinsToSpend));
+                        gameStarted = false; // Reset the game flag
+                document.getElementById("startButton").classList.remove("cash-out-disabled"); // Remove disabled class
+                document.getElementById("startButton").disabled = false; // Enable the "Start Game" button
+                document.getElementById("startButton").textContent = "Start Game"; // Reset button text
+                document.getElementById("coinsToSpend").disabled = false; // Enable the input
+                document.getElementById("multiplier").style.display = "none"; // Hide the multiplier
+                multiplierVisible = false; // Reset multiplierVisible flag
+                document.getElementById("container").innerHTML = "";
+                mines = [];
+                points = 0;
+                multiplier = 1; // Reset the multiplier to 1
+                updateMultiplier();
+                hideResetButton(); // Hide the reset button
+                showCashOutButton(); // Show the cash-out button
+                initializeGame();
+                closePopup();
+                mineFreeCellsClicked = 0;
                     } else {
                         message.textContent = "Try a higher number.";
+                        gameStarted = false; // Reset the game flag
                     }
                 // });
                 }
