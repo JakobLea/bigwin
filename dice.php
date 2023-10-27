@@ -162,7 +162,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     const targetNumber = Math.floor(Math.random() * 100) + 1;
 
 
-                checkButton.addEventListener("click", () => {
+                // checkButton.addEventListener("click", () => {
                     const userGuess = parseInt(slider.value, 10);
 
                     if (userGuess > targetNumber) {
@@ -170,7 +170,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     } else {
                         message.textContent = "Try a higher number.";
                     }
-                });
+                // });
                 }
             }
             // else if (gameStarted && cellsClicked) {
