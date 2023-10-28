@@ -8,13 +8,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 <html>
 
 <head>
-    <script src="jonsfiler/jquery-3.7.1.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
     <title>Blackjack Game</title>
     <link rel="stylesheet" href="bj.css">
     <link rel="stylesheet" href="nav.css">
+    <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,8 +22,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
-            background-color: beige;
+            height: 70vh;
         }
 
         #game {
@@ -38,6 +34,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         #player,
         #dealer {
             display: flex;
+            flex-direction: column;
             align-items: center;
             margin: 10px;
         }
@@ -46,20 +43,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             margin-right: 10px;
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px;
+        .deal {
+            display: flex;
         }
 
-        /* Add a border to the player's cards */
+        .hitstand {
+            display: flex;
+            flex-direction: row;
+        }
+
         .player-loose-card {
             border: 5px solid #ff0000;
             border-radius: 7px;
             background-color: red;
         }
 
-        /* Add a green border to the player's cards when they win */
         .player-win-card {
             border: 5px solid #00ff00;
             border-radius: 7px;
@@ -80,6 +78,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
         .counter {
             font-size: 24px;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-container>div {
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .flex-container>div:first-child {
+            width: 19%;
+        }
+
+        .flex-container>div:nth-child(2) {
+            width: 60vw;
         }
     </style>
 </head>
@@ -119,19 +134,32 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         </div>
     </nav>
 
-    <div id="container">
-        <div id="game">
-            <div id="player">
-                <div class="counter" id="player-counter"></div>
-                <div id="player-hand" class="hand"></div>
+    <div class="flex-container">
+        <div>
+            <div class="buttons">
+                <div id="boxforinp">
+                    <input type="number" id="coinsToSpend" placeholder="Enter coins">
+                </div>
+                <div class="deal">
+                    <button id="deal-button">Deal</button>
+                </div>
+                <div class="hitstand">
+                    <button id="stand-button">Stand</button>
+                    <button id="hit-button">Hit</button>
+                </div>
             </div>
-            <div id="dealer">
-                <div class="counter" id="dealer-counter"></div>
-                <div id="dealer-hand" class="hand"></div>
+        </div>
+        <div id="container">
+            <div id="game">
+                <div id="player">
+                    <div class="counter" id="player-counter"></div>
+                    <div id="player-hand" class="hand"></div>
+                </div>
+                <div id="dealer">
+                    <div class="counter" id="dealer-counter"></div>
+                    <div id="dealer-hand" class="hand"></div>
+                </div>
             </div>
-            <button id="deal-button">Deal</button>
-            <button id="hit-button">Hit</button>
-            <button id="stand-button">Stand</button>
         </div>
     </div>
 
@@ -328,11 +356,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
         createDeck();
         shuffleDeck();
-        renderHands(); 
+        renderHands();
 
         dealButton.addEventListener("click", dealInitialCards);
         hitButton.addEventListener("click", () => {
-            if (playerHand.length < 5) { 
+            if (playerHand.length < 5) {
                 if (deck.length === 0) {
                     createDeck();
                     shuffleDeck();
@@ -342,7 +370,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 if (calculateHandValue(playerHand) > 21) {
                     endGame("You Lost");
                 }
-                checkPlayerWin(); 
+                checkPlayerWin();
             }
         });
 
