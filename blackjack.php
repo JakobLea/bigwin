@@ -279,7 +279,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             } else if (outcome === "You win!") {
                 const playerCardImages = playerHandElement.querySelectorAll('.card-image');
                 playerCardImages.forEach(image => image.classList.add('player-win-card'));
-                changeCoins(+2);
+                changeCoins(+coinsToSpend);
             } else if (outcome === "It's a push!") {
                 const playerCardImages = playerHandElement.querySelectorAll('.card-image');
                 playerCardImages.forEach(image => image.classList.add('player-push-card'));
