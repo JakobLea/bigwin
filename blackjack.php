@@ -379,6 +379,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 document.getElementById("coinsToSpend").disabled = false; // Enable the input
             } else if (calculateHandValue(playerHand) < calculateHandValue(dealerHand)) {
                 endGame("You Lost");
+                document.getElementById("coinsToSpend").disabled = false; // Enable the input
             } else {
                 endGame("It's a push!");
                 document.getElementById("coinsToSpend").disabled = false; // Enable the input
