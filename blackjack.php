@@ -376,10 +376,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             if (calculateHandValue(dealerHand) > 21 || calculateHandValue(playerHand) > calculateHandValue(dealerHand)) {
                 endGame("You win!");
+                document.getElementById("coinsToSpend").disabled = false; // Enable the input
             } else if (calculateHandValue(playerHand) < calculateHandValue(dealerHand)) {
                 endGame("You Lost");
             } else {
                 endGame("It's a push!");
+                document.getElementById("coinsToSpend").disabled = false; // Enable the input
             }
         });
     </script>
