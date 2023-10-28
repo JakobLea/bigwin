@@ -202,8 +202,3 @@ button:active {
   transform: translateY(2px);
 }
 
-p {
-  font-size: 18px;
-  font-weight: bold;
-  color: #ffffff;
-}
