@@ -340,7 +340,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             } else {
                 errorMessage.style.display = "none";
                 coinsToSpendInput.style.border = "";
-                changeCoins(-coinsToSpend); // Deduct the specified number of coins to start the game
+                // changeCoins(-coinsToSpend); // Deduct the specified number of coins to start the game
                 document.getElementById("coinsToSpend").disabled = true; // Disable the input
                 dealInitialCards();
             }
