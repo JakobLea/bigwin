@@ -81,6 +81,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         </div>
     </div>
 
+    <!-- Modal for insufficient funds -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>You don't have enough coins to play. Please add more coins.</p>
+            <button id="closeModal">OK</button>
+        </div>
+    </div>
+
     <script src="mines.js"></script>
 
     <script>
@@ -300,8 +308,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         renderHands();
 
 
-
-        // Event listener for the "Deal" button
         dealButton.addEventListener("click", () => {
             const coinsToSpendInput = document.getElementById("boxforinp");
             const errorMessage = document.getElementById("errorMessage");
@@ -315,7 +321,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             } else if (coinsToSpend > getCoins()) {
                 // Hide the error message and remove the 'error' class from the input
                 errorMessage.style.display = "none";
-                coinsToSpendInput.style.border = "2px solid red";
+                coinsToSpendInput.style.border = "";
                 // Show the modal
                 const modal = document.getElementById("myModal");
                 modal.style.display = "block";
@@ -332,6 +338,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 changeCoins(-coinsToSpend); // Deduct the specified number of coins to start the game
                 dealInitialCards();
             }
+        });
+
+        // Close the modal when the "OK" button is clicked
+        const closeModalButton = document.getElementById("closeModal");
+        closeModalButton.addEventListener("click", () => {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
         });
 
 
