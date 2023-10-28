@@ -14,6 +14,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
 </head>
 
+<script src="jonsfiler/jquery-3.7.1.min.js"></script>
+
 <body style="background-color:#333333">
     <nav class="navbar">
         <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png"
@@ -78,6 +80,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             </div>
         </div>
     </div>
+
+    <script src="mines.js"></script>
 
     <script>
         function changeCoins(changeBy) {
