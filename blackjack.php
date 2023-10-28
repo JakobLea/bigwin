@@ -299,6 +299,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 } else {
                     endGame("You win!");
                 }
+                document.getElementById("coinsToSpend").disabled = false; // Enable the input
             }
         }
 
@@ -339,6 +340,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 errorMessage.style.display = "none";
                 coinsToSpendInput.style.border = "";
                 changeCoins(-coinsToSpend); // Deduct the specified number of coins to start the game
+                document.getElementById("coinsToSpend").disabled = true; // Disable the input
                 dealInitialCards();
             }
         });
@@ -355,6 +357,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 renderHands();
                 if (calculateHandValue(playerHand) > 21) {
                     endGame("You Lost");
+                    document.getElementById("coinsToSpend").disabled = false; // Enable the input
                 }
                 checkPlayerWin();
             }
