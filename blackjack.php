@@ -81,6 +81,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         </div>
     </div>
 
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>Not enough coins to start the game.</p>
+            <button id="Deposit" onclick="location.href = 'Penger.php';">Deposit</button>
+        </div>
+    </div>
+
 
 
     <script src="mines.js"></script>
