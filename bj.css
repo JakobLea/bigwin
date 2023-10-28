@@ -1,3 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#player,
+#dealer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.hand {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.deal {
+  display: flex;
+}
+
+.hitstand {
+  display: flex;
+  flex-direction: row;
+}
+
+.player-loose-card {
+  border: 5px solid #ff0000;
+  border-radius: 7px;
+  background-color: red;
+}
+
+.player-win-card {
+  border: 5px solid #00ff00;
+  border-radius: 7px;
+  background-color: #00ff00;
+}
+
+.player-push-card {
+  border: 5px solid #ff8800;
+  border-radius: 7px;
+  background-color: #ff8800;
+}
+
+.card-image {
+  width: 100px;
+  height: 150px;
+  margin: 10px;
+}
+
+.counter {
+  font-size: 24px;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container>div {
+  margin: 10px;
+  padding: 20px;
+}
+
+.flex-container>div:first-child {
+  width: 19%;
+}
+
+.flex-container>div:nth-child(2) {
+  width: 60vw;
+}
+
 #boxforinp {
     background-color: #161616;
     border-radius: 7px;
@@ -50,7 +135,7 @@ button {
     font-weight: bold;
     font-size: 16px;
     box-shadow: 0px 4px #333359;
-    margin-top: 13px;
+    margin-top: 20px;
     margin-left: 10px;
   }
   
@@ -63,4 +148,17 @@ button {
     background-color: #6967ff;
     box-shadow: 0px 2px #6967ff;
     transform: translateY(1.2px);
+  }
+
+  .buttons{
+    margin-top: 55%;
+    text-align: start;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-top: 0px;
+    display: none;
   }
