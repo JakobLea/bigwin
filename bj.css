@@ -202,3 +202,6 @@ button:active {
   transform: translateY(2px);
 }
 
+#coinsToSpend:disabled {
+  cursor: not-allowed;
+}
