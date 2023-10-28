@@ -8,6 +8,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 <html>
 
 <head>
+    <script src="jonsfiler/jquery-3.7.1.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
@@ -25,6 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             justify-content: center;
             align-items: center;
             height: 80vh;
+            background-color: beige;
         }
 
         #game {
@@ -120,12 +122,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <div id="container">
         <div id="game">
             <div id="player">
-                <h2>Player's Hand:</h2>
                 <div class="counter" id="player-counter"></div>
                 <div id="player-hand" class="hand"></div>
             </div>
             <div id="dealer">
-                <h2>Dealer's Hand:</h2>
                 <div class="counter" id="dealer-counter"></div>
                 <div id="dealer-hand" class="hand"></div>
             </div>
@@ -217,53 +217,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         }
 
 
-        
-        // Function to load card images with a placeholder (back of the card)
-        function loadCardImages(cards, element, callback) {
-            let loadedImages = 0;
-
-            cards.forEach((card, index) => {
-                const image = new Image();
-                image.onload = function () {
-                    loadedImages++;
-                    if (loadedImages === cards.length) {
-                        callback();
-                    }
-                };
-                image.src = `Cards/${getRankSymbol(card.rank)}${getSuitSymbol(card.suit)}.png`;
-                image.alt = `${card.rank} of ${card.suit}`;
-                image.classList.add('card-image');
-
-                // Display the back of the card as a placeholder
-                if (index === 0 && dealerCardHidden) {
-                    image.src = 'Cards/bak.png';
-                }
-
-                element.appendChild(image);
-            });
-        }
-
-
-
-        // Function to load card images and render hands
         function renderHands() {
-            playerHandElement.innerHTML = '';
-            dealerHandElement.innerHTML = '';
+            playerHandElement.innerHTML = playerHand.map(card => getCardImageURL(card)).join('');
+            dealerHandElement.innerHTML = dealerHand.map((card, index) => getCardImageImageHTML(card, index)).join('');
+            playerCounterElement.textContent = `Total: ${calculateHandValue(playerHand)}`;
 
-            loadCardImages(playerHand, playerHandElement, () => {
-                loadCardImages(dealerHand, dealerHandElement, () => {
-                    playerCounterElement.textContent = `Total: ${calculateHandValue(playerHand)}`;
-
-                    // Update the dealer's card counter including the hidden card
-                    if (dealerCardHidden) {
-                        dealerCounterElement.textContent = 'Total: ?';
-                    } else {
-                        dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerHand)}`;
-                    }
-                });
-            });
+            // Update the dealer's card counter including the hidden card
+            if (dealerCardHidden) {
+                dealerCounterElement.textContent = `Total: ?`;
+            } else {
+                dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerHand)}`;
+            }
         }
-
 
         function getCardImageURL(card) {
             const suitSymbol = getSuitSymbol(card.suit);
@@ -363,14 +328,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
         createDeck();
         shuffleDeck();
-        renderHands(); // Render initial state
+        renderHands(); 
 
-        // Event listeners for the buttons
         dealButton.addEventListener("click", dealInitialCards);
         hitButton.addEventListener("click", () => {
-            if (playerHand.length < 5) { // Limit the number of cards a player can have
+            if (playerHand.length < 5) { 
                 if (deck.length === 0) {
-                    // If the deck is empty, reshuffle the deck.
                     createDeck();
                     shuffleDeck();
                 }
@@ -379,7 +342,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 if (calculateHandValue(playerHand) > 21) {
                     endGame("You Lost");
                 }
-                checkPlayerWin(); // Check if the player has 21 and win
+                checkPlayerWin(); 
             }
         });
 
