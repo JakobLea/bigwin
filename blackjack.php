@@ -270,6 +270,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         }
 
         function endGame(outcome) {
+            let coinsToReceive = document.getElementById("coinsToSpend").value * 2;
+            
             dealerCardHidden = false;
             renderHands();
 
@@ -279,7 +281,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             } else if (outcome === "You win!") {
                 const playerCardImages = playerHandElement.querySelectorAll('.card-image');
                 playerCardImages.forEach(image => image.classList.add('player-win-card'));
-                changeCoins(coinsToSpend);
+                changeCoins(coinsToReceive); // Award coins based on the multiplier
             } else if (outcome === "It's a push!") {
                 const playerCardImages = playerHandElement.querySelectorAll('.card-image');
                 playerCardImages.forEach(image => image.classList.add('player-push-card'));
