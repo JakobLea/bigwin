@@ -270,7 +270,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         }
 
         function endGame(outcome) {
-            let coinsToReceive = document.getElementById("coinsToSpend");
+            let coinsToReceive = document.getElementById("coinsToSpend").value * 1;
             dealerCardHidden = false;
             renderHands();
 
