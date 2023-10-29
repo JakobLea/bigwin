@@ -279,6 +279,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             } else if (outcome === "You win!") {
                 const playerCardImages = playerHandElement.querySelectorAll('.card-image');
                 playerCardImages.forEach(image => image.classList.add('player-win-card'));
+                changeCoins(coinsToSpend);
             } else if (outcome === "It's a push!") {
                 const playerCardImages = playerHandElement.querySelectorAll('.card-image');
                 playerCardImages.forEach(image => image.classList.add('player-push-card'));
@@ -339,7 +340,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             } else {
                 errorMessage.style.display = "none";
                 coinsToSpendInput.style.border = "";
-                changeCoins(+coinsToSpend); // Deduct the specified number of coins to start the game
+                changeCoins(-coinsToSpend); // Deduct the specified number of coins to start the game
                 document.getElementById("coinsToSpend").disabled = true; // Disable the input
                 dealInitialCards();
             }
@@ -377,7 +378,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             if (calculateHandValue(dealerHand) > 21 || calculateHandValue(playerHand) > calculateHandValue(dealerHand)) {
                 endGame("You win!");
                 document.getElementById("coinsToSpend").disabled = false; // Enable the input
-                changeCoins(+coinsToSpend);
             } else if (calculateHandValue(playerHand) < calculateHandValue(dealerHand)) {
                 endGame("You Lost");
                 document.getElementById("coinsToSpend").disabled = false; // Enable the input
