@@ -285,7 +285,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             } else if (outcome === "It's a push!") {
                 const playerCardImages = playerHandElement.querySelectorAll('.card-image');
                 playerCardImages.forEach(image => image.classList.add('player-push-card'));
-                changeCoins(coinsToReceive); // Award coins based on the multiplier
             }
 
             hitButton.disabled = true;
