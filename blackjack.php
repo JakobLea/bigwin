@@ -122,7 +122,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             const hitButton = document.getElementById("hit-button");
             const standButton = document.getElementById("stand-button");
             let dealerCardHidden = true; // Dealer's first card is hidden.
-            let coins = 0; // Initialize with an initial amount
             hitButton.disabled = true;
             standButton.disabled = true;
 
