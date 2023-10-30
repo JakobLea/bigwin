@@ -11,13 +11,12 @@ www.bigwin.cash/bigwin/
 
 Brukertesting spørsmål:
 
-1. Hva synes du om utformingen på nettsiden, er den oversiktelig?
-2. Hvordan er fargene?
-3. Hva synes du om kortene?
-4. Hva tenker du om odsen? 
-5. Hva synes du om registreringen/innloggingen på nettsiden?
-6. Klarer du å finne fran til riktig spill?
-7. Klarer du å spille en hånd med blackjack?
+
+1. Kan du registrere en bruker og logge inn?
+2. Klarer du å finne fran til riktig spill?
+3. Klarer du å spille en hånd med blackjack?
+4. Klarer du å spille mines?
+5. Klarer du å endre antall miner på brettet?
 
 
 Tilbakemeldingsspørsmål:
@@ -27,3 +26,7 @@ Tilbakemeldingsspørsmål:
 3. Er det andre innsttillinger du ønsker deg?
 4. Hva kan forbedres?
 5. Er det noe som mangler?
+6. Hva synes du om utformingen på nettsiden, er den oversiktelig?
+7. Hvordan er fargene?
+8. Hva synes du om kortene?
+9. Hva tenker du om odsen? 
