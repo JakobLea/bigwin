@@ -145,7 +145,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
 
-            // Update the dealInitialCards function to deal cards alternately and reveal the player's cards
+            // Add a variable to track whether the player's cards are hidden
+            let playerCardsHidden = true;
+
+            // ...
+
+            // Function to deal the initial cards one by one, hiding the player's cards
             function dealInitialCards() {
                 if (deck.length < 4) {
                     // If there are fewer than 4 cards left, reshuffle the deck.
@@ -156,17 +161,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 // Clear previous cards only when the game is redealt.
                 playerHand = [];
                 dealerHand = [];
-                dealerCardHidden = true; // Reset dealer's first card as hidden.
 
                 const dealInterval = setInterval(() => {
                     if (playerHand.length < 2) {
-                        // Deal one card to the player
+                        // Deal one card to the player and hide it
                         if (deck.length === 0) {
                             // If the deck is empty, reshuffle the deck.
                             createDeck();
                             shuffleDeck();
                         }
                         playerHand.push(deck.pop());
+                        playerCardsHidden = true; // Hide the player's cards
                         renderHands();
                     } else if (dealerHand.length < 2) {
                         // Deal one card to the dealer
@@ -180,7 +185,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     } else {
                         // Both player and dealer have two cards, stop dealing
                         clearInterval(dealInterval);
-                        revealPlayerCards(); // Function to reveal the player's cards
                         dealButton.disabled = true;
                         hitButton.disabled = false;
                         standButton.disabled = false;
@@ -189,12 +193,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         checkPlayerBlackjack();
                     }
                 }, 1000); // Adjust the interval as needed (in milliseconds)
-            }
-
-            // Function to reveal the player's cards
-            function revealPlayerCards() {
-                dealerCardHidden = false;
-                renderHands();
             }
 
 
