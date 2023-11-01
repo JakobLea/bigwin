@@ -205,7 +205,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         // Check if the player has blackjack
                         checkPlayerBlackjack();
                     }
-                }, 600); // Adjust the interval as needed (in milliseconds)
+                }, 400); // Adjust the interval as needed (in milliseconds)
             }
 
 
