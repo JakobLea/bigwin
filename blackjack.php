@@ -242,12 +242,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 const cardImageHTML = `<img class="card-image" src="Cards/${rankSymbol}${suitSymbol}.png" alt="${card.rank} of ${card.suit}">`;
 
                 // If the dealer's first card is hidden, show the back of the card.
-                if (index === 0 && dealerCardHidden || playerCardsHidden) {
+                if (index === 0 && dealerCardHidden) {
+                    return '<img class="card-image" src="Cards/bak.png" alt="Card Back">';
+                }
+
+                // If player's cards are hidden, show the back of the card.
+                if (index >= 0 && playerCardsHidden) {
                     return '<img class="card-image" src="Cards/bak.png" alt="Card Back">';
                 }
 
                 return cardImageHTML;
             }
+
 
             function getSuitSymbol(suit) {
                 switch (suit) {
