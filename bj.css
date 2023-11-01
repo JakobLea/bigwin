@@ -152,7 +152,8 @@ button:active {
 
 button:disabled {
     cursor: not-allowed;
-}
+    color:#00ff00;
+  }
 
 .buttons {
   margin-top: 55%;
