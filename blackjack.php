@@ -181,7 +181,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     } else {
                         // Both player and dealer have two cards, stop dealing
                         clearInterval(dealInterval);
-                        // dealButton.disabled = true;
                         hitButton.disabled = false;
                         standButton.disabled = false;
 
