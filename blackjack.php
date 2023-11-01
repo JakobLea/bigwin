@@ -144,8 +144,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 }
             }
 
+            
 
-            // Update the dealInitialCards function to deal cards with some face down and others revealed
+            // Update the dealInitialCards function to deal one hidden card to the dealer
             function dealInitialCards() {
                 if (deck.length < 4) {
                     // If there are fewer than 4 cards left, reshuffle the deck.
@@ -154,14 +155,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 }
 
                 // Clear previous cards only when the game is redealt.
-                dealButton.disabled = true;
                 playerHand = [];
                 dealerHand = [];
                 dealerCardHidden = true; // Reset dealer's first card as hidden.
 
                 const dealInterval = setInterval(() => {
-                    if (playerHand.length === 0) {
-                        // Deal the first card face down to the player
+                    if (playerHand.length < 2) {
+                        // Deal one face-down card to the player
                         if (deck.length === 0) {
                             // If the deck is empty, reshuffle the deck.
                             createDeck();
@@ -169,8 +169,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         }
                         playerHand.push(deck.pop());
                         renderHands();
-                    } else if (dealerHand.length === 0) {
-                        // Deal the first card face down to the dealer
+                    } else if (dealerHand.length < 2) {
+                        // Deal one face-down card and one face-up card to the dealer
                         if (deck.length === 0) {
                             // If the deck is empty, reshuffle the deck.
                             createDeck();
@@ -178,35 +178,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         }
                         dealerHand.push(deck.pop());
                         renderHands();
-                    } else if (playerHand.length === 1) {
-                        // Deal the second card to the player (revealed)
-                        if (deck.length === 0) {
-                            // If the deck is empty, reshuffle the deck.
-                            createDeck();
-                            shuffleDeck();
-                        }
-                        playerHand.push(deck.pop());
-                        renderHands();
-                    } else if (dealerHand.length === 1) {
-                        // Deal the second card to the dealer (revealed)
-                        if (deck.length === 0) {
-                            // If the deck is empty, reshuffle the deck.
-                            createDeck();
-                            shuffleDeck();
-                        }
-                        dealerHand.push(deck.pop());
-                        renderHands();
+                        setTimeout(() => {
+                            dealerCardHidden = false; // Flip the dealer's face-down card after a delay
+                            renderHands();
+                        }, 1000);
                     } else {
                         // Both player and dealer have two cards, stop dealing
                         clearInterval(dealInterval);
+                        dealButton.disabled = true;
                         hitButton.disabled = false;
                         standButton.disabled = false;
 
                         // Check if the player has blackjack
                         checkPlayerBlackjack();
                     }
-                }, 400); // Adjust the interval as needed (in milliseconds)
+                }, 1000); // Adjust the interval as needed (in milliseconds)
             }
+
+
 
 
 
