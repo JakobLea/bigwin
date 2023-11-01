@@ -145,7 +145,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
 
-            // Update the dealInitialCards function to deal cards alternately
+            // Update the dealInitialCards function to deal face-down cards and flip them
             function dealInitialCards() {
                 if (deck.length < 4) {
                     // If there are fewer than 4 cards left, reshuffle the deck.
@@ -161,7 +161,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                 const dealInterval = setInterval(() => {
                     if (playerHand.length < 2) {
-                        // Deal one card to the player
+                        // Deal one face-down card to the player
                         if (deck.length === 0) {
                             // If the deck is empty, reshuffle the deck.
                             createDeck();
@@ -170,7 +170,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         playerHand.push(deck.pop());
                         renderHands();
                     } else if (dealerHand.length < 2) {
-                        // Deal one card to the dealer
+                        // Deal one face-down card to the dealer
                         if (deck.length === 0) {
                             // If the deck is empty, reshuffle the deck.
                             createDeck();
@@ -178,6 +178,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         }
                         dealerHand.push(deck.pop());
                         renderHands();
+                        // Flip the dealer's face-down card after a delay
+                        setTimeout(() => {
+                            dealerCardHidden = false;
+                            renderHands();
+                        }, 1000);
                     } else {
                         // Both player and dealer have two cards, stop dealing
                         clearInterval(dealInterval);
@@ -187,8 +192,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         // Check if the player has blackjack
                         checkPlayerBlackjack();
                     }
-                }, 600); // Adjust the interval as needed (in milliseconds)
+                }, 1000); // Adjust the interval as needed (in milliseconds)
             }
+
 
 
 
