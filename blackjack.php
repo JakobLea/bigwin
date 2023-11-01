@@ -154,6 +154,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 }
 
                 // Clear previous cards only when the game is redealt.
+                dealButton.disabled = true;
                 playerHand = [];
                 dealerHand = [];
                 dealerCardHidden = true; // Reset dealer's first card as hidden.
@@ -180,7 +181,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     } else {
                         // Both player and dealer have two cards, stop dealing
                         clearInterval(dealInterval);
-                        dealButton.disabled = true;
+                        // dealButton.disabled = true;
                         hitButton.disabled = false;
                         standButton.disabled = false;
 
