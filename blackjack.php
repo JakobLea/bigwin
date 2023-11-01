@@ -150,7 +150,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             // ...
 
-            // Function to deal the initial cards one by one, hiding the player's cards
             function dealInitialCards() {
                 if (deck.length < 4) {
                     // If there are fewer than 4 cards left, reshuffle the deck.
@@ -171,7 +170,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                             shuffleDeck();
                         }
                         playerHand.push(deck.pop());
-                        playerCardsHidden = true; // Hide the player's cards
                         renderHands();
                     } else if (dealerHand.length < 2) {
                         // Deal one card to the dealer
@@ -191,14 +189,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                         // Check if the player has blackjack
                         checkPlayerBlackjack();
+
+                        // Automatically reveal the player's cards after a delay
+                        setTimeout(() => {
+                            playerCardsHidden = false;
+                            renderHands();
+                        }, 1000); // Adjust the delay as needed (in milliseconds)
                     }
                 }, 1000); // Adjust the interval as needed (in milliseconds)
             }
-
-
-
-
-
 
 
 
