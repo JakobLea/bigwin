@@ -145,7 +145,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
 
-            // Update the dealInitialCards function to deal face-down cards and flip them
+            // Update the dealInitialCards function to deal cards alternately and reveal the player's cards
             function dealInitialCards() {
                 if (deck.length < 4) {
                     // If there are fewer than 4 cards left, reshuffle the deck.
@@ -160,7 +160,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                 const dealInterval = setInterval(() => {
                     if (playerHand.length < 2) {
-                        // Deal one face-down card to the player
+                        // Deal one card to the player
                         if (deck.length === 0) {
                             // If the deck is empty, reshuffle the deck.
                             createDeck();
@@ -169,7 +169,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         playerHand.push(deck.pop());
                         renderHands();
                     } else if (dealerHand.length < 2) {
-                        // Deal one face-down card to the dealer
+                        // Deal one card to the dealer
                         if (deck.length === 0) {
                             // If the deck is empty, reshuffle the deck.
                             createDeck();
@@ -177,14 +177,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         }
                         dealerHand.push(deck.pop());
                         renderHands();
-                        // Flip the dealer's face-down card after a delay
-                        setTimeout(() => {
-                            dealerCardHidden = false;
-                            renderHands();
-                        }, 1000);
                     } else {
                         // Both player and dealer have two cards, stop dealing
                         clearInterval(dealInterval);
+                        revealPlayerCards(); // Function to reveal the player's cards
                         dealButton.disabled = true;
                         hitButton.disabled = false;
                         standButton.disabled = false;
@@ -194,6 +190,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     }
                 }, 1000); // Adjust the interval as needed (in milliseconds)
             }
+
+            // Function to reveal the player's cards
+            function revealPlayerCards() {
+                dealerCardHidden = false;
+                renderHands();
+            }
+
 
 
 
