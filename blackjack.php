@@ -145,7 +145,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
 
-            // Update the dealInitialCards function to deal cards with the player's card face down and flip it
+            // Update the dealInitialCards function to deal the player's cards face down and flip them
             function dealInitialCards() {
                 if (deck.length < 4) {
                     // If there are fewer than 4 cards left, reshuffle the deck.
@@ -168,9 +168,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         }
                         playerHand.push(deck.pop());
                         renderHands();
-                        // After 1000ms, flip the player's card
+                        // After 1000ms, flip the player's first card
                         setTimeout(() => {
-                            dealerCardHidden = false;
+                            playerHand[0].isFaceDown = false;
                             renderHands();
                         }, 1000);
                     } else if (dealerHand.length === 0) {
