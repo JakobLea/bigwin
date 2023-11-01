@@ -145,7 +145,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
 
-            // Update the dealInitialCards function to deal the player's cards face down and flip them
+            // Update the dealInitialCards function to deal cards with some face down and others revealed
             function dealInitialCards() {
                 if (deck.length < 4) {
                     // If there are fewer than 4 cards left, reshuffle the deck.
@@ -154,6 +154,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 }
 
                 // Clear previous cards only when the game is redealt.
+                dealButton.disabled = true;
                 playerHand = [];
                 dealerHand = [];
                 dealerCardHidden = true; // Reset dealer's first card as hidden.
@@ -168,11 +169,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         }
                         playerHand.push(deck.pop());
                         renderHands();
-                        // After 1000ms, flip the player's first card
-                        setTimeout(() => {
-                            playerHand[0].isFaceDown = false;
-                            renderHands();
-                        }, 1000);
                     } else if (dealerHand.length === 0) {
                         // Deal the first card face down to the dealer
                         if (deck.length === 0) {
@@ -203,7 +199,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     } else {
                         // Both player and dealer have two cards, stop dealing
                         clearInterval(dealInterval);
-                        dealButton.disabled = true;
                         hitButton.disabled = false;
                         standButton.disabled = false;
 
@@ -212,7 +207,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     }
                 }, 1000); // Adjust the interval as needed (in milliseconds)
             }
-
 
 
 
