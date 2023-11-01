@@ -150,10 +150,9 @@ button:active {
   transform: translateY(1.2px);
 }
 
-#deal-button:disabled {
+button:disabled {
     cursor: not-allowed;
-    color:#00ff00;
-  }
+}
 
 .buttons {
   margin-top: 55%;
