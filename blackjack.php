@@ -210,6 +210,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
 
+
+
+
             // Function to check if the player has blackjack (initial hand value of 21)
             function checkPlayerBlackjack() {
                 if (calculateHandValue(playerHand) === 21) {
@@ -254,14 +257,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     return '<img class="card-image" src="Cards/bak.png" alt="Card Back">';
                 }
 
-                // If player's cards are hidden, show the back of the card.
-                if (index >= 0 && playerCardsHidden) {
-                    return '<img class="card-image" src="Cards/bak.png" alt="Card Back">';
-                }
-
                 return cardImageHTML;
             }
-
 
             function getSuitSymbol(suit) {
                 switch (suit) {
