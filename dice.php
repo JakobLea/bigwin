@@ -78,7 +78,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 <div class="container">
                     <h1>Dice</h1>
                     <div class="game">
-                        <input type="range" id="slider" min="1" max="100" step="1" value="50">
+                        <input type="range" id="slider" min="2" max="98" step="1" value="50">
                         <p>Your Guess: <span id="guessValue">50</span></p>
                         <p id="message"></p>
                     </div>
@@ -114,6 +114,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                 return gottenCoins;
             }
+            
+
+            const multiplierSystems = [0.2, 2.4, ];
 
             function startGame() {
                 if (!gameStarted) {
