@@ -79,7 +79,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <h1>Dice</h1>
                     <div class="game">
                         <input type="range" id="slider" min="2" max="98" step="1" value="50">
-                        <p>Your Guess: <span id="guessValue">50</span></p>
+                        <p>Ditt tall: <span id="guessValue">50</span>, dette gir deg x<span id="multi">1,9800</span></p>
                         <p id="message"></p>
                     </div>
 
@@ -91,6 +91,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <script>
             const slider = document.getElementById("slider");
             const guessValue = document.getElementById("guessValue");
+            const multi = document.getElementById("multi");
             const checkButton = document.getElementById("startButton");
             const message = document.getElementById("message");
 
@@ -98,6 +99,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
             slider.addEventListener("input", () => {
                 guessValue.textContent = slider.value;
+                multi.textContent = multiplierSystems[slider.value];
             });
 
             function changeCoins(changeBy) {
@@ -116,7 +118,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
             
 
-            const multiplierSystems = [0.2, 2.4, ];
+            const multiplierSystems = [1, 1, 1.0102, 1.0206, 1.0313, 1.0421, 1.0532, 1.0645, 1.0761, 1.0879, 1.1000, 1.1124, 1.1250, 1.1379, 1.1512, 1.1647, 1.1786, 1.1928, 1.2073, 1.2222, 1.2375, 1.2532, 1.2692, 1.2857, 1.3026, 1.3200, 1.3378, 1.3562, 1.3750, 1.3944, 1.4143, 1.4348, 1.4559, 1.4776, 1.5000, 1.5231, 1.5469, 1.5714, 1.5968, 1.6230, 1.6500, 1.6780, 1.7069, 1.7368, 1.7679, 1.8000, 1.8333, 1.8679, 1.9038, 1.9412, 1.9800, 2.0204, 2.0625, 2.1064, 2.1522, 2.2000, 2.2500, 2.3023, 2.4146, 2.4750, 2.5385, 2.6053, 2.6757, 2.7500, 2.8286, 2.9118, 3.0000, 3.0938, 3.1935, 3.3000, 3.3000, 3.4138, 3.5357, 3.6667, 3.8077, 3.9600, 4.1250, 4.3043, 4.5000, 4.7143, 4.9500, 5.2105, 5.5000, 5.8235, 6.1875, 6.6000, 7.0714, 7.6154, 8.2500, 9.0000, 9.9000, 11.0000, 12.3750, 14.1429, 16.5000, 19.8000, 24.7500, 33.0000, 49.5000];
 
             function startGame() {
                 if (!gameStarted) {
