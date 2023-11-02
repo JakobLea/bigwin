@@ -79,7 +79,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <h1>Dice</h1>
                     <div class="game">
                         <input type="range" id="slider" min="2" max="98" step="1" value="50">
-                        <p>Ditt tall: <span id="guessValue">50</span><br>Dette gir deg <span id="multi">1.9800</span>X</p>
+                        <p>Ditt tall: <span id="guessValue">50</span><br>Du vil få <span id="multi">1.9800</span>X vis talled dit er lavere.</p>
                         <p id="message"></p>
                     </div>
 
