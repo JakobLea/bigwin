@@ -170,7 +170,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         const userGuess = parseInt(slider.value, 10);
 
                         if (userGuess > targetNumber) {
-                            tall = 2 * coinsToSpend
+                            tall = multiplierSystems[slider.value] * coinsToSpend
                             message.textContent = "Riktig, du vant " + tall + " coins, tallet var " + targetNumber;
                             changeCoins((2 * coinsToSpend));
                             gameStarted = false; // Reset the game flag
