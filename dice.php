@@ -169,7 +169,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                         if (userGuess > targetNumber) {
                             tall = 2 * coinsToSpend
-                            message.textContent = "Riktig, du vant " + tall + " coins!";
+                            message.textContent = "Riktig, du vant " + tall + " coins, tallet var " + targetNumber;
                             changeCoins((2 * coinsToSpend));
                             gameStarted = false; // Reset the game flag
                             document.getElementById("startButton").classList.remove("cash-out-disabled"); // Remove disabled class
@@ -189,11 +189,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                             closePopup();
                             mineFreeCellsClicked = 0;
                         } else {
-                            message.textContent = "Du tapte!";
+                            message.textContent = "Du tapte, tallet var " + targetNumber;
                             gameStarted = false; // Reset the game flag
                             document.getElementById("startButton").classList.remove("cash-out-disabled"); // Remove disabled class
                             document.getElementById("startButton").disabled = false; // Enable the "Start Game" button
-                            document.getElementById("startButton").textContent = "Start Game"; // Reset button text
+                            document.getElementById("startButton").textContent = "Bet"; // Reset button text
                             document.getElementById("coinsToSpend").disabled = false; // Enable the input
                             document.getElementById("multiplier").style.display = "none"; // Hide the multiplier
                             multiplierVisible = false; // Reset multiplierVisible flag
