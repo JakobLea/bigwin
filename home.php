@@ -54,7 +54,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
         <li class="nav-item">
             <div class="dropdown">
-                <img src="/Logo/profilbilde-hvit.png" alt="Profilbilde" width="22" height="22" class="profile" onclick="myFunction(event)">
+                <img src="Logo/profilbilde-hvit.png" alt="Profilbilde" width="22" height="22" class="profile" onclick="myFunction(event)">
                 <div id="myDropdown" class="dropdown-content arrow-top">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
