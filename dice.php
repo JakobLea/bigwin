@@ -79,7 +79,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <h1>Dice</h1>
                     <div class="game">
                         <input type="range" id="slider" min="2" max="98" step="1" value="50">
-                        <p>Tallet ditt er <span id="guessValue">50</span><br><h3>Du vil få <span id="multi">1.9800</span>x vis tallet dit er høyest.</h3></p>
+                        <p>Tallet ditt er <span id="guessValue">50</span><br>Du vil få <span id="multi">1.9800</span>x vis tallet er høyere enn ditt</p>
                         <p id="message"></p>
                     </div>
 
@@ -169,9 +169,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         // checkButton.addEventListener("click", () => {
                         const userGuess = parseInt(slider.value, 10);
 
-                        if (userGuess > targetNumber) {
+                        if (userGuess < targetNumber) {
                             tall = multiplierSystems[slider.value] * coinsToSpend
-                            message.textContent = "Tallet ditt var høyere, du vant " + tall + " coins, tallet var " + targetNumber;
+                            message.textContent = "Tallet var høyere, du vant " + tall + " coins, tallet var " + targetNumber;
                             changeCoins((2 * coinsToSpend));
                             gameStarted = false; // Reset the game flag
                             document.getElementById("startButton").classList.remove("cash-out-disabled"); // Remove disabled class
@@ -191,7 +191,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                             closePopup();
                             mineFreeCellsClicked = 0;
                         } else {
-                            message.textContent = "Tallet ditt var lavere, du tapte, tallet var " + targetNumber;
+                            message.textContent = "Tallet var lavere, du tapte, tallet var " + targetNumber;
                             gameStarted = false; // Reset the game flag
                             document.getElementById("startButton").classList.remove("cash-out-disabled"); // Remove disabled class
                             document.getElementById("startButton").disabled = false; // Enable the "Start Game" button
