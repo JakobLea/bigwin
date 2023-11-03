@@ -172,7 +172,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         if (userGuess < targetNumber) {
                             tall = multiplierSystems[slider.value] * coinsToSpend
                             message.textContent = "Tallet var høyere, du vant " + tall + " coins, tallet var " + targetNumber;
-                            changeCoins((2 * coinsToSpend));
+                            changeCoins((multiplierSystems[slider.value] * coinsToSpend));
                             gameStarted = false; // Reset the game flag
                             document.getElementById("startButton").classList.remove("cash-out-disabled"); // Remove disabled class
                             document.getElementById("startButton").disabled = false; // Enable the "Start Game" button
