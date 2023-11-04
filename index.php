@@ -7,7 +7,7 @@
 	<link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
 </head>
 
-<body style="background-color:#333333">
+<body style="background-color:#2B3D5D">
 	<form action="login.php" method="post">
 		<h2>Logg Inn</h2>
 		<?php if (isset($_GET['error'])) { ?>
