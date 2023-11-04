@@ -122,7 +122,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         <option value="21">21 Mines</option>
                         <option value="22">22 Mines</option>
                         <option value="23">23 Mines</option>
-                        <option value="24">23 Mines</option>
+                        <option value="24">24 Mines</option>
                     </select></div>
 
 
