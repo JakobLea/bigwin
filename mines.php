@@ -141,7 +141,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <div class="popup-content">
                 <p><span id="popup-multiplier"></span></p>
                 <hr>
-                <p><span id="popup-coins"></span><img id="chip" src="Logo/Chip_grønn.png" width=12px, height=12px></p>
+                <p><span id="popup-coins"></span><img id="chip" src="Logo/Diamond.png" width=12px, height=12px></p>
             </div>
         </div>
 
@@ -387,7 +387,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     event.target.classList.add("revealed");
                     event.target.style.backgroundColor = "#000000"; // Change background color
                     const safeImage = document.createElement("img");
-                    safeImage.src = "Logo/Chip_grønn.png";
+                    safeImage.src = "Logo/Diamond.png";
                     safeImage.alt = "Safe";
                     safeImage.classList.add("revealed");
                     event.target.appendChild(safeImage);
@@ -445,7 +445,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         } else {
                             cell.style.backgroundColor = "#000000"; // Change background color
                             const safeImage = document.createElement("img");
-                            safeImage.src = "Logo/Chip_grønn.png";
+                            safeImage.src = "Logo/Diamond.png";
                             safeImage.alt = "Safe";
                             safeImage.classList.add("revealed");
                             cell.appendChild(safeImage);
