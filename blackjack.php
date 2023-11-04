@@ -32,7 +32,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <a href="blackjack.php" class="nav-link">Blackjack</a>
                 </li>
                 <li class="nav-item">
-                <a href="dice.php" class="nav-link">Dice</a>
+                    <a href="dice.php" class="nav-link">Dice</a>
                 </li>
             </ul>
             <div class="login-container">
@@ -51,6 +51,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             </div>
         </nav>
 
+        <!--Selve brettet til spillet-->
         <div class="flex-container">
             <div>
                 <div class="buttons">
@@ -93,20 +94,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <script src="mines.js"></script>
 
         <script>
+            // Funksjon for å endre antall mynter (knyttet til spillersaldo)
             function changeCoins(changeBy) {
                 var coinsChanged = document.getElementById("coins").innerHTML;
 
+                // Funksjon for å hente gjeldende myntsaldo
                 coinsChanged = parseInt(coinsChanged) + changeBy;
 
                 document.cookie = "coins=" + coinsChanged + "; max-age=5; path=/";
                 $("#coinCount").load("updateCoins.php");
             }
 
+            // Funksjon for å hente gjeldende myntsaldo
             function getCoins() {
                 var gottenCoins = document.getElementById("coins").innerHTML;
 
                 return gottenCoins;
             }
+
+
+            // Definisjon av kortstokk
             const suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
             const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
@@ -114,6 +121,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             let playerHand = [];
             let dealerHand = [];
 
+            // Henter elementer fra HTML
             const playerHandElement = document.getElementById("player-hand");
             const dealerHandElement = document.getElementById("dealer-hand");
             const playerCounterElement = document.getElementById("player-counter");
@@ -125,10 +133,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             hitButton.disabled = true;
             standButton.disabled = true;
 
+            // Funksjon for å formatere mynttelleren med kun to desimaler
             function formatCoinCount(coins) {
                 return parseFloat(coins.toFixed(2));
             }
 
+            // Opprett en ny kortstokk
             function createDeck() {
                 for (let suit of suits) {
                     for (let rank of ranks) {
@@ -137,6 +147,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 }
             }
 
+            // Bland kortstokken
             function shuffleDeck() {
                 for (let i = deck.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -145,67 +156,67 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
 
-            // Update the dealInitialCards function to deal cards with some face down and others revealed
+            // Oppdater funksjonen dealInitialCards for å dele ut kort med noen med forsiden ned og andre vist
             function dealInitialCards() {
                 if (deck.length < 4) {
-                    // If there are fewer than 4 cards left, reshuffle the deck.
+                    // Hvis det er færre enn 4 kort igjen, stokk kortstokken på nytt                    
                     createDeck();
                     shuffleDeck();
                 }
 
-                // Clear previous cards only when the game is redealt.
+                // Fjern tidligere kort kun når spillet deles ut på nytt
                 dealButton.disabled = true;
                 playerHand = [];
                 dealerHand = [];
-                dealerCardHidden = true; // Reset dealer's first card as hidden.
+                dealerCardHidden = true; // Tilbakestill den første kortet til dealeren som skjult
 
                 const dealInterval = setInterval(() => {
                     if (playerHand.length === 0) {
-                        // Deal the first card face down to the player
+                        // Deal deal det første kortet med ansiktet opp til spiller
                         if (deck.length === 0) {
-                            // If the deck is empty, reshuffle the deck.
+                            // Hvis kortstokken er tom, stokk kortene og del ut på nytt
                             createDeck();
                             shuffleDeck();
                         }
                         playerHand.push(deck.pop());
                         renderHands();
                     } else if (dealerHand.length === 0) {
-                        // Deal the first card face down to the dealer
+                        // Deal deal det første kortet med ansiktet ned til dealer for å skule det
                         if (deck.length === 0) {
-                            // If the deck is empty, reshuffle the deck.
+                            // Hvis kortstokken er tom, stokk kortene og del ut på nytt
                             createDeck();
                             shuffleDeck();
                         }
                         dealerHand.push(deck.pop());
                         renderHands();
                     } else if (playerHand.length === 1) {
-                        // Deal the second card to the player (revealed)
+                        // Deal det andre kortet til spiller også med aksiktet opp
                         if (deck.length === 0) {
-                            // If the deck is empty, reshuffle the deck.
+                            // Hvis kortstokken er tom, stokk kortene og del ut på nytt
                             createDeck();
                             shuffleDeck();
                         }
                         playerHand.push(deck.pop());
                         renderHands();
                     } else if (dealerHand.length === 1) {
-                        // Deal the second card to the dealer (revealed)
+                        // Deal det andre kortet til dealer med anskiktet opp
                         if (deck.length === 0) {
-                            // If the deck is empty, reshuffle the deck.
+                            // Hvis kortstokken er tom, stokk kortene og del ut på nytt
                             createDeck();
                             shuffleDeck();
                         }
                         dealerHand.push(deck.pop());
                         renderHands();
                     } else {
-                        // Both player and dealer have two cards, stop dealing
+                        // Når både dealer og spiller har to kort hver, stop å dele ut
                         clearInterval(dealInterval);
                         hitButton.disabled = false;
                         standButton.disabled = false;
 
-                        // Check if the player has blackjack
+                        // Sjekk om spiller har blackjakc på starten slik at spillet avsluttes med en gang hvis blackjack
                         checkPlayerBlackjack();
                     }
-                }, 400); // Adjust the interval as needed (in milliseconds)
+                }, 400); // Tiden mellom utdeling av hvert kort i millisekunder
             }
 
 
@@ -213,7 +224,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
 
-            // Function to check if the player has blackjack (initial hand value of 21)
+            // Funksjon for å sjekke om spilleren har blackjack
             function checkPlayerBlackjack() {
                 if (calculateHandValue(playerHand) === 21) {
                     dealerCardHidden = false;
@@ -226,20 +237,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 }
             }
 
-
+            // Oppdater visningen av kortene på skjermen
             function renderHands() {
                 playerHandElement.innerHTML = playerHand.map(card => getCardImageURL(card)).join('');
                 dealerHandElement.innerHTML = dealerHand.map((card, index) => getCardImageImageHTML(card, index)).join('');
 
-                // Calculate the total of the dealer's hand based on the shown cards
-                const dealerShownCards = dealerHand.slice(dealerCardHidden ? 1 : 0); // Start from the hidden card if it's hidden
+                // Regn ut totalen av dealer sin hånd basert på kortene som vises
+                const dealerShownCards = dealerHand.slice(dealerCardHidden ? 1 : 0);
                 dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerShownCards)}`;
                 playerCounterElement.textContent = `Total: ${calculateHandValue(playerHand)}`;
             }
 
 
 
-
+            // Henter kortbildene 
             function getCardImageURL(card) {
                 const suitSymbol = getSuitSymbol(card.suit);
                 const rankSymbol = getRankSymbol(card.rank);
@@ -247,12 +258,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 return `<img class="card-image" src="Cards/${rankSymbol}${suitSymbol}.png" alt="${card.rank} of ${card.suit}">`;
             }
 
+            // funksjonen for å hente HTML til kortbildene inkludert baksiden
             function getCardImageImageHTML(card, index) {
                 const suitSymbol = getSuitSymbol(card.suit);
                 const rankSymbol = getRankSymbol(card.rank);
                 const cardImageHTML = `<img class="card-image" src="Cards/${rankSymbol}${suitSymbol}.png" alt="${card.rank} of ${card.suit}">`;
 
-                // If the dealer's first card is hidden, show the back of the card.
+                // Hvis dealeren sitt første kort er skjult skal det vises ett bilde av baksiden av kortet
                 if (index === 0 && dealerCardHidden) {
                     return '<img class="card-image" src="Cards/bak.png" alt="Card Back">';
                 }
@@ -260,6 +272,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 return cardImageHTML;
             }
 
+            // Funksjon for å få symbolet for en kortfarge
             function getSuitSymbol(suit) {
                 switch (suit) {
                     case "Hearts":
@@ -273,10 +286,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 }
             }
 
+            // Funksjon for å få symbolet for en kortverdi.
             function getRankSymbol(rank) {
                 return rank === "10" ? "T" : rank;
             }
 
+            // Funksjon for å legge sammen verdien av en hånd
             function calculateHandValue(hand) {
                 let value = 0;
                 let hasAce = false;
@@ -295,12 +310,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 }
 
                 if (hasAce && value > 21) {
-                    value -= 10; // Convert one Ace from 11 to 1.
+                    value -= 10; // Gjør om ess til 1 hvis kortenes verdi er over 21
                 }
 
                 return value;
             }
 
+            // Funksjon for å avslutte spillet og håndtere resultatene
             function endGame(outcome) {
                 let coinsToReceive = document.getElementById("coinsToSpend").value * 1;
                 dealerCardHidden = false;
@@ -313,11 +329,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     coinsToReceive = document.getElementById("coinsToSpend").value * 2;
                     const playerCardImages = playerHandElement.querySelectorAll('.card-image');
                     playerCardImages.forEach(image => image.classList.add('player-win-card'));
-                    changeCoins(coinsToReceive); // Award coins based on the multiplier
+                    changeCoins(coinsToReceive); // Gi mynter tilbake bastert på multiplier som er 2x
                 } else if (outcome === "It's a push!") {
                     const playerCardImages = playerHandElement.querySelectorAll('.card-image');
                     playerCardImages.forEach(image => image.classList.add('player-push-card'));
-                    changeCoins(coinsToReceive); // Award coins based on the multiplier
+                    changeCoins(coinsToReceive); // Gi mynter tilbake bastert på multiplier som er 1x
                 }
 
                 hitButton.disabled = true;
@@ -325,6 +341,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 dealButton.disabled = false;
             }
 
+            // Sjekker om spiller har vunnet med blackjack
             function checkPlayerWin() {
                 const playerValue = calculateHandValue(playerHand);
                 const dealerValue = calculateHandValue(dealerHand);
@@ -340,33 +357,34 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
 
 
-
+            // lag, stokk og del ut kortene
             createDeck();
             shuffleDeck();
             renderHands();
 
 
 
-            // Event listener for the "Deal" button
+            // Legger til forskjellige hendelser for deal knappen
             dealButton.addEventListener("click", () => {
                 const coinsToSpendInput = document.getElementById("boxforinp");
                 const errorMessage = document.getElementById("errorMessage");
 
+                // Hvis brukeren taster inn ett tall likt som eller under 0, eller skriver ett tall med mer enn 2 desimaler, display en error melding
                 const coinsToSpend = parseFloat(document.getElementById("coinsToSpend").value);
                 if (isNaN(coinsToSpend) || coinsToSpend <= 0 || coinsToSpend.toString().split(".")[1]?.length > 2) {
                     errorMessage.style.display = "block";
                     coinsToSpendInput.classList.add("error");
                     coinsToSpendInput.style.border = "2px solid red";
                     errorMessage.textContent = "Invalid Number.";
-                } else if (coinsToSpend > getCoins()) {
-                    // Hide the error message and remove the 'error' class from the input
+                } else if (coinsToSpend > getCoins()) { //hvis brukeren taster inn ett tall høyere enn det de har på brukeren, så dukker det opp en popup med mulighete til å legge til mere coins
+                    // Skjul error meldingen, men behold den røde kanten
                     errorMessage.style.display = "none";
                     coinsToSpendInput.style.border = "2px solid red";
-                    // Show the modal
+                    // vis popupen med knapp til å legge til mer coins
                     const modal = document.getElementById("myModal");
                     modal.style.display = "block";
 
-                    // Close the modal when clicking outside of it
+                    // Lukk popupen npr man trykker utenfor boksen
                     window.onclick = function (event) {
                         if (event.target === modal) {
                             modal.style.display = "none";
@@ -375,9 +393,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                 } else {
                     errorMessage.style.display = "none";
                     coinsToSpendInput.style.border = "";
-                    changeCoins(-coinsToSpend); // Deduct the specified number of coins to start the game
-                    document.getElementById("coinsToSpend").disabled = true; // Disable the input
-                    dealInitialCards();
+                    changeCoins(-coinsToSpend); // Hvis ett godjent nummer skrives inn trekkes det fra brukeren sine coins
+                    document.getElementById("coinsToSpend").disabled = true; // Deaktivere input-feltet frem til spillet er over.
+                    dealInitialCards(); // del ut kortene og spillet starter.
                 }
             });
 
@@ -392,8 +410,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     playerHand.push(deck.pop());
                     renderHands();
                     if (calculateHandValue(playerHand) > 21) {
-                        endGame("You Lost");
-                        document.getElementById("coinsToSpend").disabled = false; // Enable the input
+                        endGame("You Lost"); //hvis spillerhånd har mer enn 21 taper spilleren
+                        document.getElementById("coinsToSpend").disabled = false; 
                     }
                     checkPlayerWin();
                 }
@@ -402,7 +420,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             standButton.addEventListener("click", () => {
                 while (calculateHandValue(dealerHand) < 17) {
                     if (deck.length === 0) {
-                        // If the deck is empty, reshuffle the deck.
+                        // Hvis kortstokken er tom, stokk kortene
                         createDeck();
                         shuffleDeck();
                     }
@@ -412,13 +430,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                 if (calculateHandValue(dealerHand) > 21 || calculateHandValue(playerHand) > calculateHandValue(dealerHand)) {
                     endGame("You win!");
-                    document.getElementById("coinsToSpend").disabled = false; // Enable the input
+                    document.getElementById("coinsToSpend").disabled = false; 
                 } else if (calculateHandValue(playerHand) < calculateHandValue(dealerHand)) {
                     endGame("You Lost");
-                    document.getElementById("coinsToSpend").disabled = false; // Enable the input
+                    document.getElementById("coinsToSpend").disabled = false; 
                 } else {
                     endGame("It's a push!");
-                    document.getElementById("coinsToSpend").disabled = false; // Enable the input
+                    document.getElementById("coinsToSpend").disabled = false; /
                 }
             });
         </script>
