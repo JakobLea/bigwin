@@ -18,7 +18,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
     <script src="jonsfiler/jquery-3.7.1.min.js"></script>
 
-    <body style="background-color:#333333">
+    <body style="background-color:#2B3D5D">
 
         <script src="mines.js"></script>
 

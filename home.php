@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         console.log(tets)
     </script> -->
 
-<body style="background-color:#333333">
+<body style="background-color:#2B3D5D">
     <script src="mines.js"></script>
     <nav class="navbar">
         <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png"
