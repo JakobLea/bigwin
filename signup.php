@@ -9,7 +9,7 @@
 
 <body style="background-color:#2B3D5D">
      <form action="signup-check.php" method="post">
-          <h2>Registrer</h2>
+          <h2>BigWin | Registrer</h2>
           <?php if (isset($_GET['error'])) { ?>
                <p class="error"><?php echo $_GET['error']; ?></p>
           <?php } ?>
