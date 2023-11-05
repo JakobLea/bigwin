@@ -386,7 +386,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     return; // Stop the game
                 } else {
                     event.target.classList.add("revealed");
-                    event.target.style.backgroundColor = "#000000"; // Change background color
+                    event.target.style.backgroundColor = "#19243a"; // Change background color
                     const safeImage = document.createElement("img");
                     safeImage.src = "Logo/Diamond.png";
                     safeImage.alt = "Safe";

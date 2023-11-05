@@ -33,7 +33,7 @@
 }
 
 .cell:active {
-  background-color: #272626;
+  background-color: #2B3D5F;
   transform: translateY(0px);
   transform: scale(0.95);
 }
