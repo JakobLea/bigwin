@@ -54,7 +54,7 @@ if (
 			$sql2 = "INSERT INTO users(user_name, password, name) VALUES('$uname', '$pass', '$name')";
 			$result2 = mysqli_query($conn, $sql2);
 			if ($result2) {
-				header("Location: signup.php?success=Your account has been created successfully");
+				header("Location: index.php");
 				exit();
 			} else {
 				header("Location: signup.php?error=unknown error occurred&$user_data");
@@ -63,6 +63,6 @@ if (
 		}
 	}
 } else {
-	header("Location: index.php");
+	header("Location: signup.php");
 	exit();
 }
