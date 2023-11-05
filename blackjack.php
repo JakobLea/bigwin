@@ -244,7 +244,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
                 // Regn ut totalen av dealer sin hånd basert på kortene som vises
                 const dealerShownCards = dealerHand.slice(dealerCardHidden ? 1 : 0);
-                dealerCounterElement.textContent = `Total: ${calculateHandValue(dealerShownCards)}`;
+                dealerCounterElement.textContent = `Dealer: ${calculateHandValue(dealerShownCards)}`;
                 playerCounterElement.textContent = `Total: ${calculateHandValue(playerHand)}`;
             }
 
