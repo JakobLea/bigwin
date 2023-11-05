@@ -4,6 +4,7 @@
 <head>
      <title>Registrer</title>
      <link rel="stylesheet" type="text/css" href="style.css">
+     <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">x
 </head>
 
 <body style="background-color:#2B3D5D">

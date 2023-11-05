@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Logg Inn</title>
+	<title>BigWin | Logg Inn</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
 </head>
