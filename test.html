@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans - serif;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .game {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="range"] {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #message {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Try to guess the target number by adjusting the slider.</p>
+    <div class="game">
+        <input type="range" id="slider" min="1" max="100" step="1" value="50">
+        <p>Your Guess: <span id="guessValue">50</span></p>
+        <button id="checkButton">Check Guess</button>
+        <p id="message"></p>
+    </div>
+    <script>
+        const slider = document.getElementById("slider");
+        const guessValue = document.getElementById("guessValue");
+        const checkButton = document.getElementById("checkButton");
+        const message = document.getElementById("message");
+
+        // Generate a random target number between 1 and 100
+        const targetNumber = Math.floor(Math.random() * 100) + 1;
+
+        // Update the displayed guess value when the slider changes
+        slider.addEventListener("input", () => {
+            guessValue.textContent = slider.value;
+        });
+
+        // Check the guess and provide feedback
+        checkButton.addEventListener("click", () => {
+            const userGuess = parseInt(slider.value, 10);
+
+            if (userGuess > targetNumber) {
+                message.textContent = "Congratulations! You guessed correctly. The target number was lower.";
+            } else {
+                message.textContent = "Try a higher number.";
+            }
+        });
+
+    </script>
+</body>
+
+</html>
+dijid

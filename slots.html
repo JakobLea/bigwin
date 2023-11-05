@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .slot-machine {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .reel {
+            width: 80px;
+            height: 200px;
+            border: 1px solid #333;
+            text-align: center;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .symbol {
+            margin: 5px;
+            font-size: 20px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0074cc;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056a9;
+        }
+    </style>
+    <title>Slot Machine</title>
+</head>
+<body>
+    <h1>Slot Machine</h1>
+    <div class="slot-machine">
+        <div class="reel" id="reel1">
+            <div class="symbol">Cherry</div>
+            <div class="symbol">Lemon</div>
+            <div class="symbol">Orange</div>
+            <div class="symbol">Plum</div>
+            <div class="symbol">Bell</div>
+            <div class="symbol">Bar</div>
+            <div class="symbol">Seven</div>
+        </div>
+        <div class="reel" id="reel2">
+            <div class="symbol">Cherry</div>
+            <div class="symbol">Lemon</div>
+            <div class="symbol">Orange</div>
+            <div class="symbol">Plum</div>
+            <div class="symbol">Bell</div>
+            <div class="symbol">Bar</div>
+            <div class="symbol">Seven</div>
+        </div>
+        <div class="reel" id="reel3">
+            <div class="symbol">Cherry</div>
+            <div class="symbol">Lemon</div>
+            <div class="symbol">Orange</div>
+            <div class="symbol">Plum</div>
+            <div class="symbol">Bell</div>
+            <div class="symbol">Bar</div>
+            <div class="symbol">Seven</div>
+        </div>
+    </div>
+    <button onclick="spinSlotMachine()">Spin</button>
+
+    <script>
+        const symbols = ["Cherry", "Lemon", "Orange", "Plum", "Bell", "Bar", "Seven"];
+
+        function spinReel(reelId) {
+            const randomIndex = Math.floor(Math.random() * symbols.length);
+            const reel = document.getElementById(reelId);
+            reel.style.transform = `translateY(-${randomIndex * 40}px)`;
+            return symbols[randomIndex];
+        }
+
+        function spinSlotMachine() {
+            const result1 = spinReel("reel1");
+            const result2 = spinReel("reel2");
+            const result3 = spinReel("reel3");
+
+            if (result1 === result2 && result2 === result3) {
+                alert("Congratulations! You win!");
+            }
+        }
+    </script>
+</body>
+</html>
