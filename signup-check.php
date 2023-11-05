@@ -63,6 +63,6 @@ if (
 		}
 	}
 } else {
-	header("Location: signup.php");
+	header("Location: index.php");
 	exit();
 }
