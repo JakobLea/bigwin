@@ -8,7 +8,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <html>
 
     <head>
-        <title>Blackjack Game</title>
+        <title>BigWin | Blackjack</title>
         <link rel="stylesheet" href="bj.css">
         <link rel="stylesheet" href="nav.css">
         <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">

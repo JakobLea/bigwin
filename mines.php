@@ -11,7 +11,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="Logo/Favicon.png">
-        <title>Mines Game</title>
+        <title>BigWin | Mines</title>
         <link rel="stylesheet" href="mines.css">
         <link rel="stylesheet" href="nav.css">
     </head>
