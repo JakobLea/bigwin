@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
-?>
+    ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -20,7 +20,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
     <body style="background-color:#2B3D5D">
         <nav class="navbar">
-            <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png" width=100px, height=50px></a>
+            <a href="home.php" class="nav-branding"> <img style="border:0px solid black;" src="Logo/BigWin3.png"
+                    width=100px, height=50px></a>
 
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -33,7 +34,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <a href="blackjack.php" class="nav-link">Blackjack</a>
                 </li>
                 <li class="nav-item">
-                <a href="dice.php" class="nav-link">Dice</a>
+                    <a href="dice.php" class="nav-link">Dice</a>
                 </li>
             </ul>
             <div class="login-container">
@@ -56,7 +57,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
         <!-- Jon igjen :) -->
         <script src="mines.js"></script>
-        
+
         <script>
             const hamburger = document.querySelector(".hamburger");
             const navMenu = document.querySelector(".nav-menu");
@@ -93,7 +94,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             </div> -->
                 <div id="boxforinp">
                     <input type="number" id="coinsToSpend" placeholder="Enter coins">
-                    <button id="addRemainingCoinsButton">Max</button>
                 </div>
 
 
@@ -182,15 +182,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             const explosionSound = document.getElementById("explosionSound");
             const multiplierSystems = {
                 1: [1, 1.03, 1.08, 1.12, 1.18, 1.24, 1.30, 1.37, 1.46, 1.50, 1.55, 1.65, 1.77, 1.90, 2.06, 2.25, 2.47, 3.09, 3.54, 4.12, 4.95, 6.19, 8.25, 12.38, 24.75],
-                2: [1, 1.08, 1.17, 1.29, 1.41, 1.56, 1.74, 1.94, 2.18, 2.47, 2.83, 3.26, 3.81, 4.50, 5.40, 6.60, 8.25, 10.61, 14.14, 19.80, 29.70, 49.50, 99.00, 297.00, ],
+                2: [1, 1.08, 1.17, 1.29, 1.41, 1.56, 1.74, 1.94, 2.18, 2.47, 2.83, 3.26, 3.81, 4.50, 5.40, 6.60, 8.25, 10.61, 14.14, 19.80, 29.70, 49.50, 99.00, 297.00,],
                 3: [1, 1.12, 1.29, 1.48, 1.71, 2.00, 2.35, 2.79, 3.35, 4.07, 5.00, 6.26, 7.96, 10.35, 13.80, 18.97, 27.11, 40.66, 65.06, 113.85, 227.70, 569.25, 2277.00],
                 4: [1, 1.18, 1.41, 1.71, 2.09, 2.58, 3.23, 4.09, 5.26, 6.88, 9.17, 2.51, 17.52, 25.30, 37.95, 59.64, 99.39, 178.91, 357.81, 834.90, 2504, 12523],
-                5: [1, 1.24, 1.56, 2.00, 2.58, 3.39, 4.52, 6.14, 8.50, 12.04, 17.52, 26.27, 40.87, 66.41, 113.85, 208.72, 417.45, 939.26, 2504.00, 8766.00, 52598.99], 
+                5: [1, 1.24, 1.56, 2.00, 2.58, 3.39, 4.52, 6.14, 8.50, 12.04, 17.52, 26.27, 40.87, 66.41, 113.85, 208.72, 417.45, 939.26, 2504.00, 8766.00, 52598.99],
                 6: [1, 1.30, 1.74, 2.35, 3.23, 4.52, 6.46, 9.44, 14.17, 21.89, 35.03, 58.38, 102.17, 189.75, 379.50, 834.90, 2087, 6261, 25047, 175329],
                 7: [1, 1.37, 1.94, 2.79, 4.09, 6.14, 9.44, 14.95, 24.47, 41.60, 73.95, 138.66, 277.33, 600.87, 1442, 3965, 13219, 59486, 475893],
                 8: [1, 1.46, 2.18, 3.35, 5.26, 8.50, 14.17, 24.47, 44.05, 83.20, 166.4, 356.56, 831.98, 2163, 6489, 23794, 118973, 1070759],
                 9: [1, 1.55, 2.47, 4.07, 6.88, 12.04, 21.89, 41.60, 83.20, 176.80, 404, 1010, 2828, 9193, 36773, 202254, 2022545],
-                10: [1, 1.65, 2.83, 5.00, 9.17, 17.52, 35.03, 73.95, 166.40, 404, 1077, 3232, 11314, 49031, 294188, 3236072], 
+                10: [1, 1.65, 2.83, 5.00, 9.17, 17.52, 35.03, 73.95, 166.40, 404, 1077, 3232, 11314, 49031, 294188, 3236072],
                 11: [1, 1.77, 3.26, 6.26, 12.51, 26.77, 58.38, 138.66, 356.56, 1010, 3232, 12123, 56574, 367735, 4412826],
                 12: [1, 1.90, 3.81, 7.96, 17.52, 40.87, 102.17, 277.33, 813.98, 2828, 11314, 56574, 396022, 5148297],
                 13: [1, 2.06, 4.50, 10.35, 25.30, 66.41, 189.75, 600.87, 2163, 9193, 49031, 367735, 5148297],
@@ -209,7 +209,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             };
             let selectedMineCount = parseInt(mineCountDropdown.value);
 
-            mineCountDropdown.addEventListener("change", function() {
+            mineCountDropdown.addEventListener("change", function () {
                 selectedMineCount = parseInt(mineCountDropdown.value);
             });
 
@@ -229,7 +229,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
 
-            mineCountDropdown.addEventListener("change", function() {
+            mineCountDropdown.addEventListener("change", function () {
                 selectedMineCount = parseInt(mineCountDropdown.value);
             });
 
@@ -302,7 +302,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                         modal.style.display = "block";
 
                         // Close the modal when clicking outside of it
-                        window.onclick = function(event) {
+                        window.onclick = function (event) {
                             if (event.target === modal) {
                                 modal.style.display = "none";
                             }
@@ -507,7 +507,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     revealAllCells(); // Reveal all cells and end the game
                     hideCashOutButton(); // Hide the cash-out button
                     showResetButton(); // Show the reset button
-                } else {}
+                } else { }
             }
 
 
@@ -554,7 +554,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 
             // Add an event listener to handle changes in the dropdown menu
-            mineCountDropdown.addEventListener("change", function() {
+            mineCountDropdown.addEventListener("change", function () {
                 // Ensure the dropdown is disabled when the game has started
                 if (gameStarted) {
                     mineCountDropdown.disabled = true;
@@ -603,7 +603,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     </body>
 
     </html>
-<?php
+    <?php
 } else {
     header("Location: index.php");
     exit();
